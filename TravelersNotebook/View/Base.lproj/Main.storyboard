@@ -97,7 +97,7 @@
                                                     <segue destination="yMW-cJ-wpp" kind="show" identifier="continueToTopPage" id="09s-Ix-1EE"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgw-8d-2ad">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgw-8d-2ad" customClass="FBSDKLoginButton">
                                                 <rect key="frame" x="0.0" y="39" width="248" height="33"/>
                                                 <color key="backgroundColor" red="0.65490196079999996" green="0.62745098040000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
@@ -872,6 +872,9 @@
                                                 <state key="normal" title="Sign up with Facebook">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="loginByFacebookIDWithSender:" destination="KXv-75-WfF" eventType="touchUpInside" id="5cv-89-G8P"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOd-RV-kho">
                                                 <rect key="frame" x="0.0" y="78" width="248" height="33"/>
@@ -923,6 +926,7 @@
                         <viewLayoutGuide key="safeArea" id="aJ7-cQ-iAT"/>
                     </view>
                     <connections>
+                        <outlet property="FBLoginBtn" destination="XvB-qU-w6K" id="tQq-mn-vYI"/>
                         <outlet property="signUpEmail" destination="GTC-kY-e9n" id="jrQ-2P-FA6"/>
                         <outlet property="signUpFirstName" destination="2gz-4V-Gfr" id="XV0-4a-yVc"/>
                         <outlet property="signUpLastName" destination="enS-tv-wE3" id="NTL-ff-huR"/>
@@ -1078,6 +1082,6 @@
         <image name="Tie" width="245" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="09s-Ix-1EE"/>
+        <segue reference="daU-7H-uvY"/>
     </inferredMetricsTieBreakers>
 </document>

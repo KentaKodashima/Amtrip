@@ -8,19 +8,46 @@
 
 import UIKit
 import Firebase
-import FirebaseAuthUI
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  
   var window: UIWindow?
-
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     FirebaseApp.configure()
+    //FBSDKLoginButton.self
+    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    
     return true
   }
+  
+  func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
+    // Add any custom logic here.
+    return handled
+  }
+  
+//  func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+//    if let error = error {
+//      print(error.localizedDescription)
+//      return
+//    }
+//    let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+//    Auth.auth().signIn(with: credential) { (user, error) in
+//      if let error = error {
+//        // ...
+//        return
+//      }
+//      // User is signed in
+//    }
+//  }
+//
+//  func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+//    return
+//  }
 
   func applicationWillResignActive(_ application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
