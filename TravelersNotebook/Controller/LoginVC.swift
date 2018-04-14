@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
+import GoogleSignIn
 
 class LoginVC: UIViewController, UITextFieldDelegate {
   

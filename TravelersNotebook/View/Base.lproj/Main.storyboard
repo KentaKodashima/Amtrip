@@ -97,7 +97,7 @@
                                                     <segue destination="yMW-cJ-wpp" kind="show" identifier="continueToTopPage" id="09s-Ix-1EE"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgw-8d-2ad" customClass="FBSDKLoginButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgw-8d-2ad">
                                                 <rect key="frame" x="0.0" y="39" width="248" height="33"/>
                                                 <color key="backgroundColor" red="0.65490196079999996" green="0.62745098040000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
@@ -865,7 +865,7 @@
                                                     <segue destination="yMW-cJ-wpp" kind="show" identifier="moveOnToTopPage" id="daU-7H-uvY"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvB-qU-w6K">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvB-qU-w6K">
                                                 <rect key="frame" x="0.0" y="39" width="248" height="33"/>
                                                 <color key="backgroundColor" red="0.65490196079999996" green="0.62745098040000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
@@ -873,7 +873,7 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="loginByFacebookIDWithSender:" destination="KXv-75-WfF" eventType="touchUpInside" id="5cv-89-G8P"/>
+                                                    <action selector="facebookLoginWithSender:" destination="KXv-75-WfF" eventType="touchUpInside" id="moo-K1-NtC"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOd-RV-kho">
@@ -883,6 +883,9 @@
                                                 <state key="normal" title="Sign up with Google">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="googleSignInSender:" destination="KXv-75-WfF" eventType="touchUpInside" id="xWM-nA-cMd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
