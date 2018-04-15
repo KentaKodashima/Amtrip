@@ -40,8 +40,13 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     Auth.auth().signIn(
       withEmail: loginEmail.text!,
       password: loginPassword.text!
-    )
-    performSegue(withIdentifier: signInSegue, sender: nil)
+    ) { user, error in
+      if let error = error {
+        print(error.localizedDescription)
+      } else {
+        self.performSegue(withIdentifier: self.signInSegue, sender: nil)
+      }
+    }
   }
   
 }
