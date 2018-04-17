@@ -8,19 +8,29 @@
 
 import UIKit
 
-class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
   
   @IBOutlet weak var albumTitle: UITextField!
   @IBOutlet weak var pageTitle: UITextField!
   @IBOutlet weak var date: UITextField!
   @IBOutlet weak var location: UITextField!
   @IBOutlet weak var bodyText: UITextView!
-  @IBOutlet weak var uploadedImage: UIImageView!
+  @IBOutlet weak var imageCollection: UICollectionView!
+  
+  var imageStore: ImageStore!
+  var images: [UIImage]?
+  var selectedImage: UIImage?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Do any additional setup after loading the view.
+    bodyText.delegate = self
+  }
+  
+  func textViewDidChange(_ textView: UITextView) {
+    var frame = textView.frame
+    frame.size.height = textView.contentSize.height
+    textView.frame = frame
   }
   
   // Open up device's camera
@@ -51,10 +61,36 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     let image = info[UIImagePickerControllerOriginalImage] as! UIImage
     
     // Put that image on the screen in the image view
-    uploadedImage.image = image
+    selectedImage = image
+    images?.append(selectedImage!)
+    print(images)
+    
+    imageCollection.reloadData()
     
     // Take image picker off the screen
     dismiss(animated: true, completion: nil)
+  }
+  
+}
+
+extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    if let image = images {
+      return image.count
+    } else {
+      return 0
+    }
+    
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
+    
+    cell.cellImage.image = selectedImage
+    
+    return cell
   }
   
 }

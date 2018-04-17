@@ -7,17 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
 class Page {
   var albumTitle: String
   var pageTitle: String
   var date: String
   var location: String
+  var bodyText: String
   
-  init(albumTitle: String, pageTitle: String, date: String, location: String) {
+  init(albumTitle: String, pageTitle: String, date: String, location: String, bodyText: String) {
     self.albumTitle = albumTitle
     self.pageTitle = pageTitle
     self.date = date
     self.location = location
+    self.bodyText = bodyText
   }
 }
