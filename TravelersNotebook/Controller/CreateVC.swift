@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
+class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate, UITextViewDelegate {
   
   @IBOutlet weak var albumTitle: UITextField!
   @IBOutlet weak var pageTitle: UITextField!
@@ -25,12 +25,33 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     super.viewDidLoad()
     
     bodyText.delegate = self
+    
+    // Enable return key of UITextFields
+    self.albumTitle.delegate = self
+    self.pageTitle.delegate = self
+    self.date.delegate = self
+    self.location.delegate = self
+    
   }
   
   func textViewDidChange(_ textView: UITextView) {
-    var frame = textView.frame
-    frame.size.height = textView.contentSize.height
-    textView.frame = frame
+    // Method 1
+    let maxHeight = 1000.0
+//    if (textView.frame.size.height.native < maxHeight) {
+//      let size:CGSize = textView.sizeThatFits(textView.frame.size)
+//      textView.frame.size.height = size.height
+//    }
+  }
+  
+  /*
+   Enable return key of UITextFields
+   */
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    albumTitle.resignFirstResponder()
+    pageTitle.resignFirstResponder()
+    date.resignFirstResponder()
+    location.resignFirstResponder()
+    return true
   }
   
   // Open up device's camera
@@ -63,7 +84,6 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     // Put that image on the screen in the image view
     selectedImage = image
     images?.append(selectedImage!)
-    print(images)
     
     imageCollection.reloadData()
     
@@ -88,7 +108,12 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
     
-    cell.cellImage.image = selectedImage
+    cell.cellImage.isHidden = true
+    if let image = cell.cellImage {
+      cell.cellImage.isHidden = false
+      cell.cellImage.image = selectedImage
+    }
+    //cell.cellImage.image = selectedImage
     
     return cell
   }
