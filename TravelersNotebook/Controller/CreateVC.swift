@@ -24,23 +24,35 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    bodyText.delegate = self
+    // UITextView
+    self.bodyText.delegate = self
     
-    // Enable return key of UITextFields
+    // UITextFields
     self.albumTitle.delegate = self
     self.pageTitle.delegate = self
     self.date.delegate = self
     self.location.delegate = self
     
+    // Create close button above the textView keyboard
+    // Tool bar
+    let closeBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+    closeBar.barStyle = UIBarStyle.default  // Style
+    closeBar.sizeToFit()  // Size change depends on screen size
+    // Spacer
+    let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+    // Close Botton
+    let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(CreateVC.closeButtonTapped))
+    
+    closeBar.items = [spacer, closeButton]
+    bodyText.inputAccessoryView = closeBar
+
   }
   
-  func textViewDidChange(_ textView: UITextView) {
-    // Method 1
-    let maxHeight = 1000.0
-//    if (textView.frame.size.height.native < maxHeight) {
-//      let size:CGSize = textView.sizeThatFits(textView.frame.size)
-//      textView.frame.size.height = size.height
-//    }
+  /*
+   Enable textView to close
+   */
+  @objc func closeButtonTapped() {
+    self.view.endEditing(true)
   }
   
   /*
@@ -84,7 +96,7 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     // Put that image on the screen in the image view
     selectedImage = image
     images?.append(selectedImage!)
-    
+
     imageCollection.reloadData()
     
     // Take image picker off the screen
@@ -105,15 +117,14 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
   }
   
+  // Assign cells contents
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCell
     
-    cell.cellImage.isHidden = true
-    if let image = cell.cellImage {
-      cell.cellImage.isHidden = false
-      cell.cellImage.image = selectedImage
+    //cell.cellImage.isHidden = true
+    if let image = cell.cellImage.image {
+      cell.cellImage.image = images?[indexPath.row]
     }
-    //cell.cellImage.image = selectedImage
     
     return cell
   }

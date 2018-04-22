@@ -25,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //Google Sign In
     GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+    
+    // Create an ImageStore
+    let imageStore = ImageStore()
+    let createController = CreateVC()
+    createController.imageStore = imageStore
+    
     return true
   }
   
