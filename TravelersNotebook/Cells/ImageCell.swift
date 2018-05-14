@@ -10,9 +10,4 @@ import UIKit
 
 class ImageCell: UICollectionViewCell {
   @IBOutlet weak var cellImage: UIImageView!
-  
-  // Avoiding showing cached image
-  override func prepareForReuse() {
-    cellImage.image = nil
-  }
 }

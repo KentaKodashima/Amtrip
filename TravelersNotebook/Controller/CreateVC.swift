@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate, UITextViewDelegate {
+class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
   
   @IBOutlet weak var albumTitle: UITextField!
   @IBOutlet weak var pageTitle: UITextField!
@@ -16,9 +16,11 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
   @IBOutlet weak var location: UITextField!
   @IBOutlet weak var bodyText: UITextView!
   @IBOutlet weak var imageCollection: UICollectionView!
+  @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var frameStack: UIStackView!
   
   var imageStore: ImageStore!
-  var images: [UIImage]?
+  var images = NSMutableArray()
   var selectedImage: UIImage?
   
   override func viewDidLoad() {
@@ -45,19 +47,19 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     
     closeBar.items = [spacer, closeButton]
     bodyText.inputAccessoryView = closeBar
-
   }
   
-  /*
-   Enable textView to close
-   */
+  override func viewDidLayoutSubviews() {
+    scrollView.contentSize = frameStack.bounds.size
+    scrollView.flashScrollIndicators()
+  }
+  
+  // Enable textView to close
   @objc func closeButtonTapped() {
     self.view.endEditing(true)
   }
   
-  /*
-   Enable return key of UITextFields
-   */
+  // Enable return key of UITextFields
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     albumTitle.resignFirstResponder()
     pageTitle.resignFirstResponder()
@@ -95,7 +97,8 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     
     // Put that image on the screen in the image view
     selectedImage = image
-    images?.append(selectedImage!)
+    print(selectedImage)
+    images.add(selectedImage!)
 
     imageCollection.reloadData()
     
@@ -109,21 +112,17 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    if let image = images {
-      return image.count
-    } else {
-      return 0
-    }
-    
+    return images.count
   }
   
   // Assign cells contents
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCell
     
-    //cell.cellImage.isHidden = true
+    cell.cellImage.isHidden = true
     if let image = cell.cellImage.image {
-      cell.cellImage.image = images?[indexPath.row]
+      cell.cellImage.isHidden = false
+      cell.cellImage.image = images[indexPath.row] as? UIImage
     }
     
     return cell
