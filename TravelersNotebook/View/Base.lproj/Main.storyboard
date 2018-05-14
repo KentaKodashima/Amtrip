@@ -394,12 +394,11 @@
                                             </textView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QKk-kD-XiC">
                                                 <rect key="frame" x="0.0" y="582" width="280" height="160"/>
-                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="280" id="MDF-Bg-kWa"/>
                                                     <constraint firstAttribute="height" constant="160" id="gB3-cf-AP0"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="tUV-g2-qR0">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tUV-g2-qR0">
                                                     <size key="itemSize" width="100" height="100"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -414,14 +413,14 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="b4j-3c-ssk">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="1219"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="473"/>
                                                                 </imageView>
                                                             </subviews>
                                                         </view>
                                                         <constraints>
                                                             <constraint firstItem="b4j-3c-ssk" firstAttribute="top" secondItem="gpW-kN-dnO" secondAttribute="top" id="FtK-2G-dwQ"/>
-                                                            <constraint firstAttribute="trailing" secondItem="b4j-3c-ssk" secondAttribute="trailing" constant="76" id="MMN-fD-TcC"/>
-                                                            <constraint firstAttribute="bottom" secondItem="b4j-3c-ssk" secondAttribute="bottom" constant="-746" id="SA9-9L-BxJ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="b4j-3c-ssk" secondAttribute="trailing" id="MMN-fD-TcC"/>
+                                                            <constraint firstAttribute="bottom" secondItem="b4j-3c-ssk" secondAttribute="bottom" id="SA9-9L-BxJ"/>
                                                             <constraint firstItem="b4j-3c-ssk" firstAttribute="leading" secondItem="gpW-kN-dnO" secondAttribute="leading" id="ev3-Bc-HOq"/>
                                                         </constraints>
                                                         <connections>
@@ -530,7 +529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJy-3Q-lbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="3108"/>
+            <point key="canvasLocation" x="301.875" y="3107.7464788732395"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="JBN-Az-5LX">

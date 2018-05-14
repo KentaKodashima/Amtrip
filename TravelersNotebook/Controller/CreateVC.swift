@@ -124,6 +124,7 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
       cell.cellImage.isHidden = false
       cell.cellImage.image = images[indexPath.row] as? UIImage
     }
+    cell.layoutIfNeeded()
     
     return cell
   }
