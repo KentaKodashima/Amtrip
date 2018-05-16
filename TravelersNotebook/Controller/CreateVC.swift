@@ -47,6 +47,7 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     
     closeBar.items = [spacer, closeButton]
     bodyText.inputAccessoryView = closeBar
+    imageCollection.isHidden = true
   }
   
   override func viewDidLayoutSubviews() {
@@ -97,9 +98,8 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     
     // Put that image on the screen in the image view
     selectedImage = image
-    print(selectedImage)
     images.add(selectedImage!)
-
+    
     imageCollection.reloadData()
     
     // Take image picker off the screen
@@ -121,9 +121,11 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     cell.cellImage.isHidden = true
     if let image = cell.cellImage.image {
+      imageCollection.isHidden = false
       cell.cellImage.isHidden = false
       cell.cellImage.image = images[indexPath.row] as? UIImage
     }
+    // Modifying Cell's width and height
     cell.layoutIfNeeded()
     
     return cell
