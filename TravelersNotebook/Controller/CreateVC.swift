@@ -48,10 +48,13 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     closeBar.items = [spacer, closeButton]
     bodyText.inputAccessoryView = closeBar
     imageCollection.isHidden = true
+    
+    // Make a little space at top and bottom of the UIScrollView
+    let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
+    scrollView.contentInset = edgeInsets
   }
   
   override func viewDidLayoutSubviews() {
-    scrollView.contentSize = frameStack.bounds.size
     scrollView.flashScrollIndicators()
   }
   
@@ -127,6 +130,7 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     // Modifying Cell's width and height
     cell.layoutIfNeeded()
+    scrollView.layoutIfNeeded()
     
     return cell
   }
