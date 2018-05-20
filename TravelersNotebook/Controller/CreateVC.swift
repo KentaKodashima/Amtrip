@@ -20,7 +20,7 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
   @IBOutlet weak var frameStack: UIStackView!
   
   var imageStore: ImageStore!
-  var images = NSMutableArray()
+  var images = [UIImage]()
   var selectedImage: UIImage?
   
   override func viewDidLoad() {
@@ -44,9 +44,10 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
     // Close Botton
     let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(CreateVC.closeButtonTapped))
-    
     closeBar.items = [spacer, closeButton]
     bodyText.inputAccessoryView = closeBar
+    
+    // Hide the collectionview at first
     imageCollection.isHidden = true
     
     // Make a little space at top and bottom of the UIScrollView
@@ -101,7 +102,7 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     
     // Put that image on the screen in the image view
     selectedImage = image
-    images.add(selectedImage!)
+    images.append(selectedImage!)
     
     imageCollection.reloadData()
     
@@ -114,7 +115,6 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
 extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
     return images.count
   }
   
@@ -128,11 +128,21 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
       cell.cellImage.isHidden = false
       cell.cellImage.image = images[indexPath.row] as? UIImage
     }
-    // Modifying Cell's width and height
+    // Modify Cell's width and height
     cell.layoutIfNeeded()
     scrollView.layoutIfNeeded()
     
     return cell
+  }
+  
+  @IBAction func deleteCell(_ sender: UIButton) {
+    var cell = sender.superview?.superview as! UICollectionViewCell
+    var imageCell = cell as! ImageCell
+    var index = imageCollection?.indexPath(for: imageCell)
+    images.remove(at: (index?.item)!)
+    imageCollection.deleteItems(at: [index!])
+    
+    imageCollection.reloadData()
   }
   
 }
