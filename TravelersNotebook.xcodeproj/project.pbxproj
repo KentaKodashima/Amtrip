@@ -23,6 +23,8 @@
 		ED7A95812082EF8600801583 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7A95802082EF8600801583 /* Page.swift */; };
 		ED7A95872082F94B00801583 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7A95862082F94B00801583 /* ImageCell.swift */; };
 		ED9703ED207D32CA00734581 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9703EC207D32CA00734581 /* GoogleService-Info.plist */; };
+		EDADC70F20B270F900187582 /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADC70E20B270F900187582 /* LocationVC.swift */; };
+		EDB9F27F20B1024500D656FB /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB9F27E20B1024500D656FB /* PageCell.swift */; };
 		F4A2AFD1A02048AC282AC75F /* Pods_TravelersNotebook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D7DA124C99BC7BD5482B5E /* Pods_TravelersNotebook.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		ED7A95802082EF8600801583 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		ED7A95862082F94B00801583 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		ED9703EC207D32CA00734581 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDADC70E20B270F900187582 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
+		EDB9F27E20B1024500D656FB /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 				ED3F83D8207C761600250AA2 /* HomeVC.swift */,
 				ED3F83D6207C761600250AA2 /* SearchVC.swift */,
 				ED3F83D4207C761600250AA2 /* CreateVC.swift */,
+				EDADC70E20B270F900187582 /* LocationVC.swift */,
 				ED3F83D7207C761600250AA2 /* FavoriteVC.swift */,
 				ED3F83D9207C761600250AA2 /* AccountVC.swift */,
 			);
@@ -159,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				ED7A95862082F94B00801583 /* ImageCell.swift */,
+				EDB9F27E20B1024500D656FB /* PageCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -320,7 +326,9 @@
 				ED7A95812082EF8600801583 /* Page.swift in Sources */,
 				ED3F83DC207C761600250AA2 /* SignUpVC.swift in Sources */,
 				ED6B930520844EF1003222A2 /* ImageStore.swift in Sources */,
+				EDB9F27F20B1024500D656FB /* PageCell.swift in Sources */,
 				ED3F83DE207C761600250AA2 /* FavoriteVC.swift in Sources */,
+				EDADC70F20B270F900187582 /* LocationVC.swift in Sources */,
 				ED3F83DA207C761600250AA2 /* LoginVC.swift in Sources */,
 				ED3F83E0207C761600250AA2 /* AccountVC.swift in Sources */,
 				ED3F83E3207C763700250AA2 /* Album.swift in Sources */,
