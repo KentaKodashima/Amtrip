@@ -26,7 +26,7 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.imageCollection.delegate = self
     // UITextView
     self.bodyText.delegate = self
     
@@ -51,6 +51,7 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     
     // Hide the collectionview at first
     imageCollection.isHidden = true
+
     
     // Make a little space at top and bottom of the UIScrollView
     let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
@@ -59,6 +60,14 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
   
   override func viewDidLayoutSubviews() {
     scrollView.flashScrollIndicators()
+    
+    let layout = UICollectionViewFlowLayout()
+    layout.itemSize = CGSize(width: 120, height: 120)
+    layout.minimumInteritemSpacing = 0
+    layout.minimumLineSpacing = 10
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    layout.scrollDirection = .horizontal
+    imageCollection.collectionViewLayout = layout
   }
   
   // Enable textView to close
@@ -129,7 +138,7 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     present(imagePicker, animated: true, completion: nil)
   }
   
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+  @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     // Get picked image from info directory
     let image = info[UIImagePickerControllerOriginalImage] as! UIImage
     
@@ -155,28 +164,24 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
   // Assign cells contents
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCell
-    
-    cell.cellImage.isHidden = true
-    if let image = cell.cellImage.image {
-      imageCollection.isHidden = false
-      cell.cellImage.isHidden = false
-      cell.cellImage.image = images[indexPath.row] as? UIImage
-    }
-    // Modify Cell's width and height
-    cell.layoutIfNeeded()
-    scrollView.layoutIfNeeded()
-    
+  
+    cell.cellImage.image = images[indexPath.row]
+    imageCollection.isHidden = false
+
     return cell
   }
   
   @IBAction func deleteCell(_ sender: UIButton) {
-    var cell = sender.superview?.superview as! UICollectionViewCell
-    var imageCell = cell as! ImageCell
+    let cell = sender.superview?.superview as! UICollectionViewCell
+    let imageCell = cell as! ImageCell
     var index = imageCollection?.indexPath(for: imageCell)
     images.remove(at: (index?.item)!)
     imageCollection.deleteItems(at: [index!])
     
-    imageCollection.reloadData()
+    guard images.count > 0 else {
+      imageCollection.isHidden = true
+      return
+    }
   }
   
 }

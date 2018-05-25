@@ -6,9 +6,5 @@ target 'TravelersNotebook' do
   use_frameworks!
 
   # Pods for TravelersNotebook
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'FBSDKLoginKit'
-  pod 'GoogleSignIn'
   
 end

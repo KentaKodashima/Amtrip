@@ -1,50 +1,40 @@
 //
 //  LoginVC.swift
-//  Traveler's Notebook
+//  TravelersNotebook
 //
-//  Created by Kenta Kodashima on 2018-03-28.
+//  Created by Kenta Kodashima on 2018-05-23.
 //  Copyright © 2018 Kenta Kodashima. All rights reserved.
 //
 
 import UIKit
-import Firebase
-import FBSDKCoreKit
-import FBSDKLoginKit
-import GoogleSignIn
+import LocalAuthentication
 
-class LoginVC: UIViewController, UITextFieldDelegate {
-  
-  @IBOutlet weak var loginEmail: UITextField!
-  @IBOutlet weak var loginPassword: UITextField!
-  private let signInSegue = "continueToTopPage"
+class LoginVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Enable return key of UITextFields
-    self.loginEmail.delegate = self
-    self.loginPassword.delegate = self
+    touchIdAuthentication()
   }
   
-  /*
-   Enable return key of UITextFields
-   */
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    loginEmail.resignFirstResponder()
-    loginPassword.resignFirstResponder()
+  func touchIdAuthentication() {
+    let context = LAContext()
+    let reason = "Unlock"
+    var authError: NSError?
     
-    return true
-  }
-  
-  @IBAction func loginDidTouch() {
-    Auth.auth().signIn(
-      withEmail: loginEmail.text!,
-      password: loginPassword.text!
-    ) { user, error in
-      if let error = error {
-        print(error.localizedDescription)
-      } else {
-        self.performSegue(withIdentifier: self.signInSegue, sender: nil)
+    if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+      context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, evaluationError in
+        if (success) {
+          self.performSegue(withIdentifier: "authSuccess", sender: nil)
+        } else {
+          guard let error = evaluationError else {
+            return
+          }
+        }
+      }
+    } else {
+      guard let error = authError else {
+        return
       }
     }
   }
