@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
   
@@ -51,7 +52,6 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     
     // Hide the collectionview at first
     imageCollection.isHidden = true
-
     
     // Make a little space at top and bottom of the UIScrollView
     let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
@@ -83,21 +83,18 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     return true
   }
   
-  // Segue to LocationVC
-  @IBAction func showLocationVC(_ sender: UITextField) {
-    self.performSegue(withIdentifier: "toLocationVC", sender: self)
-  }
-  
-//  func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//    performSegue(withIdentifier: "toLocationVC", sender: self)
-//    return false
-//  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "toLocationVC" {
-      let locationVC = segue.destination as? LocationVC
-      //l.note = noteTextField.text
-    }
+  // Present the Autocomplete view controller when the button is pressed.
+  @IBAction func locationFieldTapped(_ sender: Any) {
+    locationField.resignFirstResponder()
+    let acController = GMSAutocompleteViewController()
+    acController.delegate = self
+    
+    var darkBrown: UIColor = UIColor.init(red: 173, green: 108, blue: 53, alpha: 1)
+    var lightBrown: UIColor = UIColor.init(red: 241, green: 218, blue: 184, alpha: 1)
+    acController.tableCellBackgroundColor = lightBrown
+    
+    
+    present(acController, animated: true, completion: nil)
   }
   
   // Show UIDatePicker when the dateField is tapped
@@ -182,6 +179,25 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
       imageCollection.isHidden = true
       return
     }
+  }
+}
+
+extension CreateVC: GMSAutocompleteViewControllerDelegate {
+  // Handle the user's selection.
+  func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+    
+    locationField.text = place.name
+    dismiss(animated: true, completion: nil)
+  }
+  
+  func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+    // TODO: handle the error.
+    print("Error: ", error.localizedDescription)
+  }
+  
+  // User canceled the operation.
+  func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+    dismiss(animated: true, completion: nil)
   }
   
 }

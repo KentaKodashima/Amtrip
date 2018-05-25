@@ -6,5 +6,6 @@ target 'TravelersNotebook' do
   use_frameworks!
 
   # Pods for TravelersNotebook
+  pod 'GooglePlaces'
   
 end

@@ -208,6 +208,9 @@
                                                                 <color key="textColor" red="0.40000000000000002" green="0.35686274509803922" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" textContentType="location"/>
+                                                                <connections>
+                                                                    <action selector="locationFieldTapped:" destination="bok-TP-Jqo" eventType="editingDidBegin" id="qqr-WT-fIi"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
