@@ -7,5 +7,6 @@ target 'TravelersNotebook' do
 
   # Pods for TravelersNotebook
   pod 'GooglePlaces'
+  pod 'RealmSwift'
   
 end

@@ -178,6 +178,7 @@
 				ED3F83BA207C75EB00250AA2 /* Frameworks */,
 				ED3F83BB207C75EB00250AA2 /* Resources */,
 				5F3C6CD5BE054FF0F64D6530 /* [CP] Copy Pods Resources */,
+				5A54E9CA480C5BC9A2924514 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,6 +242,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5A54E9CA480C5BC9A2924514 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5F3C6CD5BE054FF0F64D6530 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

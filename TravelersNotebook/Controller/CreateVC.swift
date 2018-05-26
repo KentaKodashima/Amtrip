@@ -9,7 +9,7 @@
 import UIKit
 import GooglePlaces
 
-class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   
   @IBOutlet weak var albumTitle: UITextField!
   @IBOutlet weak var pageTitle: UITextField!
@@ -27,28 +27,17 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.imageCollection.delegate = self
-    // UITextView
-    self.bodyText.delegate = self
     
-    // UITextFields
+    // Set delegates
+    self.imageCollection.delegate = self
+    self.bodyText.delegate = self
     self.albumTitle.delegate = self
     self.pageTitle.delegate = self
     self.dateField.delegate = self
     self.locationField.delegate = self
     
-    // Create close button above the textView keyboard
-    // Tool bar
-    let closeBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-    closeBar.barStyle = UIBarStyle.default  // Style
-    closeBar.sizeToFit()  // Size change depends on screen size
-    // Spacer
-    let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
-    // Close Botton
-    let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(closeButtonTapped))
-    closeBar.items = [spacer, closeButton]
-    bodyText.inputAccessoryView = closeBar
-    dateField.inputAccessoryView = closeBar
+    // Create Toolbar with 'Close' button above the system keyboard
+    createToolbarForKeyboard()
     
     // Hide the collectionview at first
     imageCollection.isHidden = true
@@ -70,6 +59,20 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     imageCollection.collectionViewLayout = layout
   }
   
+  private func createToolbarForKeyboard() {
+    // Create close button above the textView keyboard
+    // Tool bar
+    let closeBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+    closeBar.barStyle = UIBarStyle.default  // Style
+    closeBar.sizeToFit()  // Size change depends on screen size
+    // Spacer
+    let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+    // Close Botton
+    let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(closeButtonTapped))
+    closeBar.items = [spacer, closeButton]
+    bodyText.inputAccessoryView = closeBar
+    dateField.inputAccessoryView = closeBar
+  }
   // Enable textView to close
   @objc func closeButtonTapped() {
     self.view.endEditing(true)
@@ -89,10 +92,9 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     let acController = GMSAutocompleteViewController()
     acController.delegate = self
     
-    var darkBrown: UIColor = UIColor.init(red: 173, green: 108, blue: 53, alpha: 1)
-    var lightBrown: UIColor = UIColor.init(red: 241, green: 218, blue: 184, alpha: 1)
+    var darkBrown: UIColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
+    var lightBrown: UIColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
     acController.tableCellBackgroundColor = lightBrown
-    
     
     present(acController, animated: true, completion: nil)
   }
@@ -112,6 +114,41 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     dateField.text = dateFormatter.string(from: sender.date)
   }
   
+  @IBAction func saveButtonTapped(_ sender: UIButton) {
+    if arePropertiesEmpty() {
+      var page = Page(
+        albumTitle: self.albumTitle.text!,
+        pageTitle: self.pageTitle.text!,
+        date: self.dateField.text!,
+        location: self.locationField.text!,
+        bodyText: self.bodyText.text!
+      )
+      var album = Album()
+      album.pages.append(page)
+    } else {
+      
+    }
+  }
+  private func arePropertiesEmpty() -> Bool {
+    var isEmpty = false
+    switch isEmpty {
+    case self.albumTitle.text?.isEmpty:
+      isEmpty = true
+    case self.pageTitle.text?.isEmpty:
+      isEmpty = true
+    case self.dateField.text?.isEmpty:
+      isEmpty = true
+    case self.locationField.text?.isEmpty:
+      isEmpty = true
+    default:
+      isEmpty = false
+    }
+    return isEmpty
+  }
+  
+}
+
+extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   // Open up device's camera
   @IBAction func takePicture(_ sender: UIButton) {
     let imagePicker = UIImagePickerController()
@@ -140,7 +177,6 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     let image = info[UIImagePickerControllerOriginalImage] as! UIImage
     
     // Put that image on the screen in the image view
-    //images = [UIImage]()
     selectedImage = image
     images.append(selectedImage!)
     
@@ -149,7 +185,6 @@ class CreateVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     // Take image picker off the screen
     dismiss(animated: true, completion: nil)
   }
-  
 }
 
 extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -182,6 +217,7 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
   }
 }
 
+// Set up google places API
 extension CreateVC: GMSAutocompleteViewControllerDelegate {
   // Handle the user's selection.
   func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {

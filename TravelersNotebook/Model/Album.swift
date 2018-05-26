@@ -9,5 +9,9 @@
 import Foundation
 
 class Album {
-  private var pages = [Page]()
+  var pages: [Page]
+  
+  init() {
+    pages = [Page]()
+  }
 }
