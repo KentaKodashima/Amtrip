@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlaces
+import RealmSwift
 
 class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   
@@ -86,6 +87,12 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     return true
   }
   
+  @IBAction func albumTitleFieldTapped(_ sender: UITextField) {
+    albumTitle.resignFirstResponder()
+    
+    self.performSegue(withIdentifier: "toAlbumCreateVC", sender: sender)
+  }
+  
   // Present the Autocomplete view controller when the button is pressed.
   @IBAction func locationFieldTapped(_ sender: Any) {
     locationField.resignFirstResponder()
@@ -124,7 +131,11 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         bodyText: self.bodyText.text!
       )
       var album = Album()
-      album.pages.append(page)
+      
+      let realm = try! Realm()
+      try! realm.write {
+        realm.add(page)
+      }
     } else {
       
     }

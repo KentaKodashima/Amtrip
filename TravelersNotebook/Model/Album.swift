@@ -7,11 +7,16 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Album {
-  var pages: [Page]
+class Album: Object {
+  @objc dynamic var albumName: String?
+  @objc dynamic var pages: [Page]?
   
-  init() {
-    pages = [Page]()
+  convenience init(albumName: String) {
+    self.init()
+    
+    self.albumName = albumName
+    self.pages = [Page]()
   }
 }
