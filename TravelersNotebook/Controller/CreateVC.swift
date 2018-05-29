@@ -24,7 +24,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   var imageStore: ImageStore!
   var images = [UIImage]()
   var selectedImage: UIImage?
-  var textFromLocationVC: String?
+  //var tempAlbumTitle: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,6 +36,9 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     self.pageTitle.delegate = self
     self.dateField.delegate = self
     self.locationField.delegate = self
+    
+    // Album title from AlbumCreateVC
+    //self.albumTitle.text = tempAlbumTitle
     
     // Create Toolbar with 'Close' button above the system keyboard
     createToolbarForKeyboard()
@@ -87,10 +90,23 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     return true
   }
   
+  // Segue to AlbumCreateVC
   @IBAction func albumTitleFieldTapped(_ sender: UITextField) {
     albumTitle.resignFirstResponder()
     
     self.performSegue(withIdentifier: "toAlbumCreateVC", sender: sender)
+  }
+  
+  // Unwind segue from AlbumCreateVC to CreateVC
+  // Passing albumTitle from AlbumCreateVC
+  @IBAction func returnHere(segue: UIStoryboardSegue) {
+    let sourceVC = segue.source as? AlbumCreateVC
+    if let albumFieldText = sourceVC?.albumTitleField.text {
+      albumTitle.text = albumFieldText
+    }
+    if let albumTitleSelected = sourceVC?.tempString {
+      albumTitle.text = albumTitleSelected
+    }
   }
   
   // Present the Autocomplete view controller when the button is pressed.
