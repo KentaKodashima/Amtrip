@@ -11,13 +11,30 @@ import UIKit
 import RealmSwift
 
 class Page: Object {
-  @objc dynamic private var albumTitle: String?
-  @objc dynamic private var pageTitle: String?
-  @objc dynamic private var date: String?
-  @objc dynamic private var location: String?
-  @objc dynamic private var bodyText: String?
   
-  convenience init(albumTitle: String, pageTitle: String, date: String, location: String, bodyText: String) {
+//  enum Property: String {
+//    case id, albumTitle, pageTitle, date, location, bodyText
+//  }
+
+  //@objc dynamic private let id = UUID().uuidString
+  @objc dynamic private(set) var albumTitle: String = ""
+  @objc dynamic private(set) var pageTitle: String = ""
+  @objc dynamic private(set) var date: String = ""
+  @objc dynamic private(set) var location: String = ""
+  @objc dynamic private(set) var bodyText: String = ""
+  var image = List<Data>()
+
+//  override static func primaryKey() -> String? {
+//    return "id"
+//  }
+
+  convenience init(
+    albumTitle: String,
+    pageTitle: String,
+    date: String,
+    location: String,
+    bodyText: String
+    ) {
     self.init()
     self.albumTitle = albumTitle
     self.pageTitle = pageTitle

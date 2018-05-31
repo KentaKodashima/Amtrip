@@ -181,7 +181,7 @@
 				ED3F83BA207C75EB00250AA2 /* Frameworks */,
 				ED3F83BB207C75EB00250AA2 /* Resources */,
 				5F3C6CD5BE054FF0F64D6530 /* [CP] Copy Pods Resources */,
-				5A54E9CA480C5BC9A2924514 /* [CP] Embed Pods Frameworks */,
+				EA77B7E5D6F2AAB439F6A3FA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,7 +245,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5A54E9CA480C5BC9A2924514 /* [CP] Embed Pods Frameworks */ = {
+		5F3C6CD5BE054FF0F64D6530 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook-resources.sh",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA77B7E5D6F2AAB439F6A3FA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -263,24 +281,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5F3C6CD5BE054FF0F64D6530 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook-resources.sh",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2C81925D601C74724ECF3E1 /* [CP] Check Pods Manifest.lock */ = {

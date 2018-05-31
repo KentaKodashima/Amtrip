@@ -28,7 +28,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     // Set delegates
     self.imageCollection.delegate = self
     self.bodyText.delegate = self
@@ -138,7 +137,9 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   }
   
   @IBAction func saveButtonTapped(_ sender: UIButton) {
-    if arePropertiesEmpty() {
+
+    if isPropertyEmpty() {
+      
       var page = Page(
         albumTitle: self.albumTitle.text!,
         pageTitle: self.pageTitle.text!,
@@ -146,17 +147,20 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         location: self.locationField.text!,
         bodyText: self.bodyText.text!
       )
-      var album = Album()
+
+      var album = Album(albumTitle: page.albumTitle)
+      album.pages.append(page)
       
       let realm = try! Realm()
       try! realm.write {
         realm.add(page)
+        realm.add(album)
       }
     } else {
       
     }
   }
-  private func arePropertiesEmpty() -> Bool {
+  private func isPropertyEmpty() -> Bool {
     var isEmpty = false
     switch isEmpty {
     case self.albumTitle.text?.isEmpty:
@@ -200,6 +204,7 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
   }
   
   @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    
     // Get picked image from info directory
     let image = info[UIImagePickerControllerOriginalImage] as! UIImage
     

@@ -1,0 +1,28 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/build/Debug-iphonesimulator/Realm/Realm.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Realm-Swift.h",
+          'external-contents': "/Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/build/Debug-iphonesimulator/Realm/Realm.framework/Headers/Realm-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/build/Debug-iphonesimulator/Realm/Realm.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/build/Pods.build/Debug-iphonesimulator/Realm.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

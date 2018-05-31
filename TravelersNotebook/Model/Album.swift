@@ -10,13 +10,22 @@ import Foundation
 import RealmSwift
 
 class Album: Object {
-  @objc dynamic var albumTitle: String?
-  @objc dynamic var pages: [Page]?
-  
+//  enum Property: String {
+//    case id, albumTitle, pages
+//  }
+
+//  @objc dynamic let id = UUID().uuidString
+  @objc dynamic private(set) var albumTitle: String = ""
+  var pages = List<Page>()
+  //@objc dynamic var pages: [Page] = [Page]()
+
+//  override static func primaryKey() -> String? {
+//    return Album.Property.id.rawValue
+//  }
+
   convenience init(albumTitle: String) {
     self.init()
-    
+
     self.albumTitle = albumTitle
-    self.pages = [Page]()
   }
 }

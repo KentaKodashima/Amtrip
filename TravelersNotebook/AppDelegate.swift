@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlaces
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let createController = CreateVC()
     createController.imageStore = imageStore
     
+    // Migration config for realm
+    let config = Realm.Configuration(
+      schemaVersion: 1,
+      migrationBlock: { migration, oldSchemaVersion in
+        // We haven’t migrated anything yet, so oldSchemaVersion == 0
+        if (oldSchemaVersion < 1) { }
+    })
+    
+    // Tell Realm to use this new configuration object for the default Realm
+    Realm.Configuration.defaultConfiguration = config
+    
     return true
   }
   
@@ -59,7 +71,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
-
+  
+  
 
 }
 
