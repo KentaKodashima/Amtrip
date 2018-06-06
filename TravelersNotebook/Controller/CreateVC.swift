@@ -24,7 +24,10 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   var imageStore: ImageStore!
   var images = [UIImage]()
   var selectedImage: UIImage?
-  //var tempAlbumTitle: String?
+  
+  var imageData: Data?
+  var imagesData = [Data]()
+  var imagesPath = List<String>()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,9 +38,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     self.pageTitle.delegate = self
     self.dateField.delegate = self
     self.locationField.delegate = self
-    
-    // Album title from AlbumCreateVC
-    //self.albumTitle.text = tempAlbumTitle
     
     // Create Toolbar with 'Close' button above the system keyboard
     createToolbarForKeyboard()
@@ -114,8 +114,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     let acController = GMSAutocompleteViewController()
     acController.delegate = self
     
-    var darkBrown: UIColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
-    var lightBrown: UIColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
+    //let darkBrown: UIColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
+    let lightBrown: UIColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
     acController.tableCellBackgroundColor = lightBrown
     
     present(acController, animated: true, completion: nil)
@@ -139,16 +139,16 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   @IBAction func saveButtonTapped(_ sender: UIButton) {
 
     if isPropertyEmpty() {
-      
-      var page = Page(
+      let page = Page(
         albumTitle: self.albumTitle.text!,
         pageTitle: self.pageTitle.text!,
         date: self.dateField.text!,
         location: self.locationField.text!,
-        bodyText: self.bodyText.text!
+        bodyText: self.bodyText.text!,
+        images: self.imagesPath
       )
 
-      var album = Album(albumTitle: page.albumTitle)
+      let album = Album(albumTitle: page.albumTitle)
       album.pages.append(page)
       
       let realm = try! Realm()
@@ -156,8 +156,21 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         realm.add(page)
         realm.add(album)
       }
+      
+      
     } else {
       
+      let alert = UIAlertController(title: "There is an empty field", message: "Please try to fill out all the fields", preferredStyle: .alert)
+      
+      let defaultAction = UIAlertAction(
+        title: "OK", style: UIAlertActionStyle.default, handler:{
+          (action: UIAlertAction!) -> Void in
+          print("OK")
+      })
+      
+      alert.addAction(defaultAction)
+      
+      present(alert, animated: true, completion: nil)
     }
   }
   private func isPropertyEmpty() -> Bool {
@@ -170,6 +183,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     case self.dateField.text?.isEmpty:
       isEmpty = true
     case self.locationField.text?.isEmpty:
+      isEmpty = true
+    case self.bodyText.text?.isEmpty:
       isEmpty = true
     default:
       isEmpty = false
@@ -210,12 +225,41 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     
     // Put that image on the screen in the image view
     selectedImage = image
+    
     images.append(selectedImage!)
+    saveImageData(selectedImage!)
     
     imageCollection.reloadData()
     
     // Take image picker off the screen
     dismiss(animated: true, completion: nil)
+  }
+  
+  // Save image data
+  func saveImageData(_ image: UIImage) {
+    let filemanager = FileManager.default
+    let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let documentPath = documentsURL.path
+    let filePath = documentsURL.appendingPathComponent(".png")
+    
+    do {
+      imageData = UIImagePNGRepresentation(image)
+      try imageData?.write(to: filePath, options: .atomic)
+      imagesPath.append(filePath.absoluteString)
+    } catch {
+      
+      let alert = UIAlertController(title: "Something went wrong", message: "Couldn't write image", preferredStyle: .alert)
+      
+      let defaultAction = UIAlertAction(
+        title: "OK", style: UIAlertActionStyle.default, handler:{
+          (action: UIAlertAction!) -> Void in
+          print("OK")
+      })
+      
+      alert.addAction(defaultAction)
+      
+      present(alert, animated: true, completion: nil)
+    }
   }
 }
 

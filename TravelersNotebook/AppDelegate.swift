@@ -24,11 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let textBrown: UIColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
     UINavigationBar.appearance().barTintColor = barBrown
     UINavigationBar.appearance().tintColor = UIColor.white
-    var searchBarTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: textBrown, NSAttributedStringKey.font.rawValue: UIFont(name: "Helvetica Neue", size: 16)]
+    let searchBarTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: textBrown, NSAttributedStringKey.font.rawValue: UIFont(name: "Helvetica Neue", size: 16)]
     UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
-    var placeholderAttributes = [NSAttributedStringKey.foregroundColor: bgBrown, NSAttributedStringKey.font: UIFont(name: "Helvetica", size: 15)]
+    let placeholderAttributes = [NSAttributedStringKey.foregroundColor: bgBrown, NSAttributedStringKey.font: UIFont(name: "Helvetica", size: 15)]
     // Color of the default search text.
-    var attributedPlaceholder = NSAttributedString(string: "Search", attributes: placeholderAttributes)
+    let attributedPlaceholder = NSAttributedString(string: "Search", attributes: placeholderAttributes)
     UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = attributedPlaceholder
     
     // Create an ImageStore
@@ -41,7 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       schemaVersion: 1,
       migrationBlock: { migration, oldSchemaVersion in
         // We haven’t migrated anything yet, so oldSchemaVersion == 0
-        if (oldSchemaVersion < 1) { }
+        if (oldSchemaVersion < 1) {
+          
+        }
     })
     
     // Tell Realm to use this new configuration object for the default Realm

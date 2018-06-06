@@ -29,7 +29,7 @@ class AlbumCreateVC: UIViewController, UITextFieldDelegate {
   // 
   @IBAction func createButtonTapped(_ sender: UIButton) {
     if let albumTitleFieldText = albumTitleField.text {
-      albumTitles.append(albumTitleField.text!)
+      albumTitles.append(albumTitleFieldText)
     }
   }
   

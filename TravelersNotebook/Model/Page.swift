@@ -10,30 +10,31 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class Page: Object {
+@objcMembers class Page: Object {
   
-//  enum Property: String {
-//    case id, albumTitle, pageTitle, date, location, bodyText
-//  }
+  enum Property: String {
+    case key, albumTitle, pageTitle, date, location, bodyText
+  }
 
-  //@objc dynamic private let id = UUID().uuidString
+  @objc dynamic private var key = UUID().uuidString
   @objc dynamic private(set) var albumTitle: String = ""
   @objc dynamic private(set) var pageTitle: String = ""
   @objc dynamic private(set) var date: String = ""
   @objc dynamic private(set) var location: String = ""
   @objc dynamic private(set) var bodyText: String = ""
-  var image = List<Data>()
+  var images = List<String>()
 
-//  override static func primaryKey() -> String? {
-//    return "id"
-//  }
+  override static func primaryKey() -> String? {
+    return Page.Property.key.rawValue
+  }
 
   convenience init(
     albumTitle: String,
     pageTitle: String,
     date: String,
     location: String,
-    bodyText: String
+    bodyText: String,
+    images: List<String>
     ) {
     self.init()
     self.albumTitle = albumTitle
@@ -41,5 +42,13 @@ class Page: Object {
     self.date = date
     self.location = location
     self.bodyText = bodyText
+    self.images = images
+  }
+}
+
+extension Page {
+  
+  static func all(in realm: Realm = try! Realm()) -> Results<Page> {
+    return realm.objects(Page.self).sorted(byKeyPath: Page.Property.date.rawValue)
   }
 }

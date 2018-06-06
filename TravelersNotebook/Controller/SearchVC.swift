@@ -7,13 +7,39 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchVC: UIViewController {
+  
+  @IBOutlet weak var tableView: UITableView!
+  
+  //lazy var realm = try! Realm()
+  var pages: Results<Page>?
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  
+    pages = Page.all()
+  }
+  
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
+extension SearchVC: UITableViewDelegate, UITableViewDataSource {
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    return pages!.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "PageCell", for: indexPath) as! PageCell
+    
+    let page = pages?[indexPath.row]
+//    if let pageTitle = page?.pageTitle {
+//      cell.pageName.text = pageTitle
+//    }
+    cell.pageName.text = page?.pageTitle
+    
+    return cell
+  }
 }
