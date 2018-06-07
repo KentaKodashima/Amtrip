@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED00C47A20B64AB2006B780E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED00C47920B64AB2006B780E /* LoginVC.swift */; };
+		ED2B5C4820C835760070E025 /* PageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2B5C4720C835760070E025 /* PageDetailVC.swift */; };
 		ED3F83C1207C75EB00250AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F83C0207C75EB00250AA2 /* AppDelegate.swift */; };
 		ED3F83C6207C75EB00250AA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3F83C4207C75EB00250AA2 /* Main.storyboard */; };
 		ED3F83C8207C75EB00250AA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3F83C7207C75EB00250AA2 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		26D7DA124C99BC7BD5482B5E /* Pods_TravelersNotebook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelersNotebook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC759B12583B2769CC34915 /* Pods-TravelersNotebook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelersNotebook.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook.release.xcconfig"; sourceTree = "<group>"; };
 		ED00C47920B64AB2006B780E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		ED2B5C4720C835760070E025 /* PageDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDetailVC.swift; sourceTree = "<group>"; };
 		ED3F83BD207C75EB00250AA2 /* TravelersNotebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelersNotebook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3F83C0207C75EB00250AA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED3F83C5207C75EB00250AA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				EDFE574D20BA99E700B82FE2 /* AlbumCreateVC.swift */,
 				ED3F83D7207C761600250AA2 /* FavoriteVC.swift */,
 				ED3F83D9207C761600250AA2 /* AccountVC.swift */,
+				ED2B5C4720C835760070E025 /* PageDetailVC.swift */,
 				ED00C47920B64AB2006B780E /* LoginVC.swift */,
 			);
 			path = Controller;
@@ -311,6 +314,7 @@
 				ED3F83DD207C761600250AA2 /* SearchVC.swift in Sources */,
 				ED3F83DF207C761600250AA2 /* HomeVC.swift in Sources */,
 				EDFE575020BAA00300B82FE2 /* AlbumTitleCell.swift in Sources */,
+				ED2B5C4820C835760070E025 /* PageDetailVC.swift in Sources */,
 				ED3F83C1207C75EB00250AA2 /* AppDelegate.swift in Sources */,
 				ED3F83DB207C761600250AA2 /* CreateVC.swift in Sources */,
 				ED7A95872082F94B00801583 /* ImageCell.swift in Sources */,

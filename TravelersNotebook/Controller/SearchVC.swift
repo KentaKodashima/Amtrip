@@ -13,8 +13,13 @@ class SearchVC: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
-  //lazy var realm = try! Realm()
   var pages: Results<Page>?
+  var albumTitleToPass: String?
+  var pageTitleToPass: String?
+  var dateToPass: String?
+  var locationToPass: String?
+  var bodyTextToPass: String?
+  var images = List<String>()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,11 +40,34 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: "PageCell", for: indexPath) as! PageCell
     
     let page = pages?[indexPath.row]
-//    if let pageTitle = page?.pageTitle {
-//      cell.pageName.text = pageTitle
-//    }
     cell.pageName.text = page?.pageTitle
     
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let page = pages?[indexPath.row]
+    
+    albumTitleToPass = page?.albumTitle
+    pageTitleToPass = page?.pageTitle
+    dateToPass = page?.date
+    locationToPass = page?.location
+    bodyTextToPass = page?.bodyText
+    
+    self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toPageDetail" {
+      let pageDetailVC = segue.destination as! PageDetailVC
+      
+      pageDetailVC.recievedAlbumTitle = albumTitleToPass
+      pageDetailVC.recievedPageTitle = pageTitleToPass
+      pageDetailVC.recievedDate = dateToPass
+      pageDetailVC.recievedLocation = locationToPass
+      pageDetailVC.recievedBodyText = bodyTextToPass
+      
+    }
+  }
+  
 }

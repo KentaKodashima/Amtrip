@@ -157,7 +157,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         realm.add(album)
       }
       
-      
     } else {
       
       let alert = UIAlertController(title: "There is an empty field", message: "Please try to fill out all the fields", preferredStyle: .alert)
