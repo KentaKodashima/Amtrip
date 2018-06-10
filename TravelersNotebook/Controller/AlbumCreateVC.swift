@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AlbumCreateVC: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var albumTitleField: UITextField!
   @IBOutlet weak var albumTitleTable: UITableView!
   
-  var albumTitles = [String]()
+  var albums: Results<Album>?
   var tempString: String?
-  var testStrings = ["John", "Paul", "Ringo", "George"]
+  var albumTitles = [String]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,7 +24,12 @@ class AlbumCreateVC: UIViewController, UITextFieldDelegate {
     self.albumTitleField.delegate = self
     albumTitleTable.isHidden = true
     
-    albumTitles.append(contentsOf: testStrings)
+    // Retrieve Album titles
+    let realm = try! Realm()
+    albums = realm.objects(Album.self)
+    for album in albums! {
+      albumTitles.append(album.albumTitle)
+    }
   }
   
   // 
@@ -46,15 +52,14 @@ extension AlbumCreateVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    //return albumTitles.count
-    return testStrings.count
+    return albumTitles.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AlbumTitleCell
-    //cell.albumTitle.text = albumTitles[indexPath.row]
-    cell.albumTitle.text = testStrings[indexPath.row]
+    
+    cell.albumTitle.text = albumTitles[indexPath.row]
     
     albumTitleTable.isHidden = false
     
@@ -66,7 +71,8 @@ extension AlbumCreateVC: UITableViewDelegate, UITableViewDataSource {
       let cell = sender as! UITableViewCell
       let index = albumTitleTable.indexPath(for: cell)
       if let indexPath = index?.row {
-        tempString = testStrings[indexPath]
+        //tempString = testStrings[indexPath]
+        tempString = albumTitles[indexPath]
       }
     }
   }

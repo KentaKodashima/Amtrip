@@ -147,15 +147,26 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         bodyText: self.bodyText.text!,
         images: self.imagesPath
       )
-
-      let album = Album(albumTitle: page.albumTitle)
-      album.pages.append(page)
       
       let realm = try! Realm()
-      try! realm.write {
-        realm.add(page)
-        realm.add(album)
+      
+      // Check to see if there is an Album which has the same name
+      let existingAlbum = realm.objects(Album.self).filter("albumTitle == '\(page.albumTitle)'")
+      
+      if existingAlbum.count == 0 {
+        let album = Album(albumTitle: page.albumTitle)
+        album.pages.append(page)
+        try! realm.write {
+          realm.add(page)
+          realm.add(album)
+        }
+      } else {
+        try! realm.write {
+         existingAlbum.first?.pages.append(page)
+        }
       }
+      
+      resetFields()
       
     } else {
       
@@ -172,6 +183,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       present(alert, animated: true, completion: nil)
     }
   }
+  // Check all required fields are filled up
   private func isPropertyEmpty() -> Bool {
     var isEmpty = false
     switch isEmpty {
@@ -189,6 +201,15 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       isEmpty = false
     }
     return isEmpty
+  }
+  // Reset everything
+  private func resetFields() {
+    albumTitle.text = ""
+    pageTitle.text = ""
+    dateField.text = ""
+    locationField.text = ""
+    bodyText.text = ""
+    images = [UIImage]()
   }
   
 }
