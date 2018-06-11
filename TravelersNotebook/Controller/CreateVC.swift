@@ -209,7 +209,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     dateField.text = ""
     locationField.text = ""
     bodyText.text = ""
-    images = [UIImage]()
+    images.removeAll()
+    imageCollection.reloadData()
   }
   
 }

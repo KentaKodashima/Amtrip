@@ -12,6 +12,7 @@ import RealmSwift
 class SearchVC: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var searchBar: UISearchBar!
   
   var pages: Results<Page>?
   var albumTitleToPass: String?
@@ -34,6 +35,11 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     return pages!.count
+//    if searchBar.text != "" {
+//
+//    } else {
+//      return pages!.count
+//    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
