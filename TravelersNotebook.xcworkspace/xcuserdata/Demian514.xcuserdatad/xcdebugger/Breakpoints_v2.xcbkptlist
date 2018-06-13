@@ -13,5 +13,69 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelersNotebook/Controller/AccountVC.swift"
+            timestampString = "550570433.7662441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelersNotebook/Model/Album.swift"
+            timestampString = "550570433.76636"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "all(in:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 0 of static TravelersNotebook.Album.all(in: RealmSwift.Realm) -&gt; RealmSwift.Results&lt;TravelersNotebook.Album&gt;"
+                  moduleName = "TravelersNotebook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Model/Album.swift"
+                  timestampString = "550570433.8263659"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "17">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TravelersNotebook.Album.all(in: RealmSwift.Realm) -&gt; RealmSwift.Results&lt;TravelersNotebook.Album&gt;"
+                  moduleName = "TravelersNotebook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Model/Album.swift"
+                  timestampString = "550570433.8319761"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "18">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

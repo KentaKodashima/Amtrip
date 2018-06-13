@@ -9,23 +9,27 @@
 import Foundation
 import RealmSwift
 
-class Album: Object {
-//  enum Property: String {
-//    case id, albumTitle, pages
-//  }
+@objcMembers class Album: Object {
+  
+  enum Property: String {
+    case key, albumTitle, pages
+  }
 
-//  @objc dynamic let id = UUID().uuidString
+  @objc dynamic let key = UUID().uuidString
   @objc dynamic private(set) var albumTitle: String = ""
   var pages = List<Page>()
-  //@objc dynamic var pages: [Page] = [Page]()
 
 //  override static func primaryKey() -> String? {
-//    return Album.Property.id.rawValue
+//    return Album.Property.key.rawValue
 //  }
 
   convenience init(albumTitle: String) {
     self.init()
 
     self.albumTitle = albumTitle
+  }
+  
+  static func all(in realm: Realm = try! Realm()) -> Results<Album> {
+    return realm.objects(Album.self).sorted(byKeyPath: Album.Property.albumTitle.rawValue)
   }
 }
