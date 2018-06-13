@@ -80,6 +80,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="HjW-6e-IJg"/>
                     <connections>
+                        <outlet property="searchBar" destination="kQ3-V7-Wx4" id="NQQ-Bz-nKT"/>
                         <outlet property="tableView" destination="v47-La-sh6" id="Vt9-St-yFu"/>
                         <segue destination="eMX-nJ-0MR" kind="show" identifier="toPageDetail" id="Zqy-YG-zc2"/>
                     </connections>

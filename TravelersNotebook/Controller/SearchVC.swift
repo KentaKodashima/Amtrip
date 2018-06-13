@@ -15,6 +15,8 @@ class SearchVC: UIViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   
   var pages: Results<Page>?
+  
+  // Temporary properties for passing data to PageDetailVC
   var albumTitleToPass: String?
   var pageTitleToPass: String?
   var dateToPass: String?
@@ -22,12 +24,32 @@ class SearchVC: UIViewController {
   var bodyTextToPass: String?
   var images = List<String>()
   
+  // Data for the tableView
+  var cellCount = 0
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-  
+    
+    searchBar.delegate = self
     pages = Page.all()
   }
   
+}
+
+extension SearchVC: UISearchBarDelegate {
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    
+    let realm = try! Realm()
+    
+    if searchText.isEmpty {
+      pages = Page.all()
+      self.tableView.reloadData()
+    } else {
+      pages = realm.objects(Page.self).filter("pageTitle CONTAINS[cd] %@", searchText)
+      self.tableView.reloadData()
+    }
+  }
 }
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
@@ -35,11 +57,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     return pages!.count
-//    if searchBar.text != "" {
-//
-//    } else {
-//      return pages!.count
-//    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
