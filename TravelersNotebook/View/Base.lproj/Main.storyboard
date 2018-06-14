@@ -338,7 +338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwO-sz-gHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-418" y="3436"/>
+            <point key="canvasLocation" x="-418" y="4243"/>
         </scene>
         <!--Create A New Page-->
         <scene sceneID="Z1u-B7-w5X">
@@ -777,7 +777,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nr-0O-ewp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wRt-SC-6FU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="302" y="3664"/>
+            <point key="canvasLocation" x="302" y="3826"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="JBN-Az-5LX">
@@ -862,6 +862,9 @@
                                             <segment title="Page"/>
                                         </segments>
                                         <color key="tintColor" red="0.67843137254901964" green="0.42352941176470588" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="segmentValueChanged:" destination="QU7-OD-Hd4" eventType="valueChanged" id="UvZ-NK-Bbq"/>
+                                        </connections>
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EzV-PE-Jc6">
                                         <rect key="frame" x="0.0" y="43" width="280" height="362"/>
@@ -892,6 +895,9 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.85490196080000003" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <outlet property="albumTitle" destination="5zl-tM-Ppt" id="hBx-f3-4Zn"/>
+                                                </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PageCell" id="uRW-Gj-OXO" customClass="PageCell" customModule="TravelersNotebook" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="72" width="280" height="44"/>
@@ -917,6 +923,9 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.85490196080000003" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <outlet property="pageName" destination="UMl-8T-H4W" id="sQJ-25-pR5"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -944,11 +953,77 @@
                     <connections>
                         <outlet property="segmentedControl" destination="S9U-fc-tkb" id="cH4-hd-NkK"/>
                         <outlet property="tableView" destination="EzV-PE-Jc6" id="oeH-gm-Zt2"/>
+                        <segue destination="eMX-nJ-0MR" kind="show" identifier="toPageDetail" id="cda-2E-ntR"/>
+                        <segue destination="S3D-IR-Nmb" kind="show" identifier="toAlbumDetail" id="qhe-28-orL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmV-wH-XW2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1839.375" y="2478.1690140845071"/>
+        </scene>
+        <!--Album DetailVC-->
+        <scene sceneID="C11-V2-jt3">
+            <objects>
+                <viewController id="S3D-IR-Nmb" customClass="AlbumDetailVC" customModule="TravelersNotebook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jaz-dg-2rh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mns-cg-LHz">
+                                <rect key="frame" x="20" y="30" width="280" height="395"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.85490196080000003" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PageCell" id="aue-2V-kNJ" customClass="PageCell" customModule="TravelersNotebook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aue-2V-kNJ" id="G18-jW-B9g">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Right Indicator" translatesAutoresizingMaskIntoConstraints="NO" id="Ddp-gc-n2w">
+                                                    <rect key="frame" x="257" y="15" width="8" height="13"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyT-oe-ByF">
+                                                    <rect key="frame" x="15" y="11" width="42" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.35686274509999999" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ddp-gc-n2w" firstAttribute="top" secondItem="G18-jW-B9g" secondAttribute="topMargin" constant="4" id="YLn-hQ-Z4c"/>
+                                                <constraint firstItem="Ddp-gc-n2w" firstAttribute="trailing" secondItem="G18-jW-B9g" secondAttribute="trailingMargin" id="t9I-5R-Cil"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.85490196080000003" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="pageName" destination="lyT-oe-ByF" id="H0a-M2-Wk8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="S3D-IR-Nmb" id="jHn-tX-OCQ"/>
+                                    <outlet property="delegate" destination="S3D-IR-Nmb" id="mrT-Xi-JEP"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88235294117647056" green="0.78431372549019607" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Qz2-ij-l1d" firstAttribute="bottom" secondItem="mns-cg-LHz" secondAttribute="bottom" constant="30" id="3Yp-pv-PXn"/>
+                            <constraint firstItem="mns-cg-LHz" firstAttribute="top" secondItem="Qz2-ij-l1d" secondAttribute="top" constant="30" id="5Dz-7h-Khv"/>
+                            <constraint firstItem="mns-cg-LHz" firstAttribute="leading" secondItem="Qz2-ij-l1d" secondAttribute="leading" constant="20" id="QP1-BC-DJW"/>
+                            <constraint firstItem="Qz2-ij-l1d" firstAttribute="trailing" secondItem="mns-cg-LHz" secondAttribute="trailing" constant="20" id="dZc-xW-EXm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qz2-ij-l1d"/>
+                    </view>
+                    <connections>
+                        <segue destination="eMX-nJ-0MR" kind="show" identifier="toPageDetail" id="Iw0-ov-Geh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="21G-0X-QdU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1841" y="3219"/>
         </scene>
         <!--Traveler's Notebook-->
         <scene sceneID="g6g-CK-pSn">
@@ -2453,4 +2528,7 @@ uSTLJM4k0wAAAAAAAAIBAAAAAAAAAFkAAAAAAAAAAAAAAAAAACTVA
 </mutableData>
         </image>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Iw0-ov-Geh"/>
+    </inferredMetricsTieBreakers>
 </document>

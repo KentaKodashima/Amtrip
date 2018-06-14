@@ -52,9 +52,5 @@ extension Page {
     return realm.objects(Page.self).sorted(byKeyPath: Page.Property.date.rawValue)
   }
   
-//  static func retrieveObjectForCell(in realm: Realm = try! Realm()) -> Page {
-//    return realm.object(ofType: Page.self, forPrimaryKey: Page.Property.key)!
-//  }
-  
   
 }

@@ -17,50 +17,102 @@ class AccountVC: UIViewController {
   
   var pages: Results<Page>?
   var albums: Results<Album>?
+  var selectedIndex = 0
+  
+  var albumTitleToPass: String?
+  var pageTitleToPass: String?
+  var dateToPass: String?
+  var locationToPass: String?
+  var bodyTextToPass: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    segmentedControl.selectedSegmentIndex = 0
-    
     pages = Page.all()
     albums = Album.all()
   }
+  
+  @IBAction func segmentValueChanged(_ sender: Any) {
+    switch segmentedControl.selectedSegmentIndex {
+    case 0:
+      selectedIndex = 0
+    default:
+      selectedIndex = 1
+    }
+    
+    self.tableView.reloadData()
+  }
+  
   
 }
 
 extension AccountVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    var returnCount = 0
     
-    switch segmentedControl.selectedSegmentIndex {
+    switch selectedIndex {
     case 0:
-      return albums!.count
+      returnCount = albums!.count
     case 1:
-      return pages!.count
+      returnCount = pages!.count
     default:
-      return albums!.count
+      returnCount = albums!.count
     }
+    
+    return returnCount
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    switch segmentedControl.selectedSegmentIndex {
+    let albumCell = tableView.dequeueReusableCell(withIdentifier: "AlbumTitleCell", for: indexPath) as! AlbumTitleCell
+    let pageCell = tableView.dequeueReusableCell(withIdentifier: "PageCell", for: indexPath) as! PageCell
+    
+    switch selectedIndex {
     case 0:
-      let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumTitleCell", for: indexPath) as! AlbumTitleCell
+      
       let album = albums?[indexPath.row]
-      cell.albumTitle.text = album?.albumTitle
-      return cell
+      albumCell.albumTitle.text = album?.albumTitle
+      return albumCell
     case 1:
-      let cell = tableView.dequeueReusableCell(withIdentifier: "PageCell", for: indexPath) as! PageCell
+      
       let page = pages?[indexPath.row]
-      cell.pageName.text = page?.pageTitle
-      return cell
+      pageCell.pageName.text = page?.pageTitle
+      return pageCell
     default:
-      let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumTitleCell", for: indexPath) as! AlbumTitleCell
-      let album = albums?[indexPath.row]
-      cell.albumTitle.text = album?.albumTitle
-      return cell
+      
+      return albumCell
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let tappedCell = tableView.cellForRow(at: indexPath)
+    
+    if tappedCell?.reuseIdentifier == "AlbumTitleCell" {
+      self.performSegue(withIdentifier: "toAlbumDetail", sender: Any.self)
+    } else {
+      let page = pages?[indexPath.row]
+      
+      albumTitleToPass = page?.albumTitle
+      pageTitleToPass = page?.pageTitle
+      dateToPass = page?.date
+      locationToPass = page?.location
+      bodyTextToPass = page?.bodyText
+      
+      self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
+    }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toPageDetail" {
+      let pageDetailVC = segue.destination as! PageDetailVC
+      
+      pageDetailVC.recievedAlbumTitle = albumTitleToPass
+      pageDetailVC.recievedPageTitle = pageTitleToPass
+      pageDetailVC.recievedDate = dateToPass
+      pageDetailVC.recievedLocation = locationToPass
+      pageDetailVC.recievedBodyText = bodyTextToPass
+      
     }
   }
 }

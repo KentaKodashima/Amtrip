@@ -30,6 +30,6 @@ import RealmSwift
   }
   
   static func all(in realm: Realm = try! Realm()) -> Results<Album> {
-    return realm.objects(Album.self).sorted(byKeyPath: Album.Property.albumTitle.rawValue)
+    return realm.objects(Album.self)//.sorted(byKeyPath: Album.Property.albumTitle.rawValue)
   }
 }
