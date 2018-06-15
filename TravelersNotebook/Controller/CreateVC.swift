@@ -27,6 +27,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   
   var imageData: Data?
   var imagesData = [Data]()
+  // the problem
   var imagesPath = List<String>()
   
   override func viewDidLoad() {
@@ -113,8 +114,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     locationField.resignFirstResponder()
     let acController = GMSAutocompleteViewController()
     acController.delegate = self
-    
-    //let darkBrown: UIColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
     let lightBrown: UIColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
     acController.tableCellBackgroundColor = lightBrown
     
@@ -210,7 +209,13 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     locationField.text = ""
     bodyText.text = ""
     images.removeAll()
+    imageCollection.isHidden = true
     imageCollection.reloadData()
+    
+    let realm = try! Realm()
+    try! realm.write {
+      imagesPath.removeAll()
+    }
   }
   
 }
@@ -258,15 +263,24 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
   
   // Save image data
   func saveImageData(_ image: UIImage) {
+    
+    // Random file name for the image
+    let fileName = UUID().uuidString
+    // Open FileManager
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     let documentPath = documentsURL.path
-    let filePath = documentsURL.appendingPathComponent(".png")
+    let filePath = documentsURL.appendingPathComponent("\(fileName).png")
     
     do {
+      let realm = try! Realm()
+      
       imageData = UIImagePNGRepresentation(image)
       try imageData?.write(to: filePath, options: .atomic)
-      imagesPath.append(filePath.absoluteString)
+      
+      try! realm.write {
+        try imagesPath.append(filePath.absoluteString)
+      }
     } catch {
       
       let alert = UIAlertController(title: "Something went wrong", message: "Couldn't write image", preferredStyle: .alert)

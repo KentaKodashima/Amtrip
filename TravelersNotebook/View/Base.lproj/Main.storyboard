@@ -101,7 +101,7 @@
                                 <rect key="frame" x="20" y="0.0" width="280" height="887"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="h4z-1F-yhx">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="579"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="659"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="wAc-kh-LXv">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="109"/>
@@ -245,24 +245,24 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="120" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0rN-t2-yMr">
-                                                <rect key="frame" x="0.0" y="459" width="280" height="120"/>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="120" scrollEnabled="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0rN-t2-yMr">
+                                                <rect key="frame" x="0.0" y="459" width="280" height="200"/>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.85490196080000003" blue="0.72156862749999995" alpha="0.21931185789999999" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="Nzu-YA-5AM"/>
+                                                    <constraint firstAttribute="height" constant="200" id="Nzu-YA-5AM"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VO7-RG-fHA">
-                                                    <size key="itemSize" width="120" height="120"/>
+                                                    <size key="itemSize" width="200" height="120"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="Gve-6r-va5" customClass="ImageCell" customModule="TravelersNotebook" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                        <rect key="frame" x="0.0" y="40" width="200" height="120"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="120"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="120" translatesAutoresizingMaskIntoConstraints="NO" id="BLA-p8-15d">

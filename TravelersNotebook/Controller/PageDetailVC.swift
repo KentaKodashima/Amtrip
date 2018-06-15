@@ -24,7 +24,10 @@ class PageDetailVC: UIViewController {
   var recievedDate: String?
   var recievedLocation: String?
   var recievedBodyText: String?
+  var receivedImagesPath = List<String>()
+  var images = [UIImage]()
   
+  var pages: Results<Page>?
   var page: Page?
   
   override func viewDidLoad() {
@@ -38,6 +41,55 @@ class PageDetailVC: UIViewController {
     
     let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
     scrollView.contentInset = edgeInsets
+    
+    print(receivedImagesPath)
+    print(receivedImagesPath.first!)
+    
+    fetchImage()
+    pages = Page.all()
   }
   
+  override func viewDidLayoutSubviews() {
+    scrollView.flashScrollIndicators()
+    
+    let layout = UICollectionViewFlowLayout()
+    layout.itemSize = CGSize(width: 200, height: 200)
+    layout.minimumInteritemSpacing = 0
+    layout.minimumLineSpacing = 0
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    layout.scrollDirection = .horizontal
+    imageCollection.collectionViewLayout = layout
+  }
+  
+  private func fetchImage() {
+    let filemanager = FileManager.default
+    let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let documentPath = documentsURL.path
+    
+    for imagePath in receivedImagesPath {
+      
+    }
+    let image = UIImage(contentsOfFile: receivedImagesPath.first!)
+    
+    
+    print(image)
+  }
+  
+}
+
+extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return images.count
+  }
+  
+  // Assign cells contents
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCell
+    
+    cell.cellImage.image = images[indexPath.row]
+    imageCollection.isHidden = false
+    
+    return cell
+  }
 }

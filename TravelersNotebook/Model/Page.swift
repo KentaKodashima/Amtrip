@@ -13,7 +13,7 @@ import RealmSwift
 @objcMembers class Page: Object {
   
   enum Property: String {
-    case key, albumTitle, pageTitle, date, location, bodyText
+    case key, albumTitle, pageTitle, date, location, bodyText, images
   }
 
   @objc dynamic private var key = UUID().uuidString
@@ -52,5 +52,13 @@ extension Page {
     return realm.objects(Page.self).sorted(byKeyPath: Page.Property.date.rawValue)
   }
   
+//  static func imagesPath(in realm: Realm = try! Realm()) -> Results<Page> {
+//    let realmObjects = realm.objects(Page.self)
+//    let imagesPath: [String]
+//    
+//    for (i = 0; realmObjects.count)
+//    
+//    return
+//  }
   
 }

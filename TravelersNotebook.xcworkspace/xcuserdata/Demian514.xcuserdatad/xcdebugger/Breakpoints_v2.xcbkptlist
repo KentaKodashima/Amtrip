@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TravelersNotebook/Model/Album.swift"
-            timestampString = "550614466.918605"
+            timestampString = "550726396.233452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -59,6 +59,70 @@
                   offsetFromSymbolStart = "18">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelersNotebook/Controller/CreateVC.swift"
+            timestampString = "550741062.493571"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "resetFields()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TravelersNotebook.CreateVC.(resetFields in _052F37315E3D2E61FA3C3F1FC0982C7A)() -&gt; ()"
+                  moduleName = "TravelersNotebook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Controller/CreateVC.swift"
+                  timestampString = "550738015.25069"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "216"
+                  endingLineNumber = "216"
+                  offsetFromSymbolStart = "2625">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in TravelersNotebook.CreateVC.(resetFields in _052F37315E3D2E61FA3C3F1FC0982C7A)() -&gt; ()"
+                  moduleName = "TravelersNotebook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Controller/CreateVC.swift"
+                  timestampString = "550738015.2530299"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "217"
+                  endingLineNumber = "217"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelersNotebook/Controller/CreateVC.swift"
+            timestampString = "550741062.493921"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "saveImageData(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

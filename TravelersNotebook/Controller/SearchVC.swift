@@ -22,7 +22,7 @@ class SearchVC: UIViewController {
   var dateToPass: String?
   var locationToPass: String?
   var bodyTextToPass: String?
-  var images = List<String>()
+  var imagesToPass = List<String>()
   
   // Data for the tableView
   var cellCount = 0
@@ -76,6 +76,9 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     dateToPass = page?.date
     locationToPass = page?.location
     bodyTextToPass = page?.bodyText
+    if page?.images != nil {
+      imagesToPass = page!.images
+    }
     
     self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
   }
@@ -89,7 +92,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
       pageDetailVC.recievedDate = dateToPass
       pageDetailVC.recievedLocation = locationToPass
       pageDetailVC.recievedBodyText = bodyTextToPass
-      
+      pageDetailVC.receivedImagesPath = imagesToPass
     }
   }
   
