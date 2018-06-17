@@ -258,7 +258,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="Gve-6r-va5" customClass="ImageCell" customModule="TravelersNotebook" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="Gve-6r-va5" customClass="ImageCell" customModule="TravelersNotebook" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="40" width="200" height="120"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -269,7 +269,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGf-EO-fNb">
-                                                                    <rect key="frame" x="-30" y="8" width="22" height="23"/>
+                                                                    <rect key="frame" x="170" y="8" width="22" height="23"/>
                                                                     <state key="normal" image="Delete"/>
                                                                     <connections>
                                                                         <action selector="deleteCell:" destination="bok-TP-Jqo" eventType="touchUpInside" id="aex-dH-er9"/>
@@ -652,6 +652,7 @@
                         <outlet property="pageTitle" destination="Ey4-uL-jp4" id="zE6-fI-PGu"/>
                         <outlet property="scrollView" destination="tcZ-sQ-zr1" id="MgX-cN-vC1"/>
                         <segue destination="nAG-0e-pHc" kind="show" identifier="toAlbumCreateVC" id="Z3c-Wh-3Ad"/>
+                        <segue destination="QU7-OD-Hd4" kind="show" identifier="finishEditing" id="cC8-AN-dyr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJy-3Q-lbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2529,6 +2530,7 @@ uSTLJM4k0wAAAAAAAAIBAAAAAAAAAFkAAAAAAAAAAAAAAAAAACTVA
         </image>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cC8-AN-dyr"/>
         <segue reference="Iw0-ov-Geh"/>
     </inferredMetricsTieBreakers>
 </document>

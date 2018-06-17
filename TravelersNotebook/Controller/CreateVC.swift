@@ -138,6 +138,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   @IBAction func saveButtonTapped(_ sender: UIButton) {
 
     if isPropertyEmpty() {
+      
       let page = Page(
         albumTitle: self.albumTitle.text!,
         pageTitle: self.pageTitle.text!,
@@ -165,6 +166,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         }
       }
       
+      // Reset data
       resetFields()
       
     } else {
@@ -209,9 +211,10 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     locationField.text = ""
     bodyText.text = ""
     images.removeAll()
+    selectedImage = nil
     imageCollection.isHidden = true
     imageCollection.reloadData()
-    
+//    imagesPath.removeAll()
     let realm = try! Realm()
     try! realm.write {
       imagesPath.removeAll()
@@ -279,7 +282,7 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
       try imageData?.write(to: filePath, options: .atomic)
       
       try! realm.write {
-        try imagesPath.append(filePath.absoluteString)
+        try! imagesPath.append(filePath.absoluteString)
       }
     } catch {
       
