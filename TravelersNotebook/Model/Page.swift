@@ -33,8 +33,7 @@ import RealmSwift
     pageTitle: String,
     date: String,
     location: String,
-    bodyText: String,
-    images: List<String>
+    bodyText: String
     ) {
     self.init()
     self.albumTitle = albumTitle
@@ -42,7 +41,6 @@ import RealmSwift
     self.date = date
     self.location = location
     self.bodyText = bodyText
-    self.images = images
   }
 }
 

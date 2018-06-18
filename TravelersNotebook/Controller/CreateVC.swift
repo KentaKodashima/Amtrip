@@ -28,7 +28,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   var imageData: Data?
   var imagesData = [Data]()
   // the problem
-  var imagesPath = List<String>()
+  //var imagesPath = List<String>()
+  var imagesPath = [String]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -144,9 +145,9 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         pageTitle: self.pageTitle.text!,
         date: self.dateField.text!,
         location: self.locationField.text!,
-        bodyText: self.bodyText.text!,
-        images: self.imagesPath
+        bodyText: self.bodyText.text!
       )
+      page.images.append(objectsIn: imagesPath)
       
       let realm = try! Realm()
       
@@ -276,14 +277,18 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     let filePath = documentsURL.appendingPathComponent("\(fileName).png")
     
     do {
-      let realm = try! Realm()
+//      let realm = try! Realm()
       
       imageData = UIImagePNGRepresentation(image)
       try imageData?.write(to: filePath, options: .atomic)
       
-      try! realm.write {
-        try! imagesPath.append(filePath.absoluteString)
-      }
+      try! imagesPath.append(filePath.absoluteString)
+      
+//      try! realm.write {
+//        try! imagesPath.append(filePath.absoluteString)
+//      }
+      
+      print(imagesPath.count)
     } catch {
       
       let alert = UIAlertController(title: "Something went wrong", message: "Couldn't write image", preferredStyle: .alert)
