@@ -277,17 +277,12 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     let filePath = documentsURL.appendingPathComponent("\(fileName).png")
     
     do {
-//      let realm = try! Realm()
       
       imageData = UIImagePNGRepresentation(image)
       try imageData?.write(to: filePath, options: .atomic)
       
       try! imagesPath.append(filePath.absoluteString)
-      
-//      try! realm.write {
-//        try! imagesPath.append(filePath.absoluteString)
-//      }
-      
+
       print(imagesPath.count)
     } catch {
       
@@ -327,6 +322,7 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     let imageCell = cell as! ImageCell
     var index = imageCollection?.indexPath(for: imageCell)
     images.remove(at: (index?.item)!)
+    imagesPath.remove(at: (index?.item)!)
     imageCollection.deleteItems(at: [index!])
     
     guard images.count > 0 else {

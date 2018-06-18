@@ -26,6 +26,7 @@ class PageDetailVC: UIViewController {
   var recievedBodyText: String?
   var receivedImagesPath = List<String>()
   var images = [UIImage]()
+  var image: UIImage?
   
   var pages: Results<Page>?
   var page: Page?
@@ -67,9 +68,10 @@ class PageDetailVC: UIViewController {
     let documentPath = documentsURL.path
     
     for imagePath in receivedImagesPath {
-      
+      if self.image != nil {
+        UIImage(contentsOfFile: receivedImagesPath.first!)
+      }
     }
-    let image = UIImage(contentsOfFile: receivedImagesPath.first!)
     
     
     print(image)

@@ -50,13 +50,4 @@ extension Page {
     return realm.objects(Page.self).sorted(byKeyPath: Page.Property.date.rawValue)
   }
   
-//  static func imagesPath(in realm: Realm = try! Realm()) -> Results<Page> {
-//    let realmObjects = realm.objects(Page.self)
-//    let imagesPath: [String]
-//    
-//    for (i = 0; realmObjects.count)
-//    
-//    return
-//  }
-  
 }
