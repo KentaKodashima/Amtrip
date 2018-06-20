@@ -28,8 +28,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   var imageData: Data?
   var imagesData = [Data]()
   // the problem
-  //var imagesPath = List<String>()
   var imagesPath = [String]()
+  var imageNames = [String]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -147,7 +147,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         location: self.locationField.text!,
         bodyText: self.bodyText.text!
       )
-      page.images.append(objectsIn: imagesPath)
+      page.images.append(objectsIn: imageNames)
+//      page.images.append(objectsIn: imagesPath)
       
       let realm = try! Realm()
       
@@ -215,11 +216,14 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     selectedImage = nil
     imageCollection.isHidden = true
     imageCollection.reloadData()
-//    imagesPath.removeAll()
     let realm = try! Realm()
     try! realm.write {
-      imagesPath.removeAll()
+      imageNames.removeAll()
     }
+//    imagesPath.removeAll()
+//    try! realm.write {
+//      imagesPath.removeAll()
+//    }
   }
   
 }
@@ -269,21 +273,23 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
   func saveImageData(_ image: UIImage) {
     
     // Random file name for the image
-    let fileName = UUID().uuidString
+    let fileName = UUID().uuidString + ".png"
+    
     // Open FileManager
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     let documentPath = documentsURL.path
-    let filePath = documentsURL.appendingPathComponent("\(fileName).png")
+    let filePath = documentsURL.appendingPathComponent(fileName)
+    //let filePath = documentsURL.appendingPathComponent("\(fileName).png")
     
     do {
       
       imageData = UIImagePNGRepresentation(image)
+      
       try imageData?.write(to: filePath, options: .atomic)
       
-      try! imagesPath.append(filePath.absoluteString)
-
-      print(imagesPath.count)
+//      try! imagesPath.append(filePath.absoluteString)
+      try! imageNames.append(fileName)
     } catch {
       
       let alert = UIAlertController(title: "Something went wrong", message: "Couldn't write image", preferredStyle: .alert)
@@ -324,6 +330,10 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     images.remove(at: (index?.item)!)
     imagesPath.remove(at: (index?.item)!)
     imageCollection.deleteItems(at: [index!])
+    
+    let filemanager = FileManager.default
+    let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let documentPath = documentsURL.path
     
     guard images.count > 0 else {
       imageCollection.isHidden = true

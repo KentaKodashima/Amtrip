@@ -27,6 +27,7 @@ class PageDetailVC: UIViewController {
   var receivedImagesPath = List<String>()
   var images = [UIImage]()
   var image: UIImage?
+  var imageData: Data?
   
   var pages: Results<Page>?
   var page: Page?
@@ -43,8 +44,7 @@ class PageDetailVC: UIViewController {
     let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
     scrollView.contentInset = edgeInsets
     
-    print(receivedImagesPath)
-    print(receivedImagesPath.first!)
+    imageCollection.isHidden = true
     
     fetchImage()
     pages = Page.all()
@@ -65,16 +65,13 @@ class PageDetailVC: UIViewController {
   private func fetchImage() {
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let documentPath = documentsURL.path
     
     for imagePath in receivedImagesPath {
-      if self.image != nil {
-        UIImage(contentsOfFile: receivedImagesPath.first!)
-      }
+      let filePath = documentsURL.appendingPathComponent(imagePath).path
+      self.image = UIImage(contentsOfFile: filePath)
+      images.append(self.image!)
+      print(images.count)
     }
-    
-    
-    print(image)
   }
   
 }
@@ -82,6 +79,7 @@ class PageDetailVC: UIViewController {
 extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    print(images.count)
     return images.count
   }
   
@@ -89,6 +87,7 @@ extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCell
     
+    print(images.count)
     cell.cellImage.image = images[indexPath.row]
     imageCollection.isHidden = false
     

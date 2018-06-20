@@ -32,6 +32,7 @@ class SearchVC: UIViewController {
     
     searchBar.delegate = self
     pages = Page.all()
+    
   }
   
 }
