@@ -319,18 +319,30 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     let cell = sender.superview?.superview as! UICollectionViewCell
     let imageCell = cell as! ImageCell
     var index = imageCollection?.indexPath(for: imageCell)
-    images.remove(at: (index?.item)!)
-    imageNames.remove(at: (index?.item)!)
-    imageCollection.deleteItems(at: [index!])
     
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     let documentPath = documentsURL.path
+    let filePath = documentPath + "/" + imageNames[(index?.item)!]
+    if filemanager.fileExists(atPath: filePath) {
+      // Delete file
+      try! filemanager.removeItem(atPath: filePath)
+    }
     
+    images.remove(at: (index?.item)!)
+    imageNames.remove(at: (index?.item)!)
+    imageCollection.deleteItems(at: [index!])
+    
+    // Hide collectionview when the cell count is 0
     guard images.count > 0 else {
       imageCollection.isHidden = true
       return
     }
+    
+//    let realm = try! Realm()
+//    try! realm.write {
+//      realm.delete(index?.item)
+//    }
   }
 }
 
