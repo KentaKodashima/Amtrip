@@ -19,18 +19,17 @@ class PageDetailVC: UIViewController {
   @IBOutlet weak var imageCollection: UICollectionView!
   @IBOutlet weak var scrollView: UIScrollView!
   
-  var recievedAlbumTitle: String?
-  var recievedPageTitle: String?
-  var recievedDate: String?
-  var recievedLocation: String?
-  var recievedBodyText: String?
-  var receivedImagesPath = List<String>()
-  var images = [UIImage]()
-  var image: UIImage?
-  var imageData: Data?
+  public var recievedAlbumTitle: String?
+  public var recievedPageTitle: String?
+  public var recievedDate: String?
+  public var recievedLocation: String?
+  public var recievedBodyText: String?
+  public var receivedImagesPath = List<String>()
+  private var images = [UIImage]()
+  private var image: UIImage?
+  private var imageData: Data?
   
-  var pages: Results<Page>?
-  var page: Page?
+  private var indexOfCellBeforeDragging = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -47,7 +46,6 @@ class PageDetailVC: UIViewController {
     imageCollection.isHidden = true
     
     fetchImage()
-    pages = Page.all()
   }
   
   override func viewDidLayoutSubviews() {

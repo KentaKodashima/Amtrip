@@ -21,15 +21,13 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var frameStack: UIStackView!
   
-  var imageStore: ImageStore!
-  var images = [UIImage]()
-  var selectedImage: UIImage?
+  public var imageStore: ImageStore!
+  private var images = [UIImage]()
+  private var selectedImage: UIImage?
   
-  var imageData: Data?
-  var imagesData = [Data]()
-  // the problem
-  var imagesPath = [String]()
-  var imageNames = [String]()
+  private var imageData: Data?
+  private var imagesData = [Data]()
+  private var imageNames = [String]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -122,8 +120,12 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   }
   
   // Show UIDatePicker when the dateField is tapped
+  private let dateFormatter = DateFormatter()
   @IBAction func showDatePicker(_ sender: UITextField) {
     let datePicker = UIDatePicker()
+    let defaultDate = Date()
+    dateFormatter.dateFormat = "yyyy/MM/dd"
+    dateField.text = dateFormatter.string(from: defaultDate)
     datePicker.datePickerMode = .date
     datePicker.addTarget(self, action: #selector(datePickerInput(_:)), for: UIControlEvents.valueChanged)
     sender.inputView = datePicker
@@ -131,7 +133,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   
   // Show date in String on the dateField
   @objc func datePickerInput(_ sender: UIDatePicker) {
-    let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy/MM/dd"
     dateField.text = dateFormatter.string(from: sender.date)
   }
@@ -148,7 +149,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         bodyText: self.bodyText.text!
       )
       page.images.append(objectsIn: imageNames)
-//      page.images.append(objectsIn: imagesPath)
       
       let realm = try! Realm()
       
@@ -220,10 +220,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     try! realm.write {
       imageNames.removeAll()
     }
-//    imagesPath.removeAll()
-//    try! realm.write {
-//      imagesPath.removeAll()
-//    }
   }
   
 }
@@ -280,15 +276,11 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     let documentPath = documentsURL.path
     let filePath = documentsURL.appendingPathComponent(fileName)
-    //let filePath = documentsURL.appendingPathComponent("\(fileName).png")
     
     do {
       
       imageData = UIImagePNGRepresentation(image)
-      
       try imageData?.write(to: filePath, options: .atomic)
-      
-//      try! imagesPath.append(filePath.absoluteString)
       try! imageNames.append(fileName)
     } catch {
       
@@ -328,7 +320,7 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     let imageCell = cell as! ImageCell
     var index = imageCollection?.indexPath(for: imageCell)
     images.remove(at: (index?.item)!)
-    imagesPath.remove(at: (index?.item)!)
+    imageNames.remove(at: (index?.item)!)
     imageCollection.deleteItems(at: [index!])
     
     let filemanager = FileManager.default
