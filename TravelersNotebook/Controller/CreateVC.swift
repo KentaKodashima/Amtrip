@@ -156,7 +156,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       let existingAlbum = realm.objects(Album.self).filter("albumTitle == '\(page.albumTitle)'")
       
       if existingAlbum.count == 0 {
-        let album = Album(albumTitle: page.albumTitle)
+        let album = Album(albumTitle: page.albumTitle, creationDate: page.date)
         album.pages.append(page)
         try! realm.write {
           realm.add(page)
@@ -320,12 +320,12 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     let imageCell = cell as! ImageCell
     var index = imageCollection?.indexPath(for: imageCell)
     
+    // Delete file from the document directory
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     let documentPath = documentsURL.path
     let filePath = documentPath + "/" + imageNames[(index?.item)!]
     if filemanager.fileExists(atPath: filePath) {
-      // Delete file
       try! filemanager.removeItem(atPath: filePath)
     }
     
@@ -338,11 +338,6 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
       imageCollection.isHidden = true
       return
     }
-    
-//    let realm = try! Realm()
-//    try! realm.write {
-//      realm.delete(index?.item)
-//    }
   }
 }
 

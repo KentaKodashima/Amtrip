@@ -17,16 +17,18 @@ import RealmSwift
 
   @objc dynamic let key = UUID().uuidString
   @objc dynamic private(set) var albumTitle: String = ""
+  @objc dynamic private(set) var creationDate: String = ""
   var pages = List<Page>()
 
 //  override static func primaryKey() -> String? {
 //    return Album.Property.key.rawValue
 //  }
 
-  convenience init(albumTitle: String) {
+  convenience init(albumTitle: String, creationDate: String) {
     self.init()
 
     self.albumTitle = albumTitle
+    self.creationDate = creationDate
   }
   
   static func all(in realm: Realm = try! Realm()) -> Results<Album> {

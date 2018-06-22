@@ -49,10 +49,13 @@ class PageDetailVC: UIViewController {
   }
   
   override func viewDidLayoutSubviews() {
+    
     scrollView.flashScrollIndicators()
     
     let layout = UICollectionViewFlowLayout()
-    layout.itemSize = CGSize(width: 200, height: 200)
+    let cellWidth = imageCollection.bounds.width
+    let cellHeight = imageCollection.bounds.height
+    layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
     layout.minimumInteritemSpacing = 0
     layout.minimumLineSpacing = 0
     layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -74,7 +77,7 @@ class PageDetailVC: UIViewController {
   
 }
 
-extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     print(images.count)
@@ -87,8 +90,10 @@ extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     print(images.count)
     cell.cellImage.image = images[indexPath.row]
+    cell.clipsToBounds = true
     imageCollection.isHidden = false
     
     return cell
   }
+  
 }
