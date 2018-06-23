@@ -328,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwO-sz-gHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-418" y="4243"/>
+            <point key="canvasLocation" x="-1196" y="4053"/>
         </scene>
         <!--Create A New Page-->
         <scene sceneID="Z1u-B7-w5X">
@@ -768,7 +768,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nr-0O-ewp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wRt-SC-6FU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="302" y="3826"/>
+            <point key="canvasLocation" x="302" y="3825"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="JBN-Az-5LX">
@@ -1028,7 +1028,7 @@
                                 <rect key="frame" x="20" y="20" width="280" height="435"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.85490196078431369" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="200" id="ERb-yp-qUq" customClass="AlbumThumbnailCell" customModule="TravelersNotebook" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumThumbnailCell" rowHeight="200" id="ERb-yp-qUq" customClass="AlbumThumbnailCell" customModule="TravelersNotebook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="280" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ERb-yp-qUq" id="YzF-z5-c2G">
@@ -1066,6 +1066,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94509803921568625" green="0.85490196078431369" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="albumTitle" destination="sZC-sM-no2" id="vaE-xA-Qey"/>
+                                            <outlet property="bgImage" destination="lrs-gm-GTF" id="pfG-lA-9fe"/>
+                                            <outlet property="dateLabel" destination="2D5-fU-ibQ" id="fR0-5I-gyX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -2529,6 +2534,6 @@ uSTLJM4k0wAAAAAAAAIBAAAAAAAAAFkAAAAAAAAAAAAAAAAAACTVA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cC8-AN-dyr"/>
-        <segue reference="cda-2E-ntR"/>
+        <segue reference="Zqy-YG-zc2"/>
     </inferredMetricsTieBreakers>
 </document>

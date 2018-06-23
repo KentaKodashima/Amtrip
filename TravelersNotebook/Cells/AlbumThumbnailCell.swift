@@ -10,7 +10,7 @@ import UIKit
 
 class AlbumThumbnailCell: UITableViewCell {
 
-  @IBOutlet weak var bgImage: UIImage?
+  @IBOutlet weak var bgImage: UIImageView?
   @IBOutlet weak var albumTitle: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
 }

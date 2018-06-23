@@ -19,6 +19,7 @@ import RealmSwift
   @objc dynamic private(set) var albumTitle: String = ""
   @objc dynamic private(set) var creationDate: String = ""
   var pages = List<Page>()
+  var images = List<String>()
 
 //  override static func primaryKey() -> String? {
 //    return Album.Property.key.rawValue

@@ -158,6 +158,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       if existingAlbum.count == 0 {
         let album = Album(albumTitle: page.albumTitle, creationDate: page.date)
         album.pages.append(page)
+        album.images.append(objectsIn: page.images)
         try! realm.write {
           realm.add(page)
           realm.add(album)
@@ -165,6 +166,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       } else {
         try! realm.write {
          existingAlbum.first?.pages.append(page)
+         existingAlbum.first?.images.append(objectsIn: page.images)
         }
       }
       

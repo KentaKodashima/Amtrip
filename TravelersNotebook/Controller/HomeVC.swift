@@ -13,7 +13,9 @@ class HomeVC: UIViewController {
 
   @IBOutlet weak var albumTable: UITableView!
   
-  var albums: Results<Album>?
+  private var albums: Results<Album>?
+  private var image: UIImage?
+  private var images: [UIImage]?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,11 +32,30 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AlbumThumbnailCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumThumbnailCell", for: indexPath) as! AlbumThumbnailCell
     
     let album = albums?[indexPath.row]
+    
+    let filemanager = FileManager.default
+    let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    
+    for imagePath in album!.images {
+      let filePath = documentsURL.appendingPathComponent(imagePath).path
+      image = UIImage(contentsOfFile: filePath)
+      images?.append(self.image!)
+    }
+    
     cell.albumTitle.text = album?.albumTitle
     cell.dateLabel.text = album?.creationDate
+    
+    let numberOfImages = UInt32(images!.count)
+    let randomNum = Int(arc4random_uniform(numberOfImages))
+    
+    if let image = album?.images {
+      cell.bgImage?.image = nil
+    } else {
+      cell.bgImage?.image = images![randomNum]
+    }
     
     return cell
   }

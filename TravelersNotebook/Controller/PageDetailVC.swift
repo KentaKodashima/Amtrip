@@ -27,7 +27,6 @@ class PageDetailVC: UIViewController {
   public var receivedImagesPath = List<String>()
   private var images = [UIImage]()
   private var image: UIImage?
-  private var imageData: Data?
   
   private var indexOfCellBeforeDragging = 0
   
@@ -64,6 +63,7 @@ class PageDetailVC: UIViewController {
   }
   
   private func fetchImage() {
+    
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     
@@ -71,7 +71,6 @@ class PageDetailVC: UIViewController {
       let filePath = documentsURL.appendingPathComponent(imagePath).path
       self.image = UIImage(contentsOfFile: filePath)
       images.append(self.image!)
-      print(images.count)
     }
   }
   
