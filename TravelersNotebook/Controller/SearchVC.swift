@@ -32,7 +32,6 @@ class SearchVC: UIViewController {
     
     searchBar.delegate = self
     pages = Page.all()
-    
   }
   
 }
@@ -67,6 +66,23 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     cell.pageName.text = page?.pageTitle
     
     return cell
+  }
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    
+    var numberOfSections = 0
+    if pages!.count == 0 {
+      let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+      noDataLabel.text = "No data available"
+      noDataLabel.textColor = UIColor.black
+      noDataLabel.textAlignment = .center
+      tableView.separatorStyle = .none
+      tableView.backgroundView = noDataLabel
+    } else {
+      numberOfSections = 1
+    }
+    
+    return numberOfSections
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

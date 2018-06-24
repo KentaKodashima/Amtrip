@@ -22,7 +22,9 @@ class HomeVC: UIViewController {
     super.viewDidLoad()
 
     albums = Album.all()
-    
+//    if albums?.count == 0 {
+//      albumCollection.isHidden = true
+//    }
     albumCollection.showsVerticalScrollIndicator = false
     albumCollection.reloadData()
   }
@@ -35,7 +37,7 @@ class HomeVC: UIViewController {
     layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
     layout.minimumInteritemSpacing = 0
     layout.minimumLineSpacing = 10
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     layout.scrollDirection = .vertical
     albumCollection.collectionViewLayout = layout
   }
@@ -49,8 +51,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-    //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumThumbnailCell", for: indexPath) as! AlbumThumbnailCell
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumThumbnailCell", for: indexPath) as! AlbumThumbnailCell
     
@@ -83,6 +83,21 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     cell.contentView.layoutMargins.bottom = 20
     
     return cell
+  }
+  
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    var numberOfSections = 0
+    if albums!.count == 0 {
+      let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height))
+      noDataLabel.text = "No data available"
+      noDataLabel.textColor = UIColor.black
+      noDataLabel.textAlignment = .center
+      collectionView.backgroundView = noDataLabel
+    } else {
+      numberOfSections = 1
+    }
+    
+    return numberOfSections
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

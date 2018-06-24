@@ -85,6 +85,42 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     }
   }
   
+  func numberOfSections(in tableView: UITableView) -> Int {
+    
+    var numberOfSections = 0
+    switch selectedIndex {
+    case 0:
+      
+      if albums!.count == 0 {
+        let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        noDataLabel.text = "No data available"
+        noDataLabel.textColor = UIColor.black
+        noDataLabel.textAlignment = .center
+        tableView.separatorStyle = .none
+        tableView.backgroundView = noDataLabel
+      } else {
+        numberOfSections = 1
+      }
+    case 1:
+      
+      if pages!.count == 0 {
+        let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        noDataLabel.text = "No data available"
+        noDataLabel.textColor = UIColor.black
+        noDataLabel.textAlignment = .center
+        tableView.separatorStyle = .none
+        tableView.backgroundView = noDataLabel
+      } else {
+        numberOfSections = 1
+      }
+    default:
+      
+      return numberOfSections
+    }
+    
+    return numberOfSections
+  }
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let tappedCell = tableView.cellForRow(at: indexPath)
     
