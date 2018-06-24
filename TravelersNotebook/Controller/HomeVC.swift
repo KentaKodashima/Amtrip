@@ -15,7 +15,7 @@ class HomeVC: UIViewController {
   
   private var albums: Results<Album>?
   private var image: UIImage?
-  private var images: [UIImage]?
+  private var images = [UIImage]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,23 +38,23 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
-    
+
     for imagePath in album!.images {
       let filePath = documentsURL.appendingPathComponent(imagePath).path
-      image = UIImage(contentsOfFile: filePath)
-      images?.append(self.image!)
+      self.image = UIImage(contentsOfFile: filePath)
+      self.images.append(self.image!)
     }
-    
+
     cell.albumTitle.text = album?.albumTitle
     cell.dateLabel.text = album?.creationDate
-    
-    let numberOfImages = UInt32(images!.count)
+
+    let numberOfImages = UInt32(self.images.count)
     let randomNum = Int(arc4random_uniform(numberOfImages))
-    
+
     if let image = album?.images {
-      cell.bgImage?.image = nil
+      cell.bgImage?.image = images[randomNum]
     } else {
-      cell.bgImage?.image = images![randomNum]
+      cell.bgImage?.image = nil
     }
     
     return cell
