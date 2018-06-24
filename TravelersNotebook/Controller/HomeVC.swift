@@ -50,12 +50,17 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 
     let numberOfImages = UInt32(self.images.count)
     let randomNum = Int(arc4random_uniform(numberOfImages))
-
-    if let image = album?.images {
-      cell.bgImage?.image = images[randomNum]
-    } else {
+    
+    if album?.images.count == 0 {
       cell.bgImage?.image = nil
+      cell.backgroundColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
+    } else {
+      cell.bgImage?.image = images[randomNum]
     }
+    
+    cell.layoutMargins = UIEdgeInsets.zero
+    cell.contentView.layoutMargins.top = 20
+    cell.contentView.layoutMargins.bottom = 20
     
     return cell
   }
