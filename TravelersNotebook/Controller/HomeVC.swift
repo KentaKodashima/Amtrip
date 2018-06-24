@@ -10,8 +10,8 @@ import UIKit
 import RealmSwift
 
 class HomeVC: UIViewController {
-
-  @IBOutlet weak var albumTable: UITableView!
+  
+  @IBOutlet weak var albumCollection: UICollectionView!
   
   private var albums: Results<Album>?
   private var image: UIImage?
@@ -21,33 +21,52 @@ class HomeVC: UIViewController {
     super.viewDidLoad()
 
     albums = Album.all()
-    albumTable.reloadData()
+    
+    albumCollection.showsVerticalScrollIndicator = false
+    albumCollection.reloadData()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    
+    let layout = UICollectionViewFlowLayout()
+    let cellWidth = albumCollection.bounds.width
+    let cellHeight = albumCollection.bounds.height / 2
+    layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+    layout.minimumInteritemSpacing = 0
+    layout.minimumLineSpacing = 10
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    layout.scrollDirection = .vertical
+    albumCollection.collectionViewLayout = layout
   }
 }
 
-extension HomeVC: UITableViewDelegate, UITableViewDataSource {
+extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
     return albums!.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumThumbnailCell", for: indexPath) as! AlbumThumbnailCell
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumThumbnailCell", for: indexPath) as! AlbumThumbnailCell
+    
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumThumbnailCell", for: indexPath) as! AlbumThumbnailCell
     
     let album = albums?[indexPath.row]
     
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
-
+    
     for imagePath in album!.images {
       let filePath = documentsURL.appendingPathComponent(imagePath).path
       self.image = UIImage(contentsOfFile: filePath)
       self.images.append(self.image!)
     }
-
+    
     cell.albumTitle.text = album?.albumTitle
     cell.dateLabel.text = album?.creationDate
-
+    
     let numberOfImages = UInt32(self.images.count)
     let randomNum = Int(arc4random_uniform(numberOfImages))
     
@@ -63,5 +82,12 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     cell.contentView.layoutMargins.bottom = 20
     
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    let tappedCell = collectionView.cellForItem(at: indexPath)
+    
+    self.performSegue(withIdentifier: "toAlbumDetail", sender: Any.self)
   }
 }

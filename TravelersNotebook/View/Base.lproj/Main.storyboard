@@ -1024,73 +1024,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mAy-Cd-WKS">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="a1v-wC-9u8">
                                 <rect key="frame" x="20" y="20" width="280" height="435"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.85490196078431369" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumThumbnailCell" rowHeight="200" id="ERb-yp-qUq" customClass="AlbumThumbnailCell" customModule="TravelersNotebook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="280" height="200"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ERb-yp-qUq" id="YzF-z5-c2G">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="199.5"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aDb-XJ-KQS">
+                                    <size key="itemSize" width="280" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumThumbnailCell" id="rLh-Mu-v2X" customClass="AlbumThumbnailCell" customModule="TravelersNotebook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lrs-gm-GTF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="199.5"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E41-Bz-qUt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Saq-5d-ryg">
-                                                    <rect key="frame" x="85.5" y="77" width="109" height="46"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zYc-l6-H6o">
+                                                    <rect key="frame" x="68" y="74" width="144.5" height="54"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZC-sM-no2">
-                                                            <rect key="frame" x="0.0" y="0.0" width="109" height="23.5"/>
-                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iza-LL-PlM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="144.5" height="31.5"/>
+                                                            <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="24"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2D5-fU-ibQ">
-                                                            <rect key="frame" x="39.5" y="27.5" width="30.5" height="18.5"/>
-                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAM-1N-0GG">
+                                                            <rect key="frame" x="54" y="31.5" width="37" height="22.5"/>
+                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="lrs-gm-GTF" firstAttribute="leading" secondItem="YzF-z5-c2G" secondAttribute="leading" id="8MW-jX-QAf"/>
-                                                <constraint firstAttribute="bottom" secondItem="lrs-gm-GTF" secondAttribute="bottom" id="DxE-5Z-YQs"/>
-                                                <constraint firstItem="lrs-gm-GTF" firstAttribute="top" secondItem="YzF-z5-c2G" secondAttribute="top" id="WK8-2s-Mka"/>
-                                                <constraint firstItem="Saq-5d-ryg" firstAttribute="centerX" secondItem="YzF-z5-c2G" secondAttribute="centerX" id="bRy-vn-V6V"/>
-                                                <constraint firstItem="Saq-5d-ryg" firstAttribute="centerY" secondItem="YzF-z5-c2G" secondAttribute="centerY" id="oga-Gw-C7C"/>
-                                                <constraint firstAttribute="trailing" secondItem="lrs-gm-GTF" secondAttribute="trailing" id="z1J-B0-0pd"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94509803921568625" green="0.85490196078431369" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="E41-Bz-qUt" secondAttribute="bottom" id="Hr2-sy-vrD"/>
+                                            <constraint firstItem="E41-Bz-qUt" firstAttribute="leading" secondItem="rLh-Mu-v2X" secondAttribute="leading" id="ICG-f1-1E0"/>
+                                            <constraint firstItem="zYc-l6-H6o" firstAttribute="centerY" secondItem="rLh-Mu-v2X" secondAttribute="centerY" id="YI1-bq-EhY"/>
+                                            <constraint firstItem="zYc-l6-H6o" firstAttribute="centerX" secondItem="rLh-Mu-v2X" secondAttribute="centerX" id="Zps-Gh-IMN"/>
+                                            <constraint firstAttribute="trailing" secondItem="E41-Bz-qUt" secondAttribute="trailing" id="rDE-K2-En1"/>
+                                            <constraint firstItem="E41-Bz-qUt" firstAttribute="top" secondItem="rLh-Mu-v2X" secondAttribute="top" id="sNR-UW-ckH"/>
+                                        </constraints>
                                         <connections>
-                                            <outlet property="albumTitle" destination="sZC-sM-no2" id="vaE-xA-Qey"/>
-                                            <outlet property="bgImage" destination="lrs-gm-GTF" id="pfG-lA-9fe"/>
-                                            <outlet property="dateLabel" destination="2D5-fU-ibQ" id="fR0-5I-gyX"/>
+                                            <outlet property="albumTitle" destination="Iza-LL-PlM" id="NeB-wo-jHD"/>
+                                            <outlet property="bgImage" destination="E41-Bz-qUt" id="AGb-Rp-qrY"/>
+                                            <outlet property="dateLabel" destination="gAM-1N-0GG" id="p8E-bv-YC6"/>
                                         </connections>
-                                    </tableViewCell>
-                                </prototypes>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="4RX-is-FPW" id="Lbu-M1-JsX"/>
-                                    <outlet property="delegate" destination="4RX-is-FPW" id="laT-4Q-0Gy"/>
+                                    <outlet property="dataSource" destination="4RX-is-FPW" id="YQY-4z-vAT"/>
+                                    <outlet property="delegate" destination="4RX-is-FPW" id="Swv-wQ-feO"/>
                                 </connections>
-                            </tableView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.78431372549019607" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="dEX-y3-6tN" firstAttribute="trailing" secondItem="mAy-Cd-WKS" secondAttribute="trailing" constant="20" id="Auc-pL-tii"/>
-                            <constraint firstItem="mAy-Cd-WKS" firstAttribute="top" secondItem="dEX-y3-6tN" secondAttribute="top" constant="20" id="H1d-Jg-eT9"/>
-                            <constraint firstItem="mAy-Cd-WKS" firstAttribute="leading" secondItem="dEX-y3-6tN" secondAttribute="leading" constant="20" id="HCV-F6-L01"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="mAy-Cd-WKS" secondAttribute="bottom" id="NyJ-2a-gMc"/>
+                            <constraint firstItem="a1v-wC-9u8" firstAttribute="top" secondItem="dEX-y3-6tN" secondAttribute="top" constant="20" id="0mP-Sc-CWM"/>
+                            <constraint firstItem="dEX-y3-6tN" firstAttribute="trailing" secondItem="a1v-wC-9u8" secondAttribute="trailing" constant="20" id="EI7-lJ-nti"/>
+                            <constraint firstItem="dEX-y3-6tN" firstAttribute="bottom" secondItem="a1v-wC-9u8" secondAttribute="bottom" id="QsF-gA-7A8"/>
+                            <constraint firstItem="a1v-wC-9u8" firstAttribute="leading" secondItem="dEX-y3-6tN" secondAttribute="leading" constant="20" id="zaj-PE-xwg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dEX-y3-6tN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Traveler's Notebook" id="BcF-as-85v"/>
                     <connections>
-                        <outlet property="albumTable" destination="mAy-Cd-WKS" id="w4H-wU-p7A"/>
+                        <outlet property="albumCollection" destination="a1v-wC-9u8" id="KY2-fQ-eKr"/>
+                        <segue destination="S3D-IR-Nmb" kind="show" identifier="toAlbumDetail" id="c24-ZJ-Ynk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtt-8J-jNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2533,7 +2539,8 @@ uSTLJM4k0wAAAAAAAAIBAAAAAAAAAFkAAAAAAAAAAAAAAAAAACTVA
         </image>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="c24-ZJ-Ynk"/>
         <segue reference="cC8-AN-dyr"/>
-        <segue reference="Zqy-YG-zc2"/>
+        <segue reference="cda-2E-ntR"/>
     </inferredMetricsTieBreakers>
 </document>

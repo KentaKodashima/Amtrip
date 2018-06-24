@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumThumbnailCell: UITableViewCell {
+class AlbumThumbnailCell: UICollectionViewCell {
 
   @IBOutlet weak var bgImage: UIImageView?
   @IBOutlet weak var albumTitle: UILabel!
