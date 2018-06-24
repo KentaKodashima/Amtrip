@@ -16,6 +16,7 @@ class HomeVC: UIViewController {
   private var albums: Results<Album>?
   private var image: UIImage?
   private var images = [UIImage]()
+  var albumTitleToPass: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -86,8 +87,17 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-    let tappedCell = collectionView.cellForItem(at: indexPath)
+    let album = albums?[indexPath.row]
+
+    albumTitleToPass = album?.albumTitle
     
     self.performSegue(withIdentifier: "toAlbumDetail", sender: Any.self)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toAlbumDetail" {
+      let albumDetailVC = segue.destination as! AlbumDetailVC
+      albumDetailVC.recievedAlbumTitle = albumTitleToPass
+    }
   }
 }

@@ -89,8 +89,14 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     let tappedCell = tableView.cellForRow(at: indexPath)
     
     if tappedCell?.reuseIdentifier == "AlbumTitleCell" {
+      
+      let album = albums?[indexPath.row]
+      
+      albumTitleToPass = album?.albumTitle
+      
       self.performSegue(withIdentifier: "toAlbumDetail", sender: Any.self)
     } else {
+      
       let page = pages?[indexPath.row]
       
       albumTitleToPass = page?.albumTitle
@@ -104,15 +110,18 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
     if segue.identifier == "toPageDetail" {
-      let pageDetailVC = segue.destination as! PageDetailVC
       
+      let pageDetailVC = segue.destination as! PageDetailVC
       pageDetailVC.recievedAlbumTitle = albumTitleToPass
       pageDetailVC.recievedPageTitle = pageTitleToPass
       pageDetailVC.recievedDate = dateToPass
       pageDetailVC.recievedLocation = locationToPass
       pageDetailVC.recievedBodyText = bodyTextToPass
-      
+    } else {
+      let albumDetailVC = segue.destination as! AlbumDetailVC
+      albumDetailVC.recievedAlbumTitle = albumTitleToPass
     }
   }
 }

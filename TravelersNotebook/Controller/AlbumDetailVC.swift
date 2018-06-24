@@ -14,6 +14,7 @@ class AlbumDetailVC: UIViewController {
   private var pages: Results<Page>?
   
   // Temporary properties for passing data to PageDetailVC
+  var recievedAlbumTitle: String?
   var albumTitleToPass: String?
   var pageTitleToPass: String?
   var dateToPass: String?
@@ -23,7 +24,7 @@ class AlbumDetailVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    pages = Page.all()
+    pages = Page.pagesInAlbum(albumTitle: recievedAlbumTitle!)
   }
 }
 

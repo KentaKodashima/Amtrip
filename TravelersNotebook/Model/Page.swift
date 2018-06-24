@@ -50,4 +50,8 @@ extension Page {
     return realm.objects(Page.self).sorted(byKeyPath: Page.Property.date.rawValue)
   }
   
+  static func pagesInAlbum(albumTitle: String, in realm: Realm = try! Realm()) -> Results<Page> {
+    return realm.objects(Page.self).filter("albumTitle == '\(albumTitle)'")
+  }
+  
 }
