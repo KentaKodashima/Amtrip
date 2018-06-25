@@ -92,9 +92,14 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     case 0:
       
       if albums!.count == 0 {
-        let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-        noDataLabel.text = "No data available"
-        noDataLabel.textColor = UIColor.black
+        let labelWidth = tableView.bounds.size.width
+        let labelHeight = tableView.bounds.size.height
+        let noDataLabel = UILabel(
+          frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
+        )
+        noDataLabel.text = "There are no pages yet."
+        noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
+        noDataLabel.font = UIFont(name: "Futura", size: 22)
         noDataLabel.textAlignment = .center
         tableView.separatorStyle = .none
         tableView.backgroundView = noDataLabel
@@ -104,9 +109,14 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     case 1:
       
       if pages!.count == 0 {
-        let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-        noDataLabel.text = "No data available"
-        noDataLabel.textColor = UIColor.black
+        let labelWidth = tableView.bounds.size.width
+        let labelHeight = tableView.bounds.size.height
+        let noDataLabel = UILabel(
+          frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
+        )
+        noDataLabel.text = "There are no pages yet."
+        noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
+        noDataLabel.font = UIFont(name: "Futura", size: 22)
         noDataLabel.textAlignment = .center
         tableView.separatorStyle = .none
         tableView.backgroundView = noDataLabel
