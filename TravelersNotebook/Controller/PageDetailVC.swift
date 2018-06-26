@@ -45,6 +45,7 @@ class PageDetailVC: UIViewController {
     imageCollection.isHidden = true
     
     fetchImage()
+    generateFavoriteButton()
   }
   
   override func viewDidLayoutSubviews() {
@@ -72,6 +73,20 @@ class PageDetailVC: UIViewController {
       self.image = UIImage(contentsOfFile: filePath)
       images.append(self.image!)
     }
+  }
+  
+  private func generateFavoriteButton() {
+    let favoriteButton = UIBarButtonItem(
+      image: #imageLiteral(resourceName: "Heart"),
+      style: .plain,
+      target: self,
+      action: #selector(favoriteButtonTapped)
+    )
+    self.navigationItem.setRightBarButton(favoriteButton, animated: true)
+  }
+  
+  @objc private func favoriteButtonTapped() {
+    
   }
   
 }

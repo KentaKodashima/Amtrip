@@ -22,6 +22,7 @@ import RealmSwift
   @objc dynamic private(set) var date: String = ""
   @objc dynamic private(set) var location: String = ""
   @objc dynamic private(set) var bodyText: String = ""
+  @objc dynamic public var isFavorite: Bool = false
   var images = List<String>()
 
   override static func primaryKey() -> String? {

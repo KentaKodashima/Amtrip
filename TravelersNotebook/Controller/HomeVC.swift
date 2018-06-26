@@ -22,11 +22,7 @@ class HomeVC: UIViewController {
     super.viewDidLoad()
 
     albums = Album.all()
-//    if albums?.count == 0 {
-//      albumCollection.isHidden = true
-//    }
     albumCollection.showsVerticalScrollIndicator = false
-    albumCollection.reloadData()
   }
   
   override func viewDidLayoutSubviews() {
