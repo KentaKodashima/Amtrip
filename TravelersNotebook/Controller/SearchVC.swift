@@ -17,11 +17,6 @@ class SearchVC: UIViewController {
   var pages: Results<Page>?
   
   // Temporary properties for passing data to PageDetailVC
-  var albumTitleToPass: String?
-  var pageTitleToPass: String?
-  var dateToPass: String?
-  var locationToPass: String?
-  var bodyTextToPass: String?
   var imagesToPass = List<String>()
   var pageToPass: Page?
   
