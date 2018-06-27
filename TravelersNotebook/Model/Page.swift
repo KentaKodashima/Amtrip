@@ -55,4 +55,10 @@ extension Page {
     return realm.objects(Page.self).filter("albumTitle == '\(albumTitle)'")
   }
   
+  static func favoritePages(in realm: Realm = try! Realm()) -> Results<Page> {
+    
+    return realm.objects(Page.self).filter("isFavorite == true")
+//    return realm.objects(Page.self).filter("isFavorite == %@", NSNumber(value: true))
+  }
+  
 }

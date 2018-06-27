@@ -23,6 +23,7 @@ class SearchVC: UIViewController {
   var locationToPass: String?
   var bodyTextToPass: String?
   var imagesToPass = List<String>()
+  var pageToPass: Page?
   
   // Data for the tableView
   var cellCount = 0
@@ -91,13 +92,10 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
     let page = pages?[indexPath.row]
     
-    albumTitleToPass = page?.albumTitle
-    pageTitleToPass = page?.pageTitle
-    dateToPass = page?.date
-    locationToPass = page?.location
-    bodyTextToPass = page?.bodyText
+    pageToPass = page
     if page?.images != nil {
       imagesToPass = page!.images
     }
@@ -109,13 +107,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     if segue.identifier == "toPageDetail" {
       let pageDetailVC = segue.destination as! PageDetailVC
       
-      pageDetailVC.recievedAlbumTitle = albumTitleToPass
-      pageDetailVC.recievedPageTitle = pageTitleToPass
-      pageDetailVC.recievedDate = dateToPass
-      pageDetailVC.recievedLocation = locationToPass
-      pageDetailVC.recievedBodyText = bodyTextToPass
+      pageDetailVC.receivedPage = pageToPass
       pageDetailVC.receivedImagesPath = imagesToPass
     }
   }
-  
 }

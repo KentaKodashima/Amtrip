@@ -20,10 +20,7 @@ class AccountVC: UIViewController {
   var selectedIndex = 0
   
   var albumTitleToPass: String?
-  var pageTitleToPass: String?
-  var dateToPass: String?
-  var locationToPass: String?
-  var bodyTextToPass: String?
+  var pageToPass: Page?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -145,11 +142,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       
       let page = pages?[indexPath.row]
       
-      albumTitleToPass = page?.albumTitle
-      pageTitleToPass = page?.pageTitle
-      dateToPass = page?.date
-      locationToPass = page?.location
-      bodyTextToPass = page?.bodyText
+      pageToPass = page
       
       self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
     }
@@ -160,11 +153,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     if segue.identifier == "toPageDetail" {
       
       let pageDetailVC = segue.destination as! PageDetailVC
-      pageDetailVC.recievedAlbumTitle = albumTitleToPass
-      pageDetailVC.recievedPageTitle = pageTitleToPass
-      pageDetailVC.recievedDate = dateToPass
-      pageDetailVC.recievedLocation = locationToPass
-      pageDetailVC.recievedBodyText = bodyTextToPass
+      pageDetailVC.receivedPage = pageToPass
     } else {
       let albumDetailVC = segue.destination as! AlbumDetailVC
       albumDetailVC.recievedAlbumTitle = albumTitleToPass

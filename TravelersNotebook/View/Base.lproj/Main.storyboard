@@ -773,7 +773,7 @@
         <!--Favorite-->
         <scene sceneID="JBN-Az-5LX">
             <objects>
-                <viewController id="PXj-hG-457" sceneMemberID="viewController">
+                <viewController id="PXj-hG-457" customClass="FavoriteVC" customModule="TravelersNotebook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g76-k9-TUW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -787,7 +787,7 @@
                                 <rect key="frame" x="20" y="76" width="280" height="379"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.85490196078431369" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ERb-PH-Tb9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PageCell" id="ERb-PH-Tb9" customClass="PageCell" customModule="TravelersNotebook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ERb-PH-Tb9" id="ZOe-v3-ZTG">
@@ -812,8 +812,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.85490196080000003" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="pageName" destination="WD6-ww-3Eu" id="H5n-gT-NN9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="PXj-hG-457" id="YDo-F0-DLF"/>
+                                    <outlet property="delegate" destination="PXj-hG-457" id="pNs-qy-NpV"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.78431372549019607" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
@@ -829,6 +836,9 @@
                         <viewLayoutGuide key="safeArea" id="rqZ-b8-zbc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Favorite" id="JsY-Rp-N6P"/>
+                    <connections>
+                        <segue destination="eMX-nJ-0MR" kind="show" identifier="toPageDetail" id="ZrH-jO-nuP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHd-YG-5A2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2541,6 +2551,6 @@ uSTLJM4k0wAAAAAAAAIBAAAAAAAAAFkAAAAAAAAAAAAAAAAAACTVA
     <inferredMetricsTieBreakers>
         <segue reference="c24-ZJ-Ynk"/>
         <segue reference="cC8-AN-dyr"/>
-        <segue reference="Zqy-YG-zc2"/>
+        <segue reference="ZrH-jO-nuP"/>
     </inferredMetricsTieBreakers>
 </document>

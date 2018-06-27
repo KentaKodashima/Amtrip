@@ -19,33 +19,42 @@ class PageDetailVC: UIViewController {
   @IBOutlet weak var imageCollection: UICollectionView!
   @IBOutlet weak var scrollView: UIScrollView!
   
-  public var recievedAlbumTitle: String?
-  public var recievedPageTitle: String?
-  public var recievedDate: String?
-  public var recievedLocation: String?
-  public var recievedBodyText: String?
   public var receivedImagesPath = List<String>()
+  public var receivedPage: Page?
+  
   private var images = [UIImage]()
   private var image: UIImage?
+
   
-  private var indexOfCellBeforeDragging = 0
+  private var favoriteButton = UIBarButtonItem()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    albumTitle.text = recievedAlbumTitle
-    pageTitle.text = recievedPageTitle
-    date.text = recievedDate
-    location.text = recievedLocation
-    bodyText.text = recievedBodyText
+    albumTitle.text = receivedPage?.albumTitle
+    pageTitle.text = receivedPage?.pageTitle
+    date.text = receivedPage?.date
+    location.text = receivedPage?.location
+    bodyText.text = receivedPage?.bodyText
     
     let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
     scrollView.contentInset = edgeInsets
     
+    favoriteButton = UIBarButtonItem(
+      image: #imageLiteral(resourceName: "Heart"),
+      style: .plain,
+      target: self,
+      action: #selector(favoriteButtonTapped)
+    )
+    self.navigationItem.setRightBarButton(favoriteButton, animated: true)
+    if receivedPage?.isFavorite == true {
+      
+      favoriteButton.tintColor == #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
+    }
+    
     imageCollection.isHidden = true
     
     fetchImage()
-    generateFavoriteButton()
   }
   
   override func viewDidLayoutSubviews() {
@@ -75,18 +84,22 @@ class PageDetailVC: UIViewController {
     }
   }
   
-  private func generateFavoriteButton() {
-    let favoriteButton = UIBarButtonItem(
-      image: #imageLiteral(resourceName: "Heart"),
-      style: .plain,
-      target: self,
-      action: #selector(favoriteButtonTapped)
-    )
-    self.navigationItem.setRightBarButton(favoriteButton, animated: true)
-  }
-  
   @objc private func favoriteButtonTapped() {
     
+    let realm = try! Realm()
+    
+    if receivedPage?.isFavorite == false {
+      try! realm.write {
+        receivedPage?.isFavorite = true
+      }
+      print(receivedPage?.isFavorite)
+      favoriteButton.tintColor == #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
+    } else {
+      try! realm.write {
+        receivedPage?.isFavorite = false
+        favoriteButton.tintColor == #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+      }
+    }
   }
   
 }
@@ -100,9 +113,9 @@ extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
   
   // Assign cells contents
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCell
     
-    print(images.count)
     cell.cellImage.image = images[indexPath.row]
     cell.clipsToBounds = true
     imageCollection.isHidden = false

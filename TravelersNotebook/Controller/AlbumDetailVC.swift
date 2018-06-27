@@ -15,11 +15,7 @@ class AlbumDetailVC: UIViewController {
   
   // Temporary properties for passing data to PageDetailVC
   var recievedAlbumTitle: String?
-  var albumTitleToPass: String?
-  var pageTitleToPass: String?
-  var dateToPass: String?
-  var locationToPass: String?
-  var bodyTextToPass: String?
+  var pageToPass: Page?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,27 +41,21 @@ extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
     let page = pages?[indexPath.row]
     
-    albumTitleToPass = page?.albumTitle
-    pageTitleToPass = page?.pageTitle
-    dateToPass = page?.date
-    locationToPass = page?.location
-    bodyTextToPass = page?.bodyText
+    pageToPass = page
     
     self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
     if segue.identifier == "toPageDetail" {
+      
       let pageDetailVC = segue.destination as! PageDetailVC
-      
-      pageDetailVC.recievedAlbumTitle = albumTitleToPass
-      pageDetailVC.recievedPageTitle = pageTitleToPass
-      pageDetailVC.recievedDate = dateToPass
-      pageDetailVC.recievedLocation = locationToPass
-      pageDetailVC.recievedBodyText = bodyTextToPass
-      
+
+      pageDetailVC.receivedPage = pageToPass
     }
   }
   
