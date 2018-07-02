@@ -236,6 +236,7 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
       imagePicker.sourceType = .photoLibrary
     }
     imagePicker.delegate = self
+    imagePicker.allowsEditing = true
     
     // Place image picker on the screen
     present(imagePicker, animated: true, completion: nil)
@@ -246,6 +247,7 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     let imagePicker = UIImagePickerController()
     imagePicker.sourceType = .photoLibrary
     imagePicker.delegate = self
+    imagePicker.allowsEditing = true
     // Place image picker on the screen
     present(imagePicker, animated: true, completion: nil)
   }

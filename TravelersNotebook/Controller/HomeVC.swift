@@ -93,6 +93,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
       noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
       noDataLabel.font = UIFont(name: "Futura", size: 22)
       noDataLabel.textAlignment = .center
+      collectionView.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
       collectionView.backgroundView = noDataLabel
     } else {
       numberOfSections = 1

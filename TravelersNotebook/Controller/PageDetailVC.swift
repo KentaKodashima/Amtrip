@@ -18,6 +18,7 @@ class PageDetailVC: UIViewController {
   @IBOutlet weak var bodyText: UITextView!
   @IBOutlet weak var imageCollection: UICollectionView!
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var pageControl: UIPageControl!
   
   public var receivedImagesPath = List<String>()
   public var receivedPage: Page?
@@ -107,7 +108,9 @@ class PageDetailVC: UIViewController {
 extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    print(images.count)
+    
+    pageControl.numberOfPages = images.count
+    
     return images.count
   }
   

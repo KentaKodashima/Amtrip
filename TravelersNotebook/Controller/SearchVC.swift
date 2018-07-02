@@ -78,6 +78,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
       noDataLabel.font = UIFont(name: "Futura", size: 22)
       noDataLabel.textAlignment = .center
       tableView.separatorStyle = .none
+      tableView.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
       tableView.backgroundView = noDataLabel
     } else {
       numberOfSections = 1

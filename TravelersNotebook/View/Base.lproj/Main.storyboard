@@ -101,7 +101,7 @@
                                 <rect key="frame" x="20" y="0.0" width="280" height="887"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="h4z-1F-yhx">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="739"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="786"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="wAc-kh-LXv">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="109"/>
@@ -245,8 +245,9 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="120" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0rN-t2-yMr">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="120" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0rN-t2-yMr">
                                                 <rect key="frame" x="0.0" y="459" width="280" height="280"/>
+                                                <color key="backgroundColor" red="0.94509803921568625" green="0.85490196078431369" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="280" id="Nzu-YA-5AM"/>
                                                 </constraints>
@@ -285,8 +286,12 @@
                                                     <outlet property="delegate" destination="eMX-nJ-0MR" id="fP4-oB-0vI"/>
                                                 </connections>
                                             </collectionView>
+                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ddA-72-IM9">
+                                                <rect key="frame" x="120.5" y="749" width="39" height="37"/>
+                                            </pageControl>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="ddA-72-IM9" firstAttribute="centerX" secondItem="h4z-1F-yhx" secondAttribute="centerX" id="OkP-Sq-WTa"/>
                                             <constraint firstAttribute="trailing" secondItem="wAc-kh-LXv" secondAttribute="trailing" id="PpD-ZB-ERI"/>
                                             <constraint firstAttribute="trailing" secondItem="gU4-u0-7o9" secondAttribute="trailing" id="X6G-gu-kBL"/>
                                             <constraint firstAttribute="trailing" secondItem="0rN-t2-yMr" secondAttribute="trailing" id="b97-3l-jNA"/>
@@ -322,6 +327,7 @@
                         <outlet property="date" destination="AZq-Qq-A0B" id="CX5-bU-gKi"/>
                         <outlet property="imageCollection" destination="0rN-t2-yMr" id="1qG-om-lTe"/>
                         <outlet property="location" destination="V6M-HF-Ykd" id="Sko-yb-Lwi"/>
+                        <outlet property="pageControl" destination="ddA-72-IM9" id="4Us-Kj-dXJ"/>
                         <outlet property="pageTitle" destination="jyb-gb-u3f" id="qra-lE-3B9"/>
                         <outlet property="scrollView" destination="ppk-5K-ljf" id="mnw-F5-3J7"/>
                     </connections>
@@ -723,7 +729,7 @@
                                                                     <rect key="frame" x="15" y="11" width="238" height="22"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" red="0.40000000000000002" green="0.35686274509803922" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -984,16 +990,17 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Right Indicator" translatesAutoresizingMaskIntoConstraints="NO" id="Ddp-gc-n2w">
                                                     <rect key="frame" x="257" y="15" width="8" height="13"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyT-oe-ByF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyT-oe-ByF">
                                                     <rect key="frame" x="15" y="11" width="42" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.35686274509999999" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="lyT-oe-ByF" firstAttribute="leading" secondItem="G18-jW-B9g" secondAttribute="leadingMargin" id="Mpy-Ah-DLk"/>
                                                 <constraint firstItem="Ddp-gc-n2w" firstAttribute="top" secondItem="G18-jW-B9g" secondAttribute="topMargin" constant="4" id="YLn-hQ-Z4c"/>
+                                                <constraint firstItem="lyT-oe-ByF" firstAttribute="top" secondItem="G18-jW-B9g" secondAttribute="topMargin" id="lfj-Wb-oj0"/>
                                                 <constraint firstItem="Ddp-gc-n2w" firstAttribute="trailing" secondItem="G18-jW-B9g" secondAttribute="trailingMargin" id="t9I-5R-Cil"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1051,7 +1058,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E41-Bz-qUt">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E41-Bz-qUt">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zYc-l6-H6o">
@@ -2551,6 +2558,6 @@ uSTLJM4k0wAAAAAAAAIBAAAAAAAAAFkAAAAAAAAAAAAAAAAAACTVA
     <inferredMetricsTieBreakers>
         <segue reference="c24-ZJ-Ynk"/>
         <segue reference="cC8-AN-dyr"/>
-        <segue reference="ZrH-jO-nuP"/>
+        <segue reference="Iw0-ov-Geh"/>
     </inferredMetricsTieBreakers>
 </document>

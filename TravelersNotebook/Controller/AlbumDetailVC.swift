@@ -16,6 +16,7 @@ class AlbumDetailVC: UIViewController {
   // Temporary properties for passing data to PageDetailVC
   var recievedAlbumTitle: String?
   var pageToPass: Page?
+  var imagesToPass = List<String>()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,8 +46,34 @@ extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
     let page = pages?[indexPath.row]
     
     pageToPass = page
+    if page?.images != nil {
+      imagesToPass = page!.images
+    }
     
     self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
+  }
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    
+    var numberOfSections = 0
+    if pages!.count == 0 {
+      let labelWidth = tableView.bounds.size.width
+      let labelHeight = tableView.bounds.size.height
+      let noDataLabel = UILabel(
+        frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
+      )
+      noDataLabel.text = "There are no pages yet."
+      noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
+      noDataLabel.font = UIFont(name: "Futura", size: 22)
+      noDataLabel.textAlignment = .center
+      tableView.separatorStyle = .none
+      tableView.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
+      tableView.backgroundView = noDataLabel
+    } else {
+      numberOfSections = 1
+    }
+    
+    return numberOfSections
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,6 +83,7 @@ extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
       let pageDetailVC = segue.destination as! PageDetailVC
 
       pageDetailVC.receivedPage = pageToPass
+      pageDetailVC.receivedImagesPath = imagesToPass
     }
   }
   
