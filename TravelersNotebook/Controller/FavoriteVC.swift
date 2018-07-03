@@ -36,7 +36,10 @@ class FavoriteVC: UIViewController {
     pages = Page.favoritePages()
   }
   
-  
+  override func viewWillAppear(_ animated: Bool) {
+    
+    tableView.reloadData()
+  }
 }
 
 extension FavoriteVC: UISearchBarDelegate {
@@ -88,6 +91,7 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
       tableView.backgroundView = noDataLabel
     } else {
       numberOfSections = 1
+      tableView.backgroundView = nil
     }
     
     return numberOfSections

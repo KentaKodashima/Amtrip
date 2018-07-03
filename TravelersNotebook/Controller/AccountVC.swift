@@ -102,6 +102,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
         tableView.backgroundView = noDataLabel
       } else {
         numberOfSections = 1
+        tableView.backgroundView = nil
       }
     case 1:
       
@@ -119,6 +120,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
         tableView.backgroundView = noDataLabel
       } else {
         numberOfSections = 1
+        tableView.backgroundView = nil
       }
     default:
       

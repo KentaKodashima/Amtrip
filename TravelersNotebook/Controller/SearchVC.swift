@@ -40,6 +40,10 @@ class SearchVC: UIViewController {
     pages = Page.all()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    
+    tableView.reloadData()
+  }
 }
 
 extension SearchVC: UISearchBarDelegate {
@@ -92,6 +96,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
       tableView.backgroundView = noDataLabel
     } else {
       numberOfSections = 1
+      tableView.backgroundView = nil
     }
     
     return numberOfSections
