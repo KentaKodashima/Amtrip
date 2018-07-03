@@ -11,6 +11,9 @@ import RealmSwift
 
 class FavoriteVC: UIViewController {
   
+  @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var tableView: UITableView!
+  
   var pages: Results<Page>?
   
   var imagesToPass = List<String>()
@@ -19,10 +22,35 @@ class FavoriteVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // Search bar style
+    searchBar.delegate = self
+    let searchTextField = searchBar.value(forKey: "_searchField") as? UITextField
+    searchBar.layer.borderColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
+    searchBar.layer.borderWidth = 1
+    
+    // Change icon color of UISearchBar
+    let glassIcon = searchTextField?.leftView as? UIImageView
+    glassIcon?.image = glassIcon?.image?.withRenderingMode(.alwaysTemplate)
+    glassIcon?.tintColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
+    
     pages = Page.favoritePages()
   }
   
   
+}
+
+extension FavoriteVC: UISearchBarDelegate {
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    
+    if searchText.isEmpty {
+      pages = Page.favoritePages()
+      self.tableView.reloadData()
+    } else {
+      pages = Page.favoritePages().filter("pageTitle CONTAINS[cd] %@", searchText)
+      self.tableView.reloadData()
+    }
+  }
 }
 
 extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {

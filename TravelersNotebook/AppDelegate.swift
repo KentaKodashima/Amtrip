@@ -26,10 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().tintColor = UIColor.white
     let searchBarTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: textBrown, NSAttributedStringKey.font.rawValue: UIFont(name: "Helvetica Neue", size: 16)]
     UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
-    let placeholderAttributes = [NSAttributedStringKey.foregroundColor: bgBrown, NSAttributedStringKey.font: UIFont(name: "Helvetica", size: 15)]
     // Color of the default search text.
+    let placeholderAttributes = [NSAttributedStringKey.foregroundColor: bgBrown, NSAttributedStringKey.font: UIFont(name: "Helvetica", size: 15)]
     let attributedPlaceholder = NSAttributedString(string: "Search", attributes: placeholderAttributes)
     UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = attributedPlaceholder
+
+    // Tabbar appearance
+    UITabBar.appearance().unselectedItemTintColor = UIColor.white
     
     // Create an ImageStore
     let imageStore = ImageStore()

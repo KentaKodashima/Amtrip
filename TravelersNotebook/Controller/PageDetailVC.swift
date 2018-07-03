@@ -49,8 +49,7 @@ class PageDetailVC: UIViewController {
     )
     self.navigationItem.setRightBarButton(favoriteButton, animated: true)
     if receivedPage?.isFavorite == true {
-      
-      favoriteButton.tintColor == #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
+      favoriteButton.tintColor = #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
     }
     
     imageCollection.isHidden = true
@@ -94,11 +93,11 @@ class PageDetailVC: UIViewController {
         receivedPage?.isFavorite = true
       }
       print(receivedPage?.isFavorite)
-      favoriteButton.tintColor == #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
+      favoriteButton.tintColor = #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
     } else {
       try! realm.write {
         receivedPage?.isFavorite = false
-        favoriteButton.tintColor == #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        favoriteButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
       }
     }
   }
@@ -124,6 +123,12 @@ extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     imageCollection.isHidden = false
     
     return cell
+  }
+  
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    if let section = imageCollection.indexPathForItem(at: targetContentOffset.pointee)?.section {
+      self.pageControl.currentPage = section
+    }
   }
   
 }

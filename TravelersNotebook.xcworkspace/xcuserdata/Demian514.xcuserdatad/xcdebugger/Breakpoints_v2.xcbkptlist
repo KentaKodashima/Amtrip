@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TravelersNotebook/Controller/PageDetailVC.swift"
-            timestampString = "552182316.060053"
+            timestampString = "552278012.39338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "favoriteButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
