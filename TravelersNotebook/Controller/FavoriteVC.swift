@@ -39,6 +39,7 @@ class FavoriteVC: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     
     tableView.reloadData()
+    tableView.tableFooterView = UIView(frame: .zero)
   }
 }
 

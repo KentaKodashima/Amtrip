@@ -27,6 +27,7 @@ class AccountVC: UIViewController {
     
     pages = Page.all()
     albums = Album.all()
+    tableView.tableFooterView = UIView(frame: .zero)
   }
   
   @IBAction func segmentValueChanged(_ sender: Any) {

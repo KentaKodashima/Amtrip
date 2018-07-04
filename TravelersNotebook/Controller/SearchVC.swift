@@ -38,6 +38,8 @@ class SearchVC: UIViewController {
     glassIcon?.tintColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
     
     pages = Page.all()
+    
+    tableView.tableFooterView = UIView(frame: .zero)
   }
   
   override func viewWillAppear(_ animated: Bool) {
