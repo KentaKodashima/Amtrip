@@ -25,6 +25,9 @@ class AlbumDetailVC: UIViewController {
     
     pages = Page.pagesInAlbum(albumTitle: recievedAlbumTitle!)
     tableView.tableFooterView = UIView(frame: .zero)
+    
+    navigationItem.title = "Album Detail"
+    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura", size: 22)]
   }
 }
 

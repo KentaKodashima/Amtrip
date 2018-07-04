@@ -58,6 +58,9 @@ extension SearchVC: UISearchBarDelegate {
       pages = Page.all()
       self.tableView.reloadData()
     } else {
+      
+      // [c] case insensitive: lowercase & uppercase values are treated the same
+      // [d] diacritic insensitive: special characters treated as the base character
       pages = realm.objects(Page.self).filter("pageTitle CONTAINS[cd] %@", searchText)
       self.tableView.reloadData()
     }

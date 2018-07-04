@@ -25,6 +25,11 @@ class HomeVC: UIViewController {
     albumCollection.showsVerticalScrollIndicator = false
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    
+    albumCollection.reloadData()
+  }
+  
   override func viewDidLayoutSubviews() {
     
     let layout = UICollectionViewFlowLayout()
@@ -77,6 +82,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     cell.layoutMargins = UIEdgeInsets.zero
     cell.contentView.layoutMargins.top = 20
     cell.contentView.layoutMargins.bottom = 20
+    cell.albumTitle.preferredMaxLayoutWidth = albumCollection.bounds.width
     
     return cell
   }

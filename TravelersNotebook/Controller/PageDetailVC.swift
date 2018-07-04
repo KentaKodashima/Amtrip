@@ -19,6 +19,7 @@ class PageDetailVC: UIViewController {
   @IBOutlet weak var imageCollection: UICollectionView!
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pageControl: UIPageControl!
+  @IBOutlet weak var imageCollectionHeight: NSLayoutConstraint!
   
   public var receivedImagesPath = List<String>()
   public var receivedPage: Page?
@@ -53,6 +54,10 @@ class PageDetailVC: UIViewController {
     }
     
     imageCollection.isHidden = true
+    pageControl.hidesForSinglePage = true
+    
+    navigationItem.title = receivedPage?.pageTitle
+    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura", size: 22)]
     
     fetchImage()
   }
@@ -62,9 +67,10 @@ class PageDetailVC: UIViewController {
     scrollView.flashScrollIndicators()
     
     let layout = UICollectionViewFlowLayout()
+    imageCollectionHeight.constant = imageCollection.bounds.width
     let cellWidth = imageCollection.bounds.width
     let cellHeight = imageCollection.bounds.height
-    layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+    layout.itemSize = CGSize(width: cellWidth, height: cellWidth)
     layout.minimumInteritemSpacing = 0
     layout.minimumLineSpacing = 0
     layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -92,7 +98,6 @@ class PageDetailVC: UIViewController {
       try! realm.write {
         receivedPage?.isFavorite = true
       }
-      print(receivedPage?.isFavorite)
       favoriteButton.tintColor = #colorLiteral(red: 1, green: 0.5409764051, blue: 0.8473142982, alpha: 1)
     } else {
       try! realm.write {
@@ -125,10 +130,8 @@ extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     return cell
   }
   
-  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-    if let section = imageCollection.indexPathForItem(at: targetContentOffset.pointee)?.section {
-      self.pageControl.currentPage = section
-    }
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
   }
   
 }

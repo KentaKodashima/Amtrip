@@ -20,14 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Set the Google Place API's autocomplete UI control
     GMSPlacesClient.provideAPIKey("AIzaSyANS_Bmalx3Gk-XG2afagd6nDjfB4gabeE")
     let barBrown: UIColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
-    let bgBrown: UIColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
-    let textBrown: UIColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
+    let lightBrown: UIColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
+    let darkBrown: UIColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
     UINavigationBar.appearance().barTintColor = barBrown
     UINavigationBar.appearance().tintColor = UIColor.white
-    let searchBarTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: textBrown, NSAttributedStringKey.font.rawValue: UIFont(name: "Helvetica Neue", size: 16)]
+    let searchBarTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: lightBrown, NSAttributedStringKey.font.rawValue: UIFont(name: "Helvetica Neue", size: 16)]
     UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
     // Color of the default search text.
-    let placeholderAttributes = [NSAttributedStringKey.foregroundColor: bgBrown, NSAttributedStringKey.font: UIFont(name: "Helvetica", size: 15)]
+    let placeholderAttributes = [NSAttributedStringKey.foregroundColor: lightBrown, NSAttributedStringKey.font: UIFont(name: "Helvetica", size: 15)]
     let attributedPlaceholder = NSAttributedString(string: "Search", attributes: placeholderAttributes)
     UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = attributedPlaceholder
 
