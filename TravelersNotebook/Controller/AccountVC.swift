@@ -19,8 +19,10 @@ class AccountVC: UIViewController {
   var albums: Results<Album>?
   var selectedIndex = 0
   
+  // Temporary properties for passing data to PageDetailVC
   var albumTitleToPass: String?
   var pageToPass: Page?
+  var imagesToPass = List<String>()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -146,6 +148,9 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       let page = pages?[indexPath.row]
       
       pageToPass = page
+      if page?.images != nil {
+        imagesToPass = page!.images
+      }
       
       self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
     }
@@ -157,6 +162,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       
       let pageDetailVC = segue.destination as! PageDetailVC
       pageDetailVC.receivedPage = pageToPass
+      pageDetailVC.receivedImagesPath = imagesToPass
     } else {
       let albumDetailVC = segue.destination as! AlbumDetailVC
       albumDetailVC.recievedAlbumTitle = albumTitleToPass

@@ -58,7 +58,6 @@ extension Page {
   static func favoritePages(in realm: Realm = try! Realm()) -> Results<Page> {
     
     return realm.objects(Page.self).filter("isFavorite == true")
-//    return realm.objects(Page.self).filter("isFavorite == %@", NSNumber(value: true))
   }
   
 }

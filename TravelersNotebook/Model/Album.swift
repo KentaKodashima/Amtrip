@@ -15,15 +15,15 @@ import RealmSwift
     case key, albumTitle, pages
   }
 
-  @objc dynamic let key = UUID().uuidString
+  @objc dynamic private var key = UUID().uuidString
   @objc dynamic private(set) var albumTitle: String = ""
   @objc dynamic private(set) var creationDate: String = ""
   var pages = List<Page>()
   var images = List<String>()
 
-//  override static func primaryKey() -> String? {
-//    return Album.Property.key.rawValue
-//  }
+  override static func primaryKey() -> String? {
+    return Album.Property.key.rawValue
+  }
 
   convenience init(albumTitle: String, creationDate: String) {
     self.init()
@@ -33,6 +33,6 @@ import RealmSwift
   }
   
   static func all(in realm: Realm = try! Realm()) -> Results<Album> {
-    return realm.objects(Album.self)//.sorted(byKeyPath: Album.Property.albumTitle.rawValue)
+    return realm.objects(Album.self)
   }
 }

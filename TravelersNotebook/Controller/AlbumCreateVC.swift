@@ -44,8 +44,6 @@ class AlbumCreateVC: UIViewController, UITextFieldDelegate {
     return true
   }
   
-  
-  
 }
 
 extension AlbumCreateVC: UITableViewDelegate, UITableViewDataSource {
@@ -71,7 +69,6 @@ extension AlbumCreateVC: UITableViewDelegate, UITableViewDataSource {
       let cell = sender as! UITableViewCell
       let index = albumTitleTable.indexPath(for: cell)
       if let indexPath = index?.row {
-        //tempString = testStrings[indexPath]
         tempString = albumTitles[indexPath]
       }
     }

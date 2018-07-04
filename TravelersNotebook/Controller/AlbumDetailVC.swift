@@ -11,6 +11,8 @@ import RealmSwift
 
 class AlbumDetailVC: UIViewController {
   
+  @IBOutlet weak var tableView: UITableView!
+  
   private var pages: Results<Page>?
   
   // Temporary properties for passing data to PageDetailVC
@@ -22,6 +24,7 @@ class AlbumDetailVC: UIViewController {
     super.viewDidLoad()
     
     pages = Page.pagesInAlbum(albumTitle: recievedAlbumTitle!)
+    tableView.tableFooterView = UIView(frame: .zero)
   }
 }
 
