@@ -30,9 +30,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let placeholderAttributes = [NSAttributedStringKey.foregroundColor: lightBrown, NSAttributedStringKey.font: UIFont(name: "Helvetica", size: 15)]
     let attributedPlaceholder = NSAttributedString(string: "Search", attributes: placeholderAttributes)
     UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = attributedPlaceholder
+    
+    
 
     // Tabbar appearance
     UITabBar.appearance().unselectedItemTintColor = UIColor.white
+    
+    // TableView selected cell's color
+    let backgroundColorView = UIView()
+    backgroundColorView.backgroundColor = lightBrown
+    UITableViewCell.appearance().selectedBackgroundView = backgroundColorView
+    UITableView.appearance().separatorColor = UIColor.lightGray
+    UITableView.appearance().separatorInset = .zero
     
     // Create an ImageStore
     let imageStore = ImageStore()

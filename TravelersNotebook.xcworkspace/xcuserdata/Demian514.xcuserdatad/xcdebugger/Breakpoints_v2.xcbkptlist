@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TravelersNotebook/Controller/CreateVC.swift"
-            timestampString = "552182316.059991"
+            timestampString = "552470592.2709759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "deleteCell(_:)"
             landmarkType = "7">
             <Locations>

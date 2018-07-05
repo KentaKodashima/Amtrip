@@ -114,7 +114,12 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     let acController = GMSAutocompleteViewController()
     acController.delegate = self
     let lightBrown: UIColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
+    let barBrown: UIColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
+    let darkBrown: UIColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
     acController.tableCellBackgroundColor = lightBrown
+    acController.primaryTextColor = darkBrown
+    acController.secondaryTextColor = darkBrown
+    acController.primaryTextHighlightColor = barBrown
     
     present(acController, animated: true, completion: nil)
   }
@@ -175,13 +180,13 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       
     } else {
       
-      let alert = UIAlertController(title: "There is an empty field", message: "Please try to fill out all the fields", preferredStyle: .alert)
+      let alert = UIAlertController(title: "Required field is empty.", message: "Please try to fill out all the fields.", preferredStyle: .alert)
       
       let defaultAction = UIAlertAction(
-        title: "OK", style: UIAlertActionStyle.default, handler:{
-          (action: UIAlertAction!) -> Void in
-          print("OK")
-      })
+        title: "OK",
+        style: UIAlertActionStyle.default,
+        handler: nil
+      )
       
       alert.addAction(defaultAction)
       
@@ -197,8 +202,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     case self.pageTitle.text?.isEmpty:
       isEmpty = true
     case self.dateField.text?.isEmpty:
-      isEmpty = true
-    case self.locationField.text?.isEmpty:
       isEmpty = true
     case self.bodyText.text?.isEmpty:
       isEmpty = true
