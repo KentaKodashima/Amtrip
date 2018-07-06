@@ -177,7 +177,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       
       // Reset data
       resetFields()
-      
     } else {
       
       let alert = UIAlertController(title: "Required field is empty.", message: "Please try to fill out all the fields.", preferredStyle: .alert)

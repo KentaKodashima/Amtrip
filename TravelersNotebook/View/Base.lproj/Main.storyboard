@@ -100,11 +100,11 @@
             <objects>
                 <viewController id="eMX-nJ-0MR" customClass="PageDetailVC" customModule="TravelersNotebook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kh3-mj-VWs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="887"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="ppk-5K-ljf">
-                                <rect key="frame" x="20" y="0.0" width="280" height="887"/>
+                                <rect key="frame" x="20" y="0.0" width="280" height="687"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="h4z-1F-yhx">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="669"/>
@@ -304,7 +304,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IxX-4o-FIT"/>
                     </view>
-                    <size key="freeformSize" width="320" height="1000"/>
+                    <size key="freeformSize" width="320" height="800"/>
                     <connections>
                         <outlet property="albumTitle" destination="1ha-l8-CR5" id="PYN-H1-3S0"/>
                         <outlet property="bodyText" destination="gU4-u0-7o9" id="omI-zT-bey"/>
@@ -315,22 +315,27 @@
                         <outlet property="pageControl" destination="ddA-72-IM9" id="4Us-Kj-dXJ"/>
                         <outlet property="pageTitle" destination="jyb-gb-u3f" id="qra-lE-3B9"/>
                         <outlet property="scrollView" destination="ppk-5K-ljf" id="mnw-F5-3J7"/>
+                        <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToFavoriteVC" unwindAction="unwindToFavoriteVCWithSegue:" id="p9s-PC-vjN"/>
+                        <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToAlbumDetailVC" unwindAction="unwindToAlbumDetailVCWithSegue:" id="hWd-VC-3AL"/>
+                        <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToAccountVC" unwindAction="unwindToAccountVCWithSegue:" id="jLh-LG-Elv"/>
+                        <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToSearchVC" unwindAction="unwindToSearchVCWithSegue:" id="7La-6v-Guc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwO-sz-gHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6tw-7H-d6O" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1196" y="4053"/>
+            <point key="canvasLocation" x="-1196" y="3791"/>
         </scene>
         <!--Create A New Page-->
         <scene sceneID="Z1u-B7-w5X">
             <objects>
                 <viewController storyboardIdentifier="CreateVC" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="bok-TP-Jqo" customClass="CreateVC" customModule="TravelersNotebook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yeA-Mz-EwM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="887"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="tcZ-sQ-zr1">
-                                <rect key="frame" x="20" y="0.0" width="280" height="887"/>
+                                <rect key="frame" x="20" y="0.0" width="280" height="687"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dUA-X4-ofW">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="564"/>
@@ -624,7 +629,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Create A New Page" id="q6G-BC-uia"/>
-                    <size key="freeformSize" width="320" height="1000"/>
+                    <size key="freeformSize" width="320" height="800"/>
                     <connections>
                         <outlet property="albumTitle" destination="nAq-7f-axA" id="c39-WL-NtR"/>
                         <outlet property="bodyText" destination="F0X-y7-JBp" id="CcV-4w-3Im"/>
@@ -640,7 +645,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJy-3Q-lbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="2706"/>
+            <point key="canvasLocation" x="302" y="2602"/>
         </scene>
         <!--Album CreateVC-->
         <scene sceneID="aqM-wF-8nu">
@@ -774,7 +779,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nr-0O-ewp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wRt-SC-6FU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="302" y="3825"/>
+            <point key="canvasLocation" x="302" y="3669"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="JBN-Az-5LX">

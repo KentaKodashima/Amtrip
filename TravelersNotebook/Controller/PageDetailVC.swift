@@ -23,12 +23,13 @@ class PageDetailVC: UIViewController {
   
   public var receivedImagesPath = List<String>()
   public var receivedPage: Page?
+  public var receivedViewControllerName: String?
   
   private var images = [UIImage]()
   private var image: UIImage?
 
-  
   private var favoriteButton = UIBarButtonItem()
+  private var multiFuncButton = UIButton()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -48,10 +49,16 @@ class PageDetailVC: UIViewController {
       target: self,
       action: #selector(favoriteButtonTapped)
     )
-    self.navigationItem.setRightBarButton(favoriteButton, animated: true)
     if receivedPage?.isFavorite == true {
       favoriteButton.tintColor = #colorLiteral(red: 1, green: 0.5409764051, blue: 0.8473142982, alpha: 1)
     }
+    
+    multiFuncButton = UIButton(type: .custom)
+    multiFuncButton.setImage(UIImage(named: "Meatball Menu"), for: .normal)
+    multiFuncButton.addTarget(self, action: #selector(multiFuncButtonTapped), for: .touchUpInside)
+    multiFuncButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+    let multiFuncBarButton = UIBarButtonItem(customView: multiFuncButton)
+    self.navigationItem.setRightBarButtonItems([multiFuncBarButton, favoriteButton], animated: true)
     
     imageCollection.isHidden = true
     pageControl.hidesForSinglePage = true
@@ -88,6 +95,32 @@ class PageDetailVC: UIViewController {
       self.image = UIImage(contentsOfFile: filePath)
       images.append(self.image!)
     }
+  }
+  
+  @objc private func multiFuncButtonTapped() {
+    
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    let editButton = UIAlertAction(title: "Edit", style: .default) { (action: UIAlertAction) in
+      
+    }
+    let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    let deleteButton = UIAlertAction(title: "Delete", style: .destructive) { (action: UIAlertAction) in
+      
+      if self.receivedViewControllerName == "SearchVC" {
+        self.performSegue(withIdentifier: "unwindToSearchVC", sender: self)
+      } else if self.receivedViewControllerName == "FavoriteVC" {
+        self.performSegue(withIdentifier: "unwindToFavoriteVC", sender: self)
+      } else if self.receivedViewControllerName == "AlbumDetailVC"{
+        self.performSegue(withIdentifier: "unwindToAlbumDetailVC", sender: self)
+      } else {
+        self.performSegue(withIdentifier: "unwindToAccountVC", sender: self)
+      }
+    }
+    
+    alert.addAction(editButton)
+    alert.addAction(cancelButton)
+    alert.addAction(deleteButton)
+    present(alert, animated: true, completion: nil)
   }
   
   @objc private func favoriteButtonTapped() {

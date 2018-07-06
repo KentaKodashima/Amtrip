@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TravelersNotebook/Controller/CreateVC.swift"
-            timestampString = "552470592.2709759"
+            timestampString = "552557575.580791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
             landmarkName = "deleteCell(_:)"
             landmarkType = "7">
             <Locations>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TravelersNotebook/Controller/PageDetailVC.swift"
-            timestampString = "552433274.608873"
+            timestampString = "552557915.356751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "favoriteButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>

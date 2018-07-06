@@ -43,7 +43,8 @@ class AccountVC: UIViewController {
     self.tableView.reloadData()
   }
   
-  
+  // Unwind segue from PageDetailVC
+  @IBAction func unwindToAccountVC(segue: UIStoryboardSegue) {}
 }
 
 extension AccountVC: UITableViewDelegate, UITableViewDataSource {
@@ -163,6 +164,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       let pageDetailVC = segue.destination as! PageDetailVC
       pageDetailVC.receivedPage = pageToPass
       pageDetailVC.receivedImagesPath = imagesToPass
+      pageDetailVC.receivedViewControllerName = "AccountVC"
     } else {
       let albumDetailVC = segue.destination as! AlbumDetailVC
       albumDetailVC.recievedAlbumTitle = albumTitleToPass

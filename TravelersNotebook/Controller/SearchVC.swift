@@ -46,6 +46,9 @@ class SearchVC: UIViewController {
     
     tableView.reloadData()
   }
+  
+  // Unwind segue from PageDetailVC
+  @IBAction func unwindToSearchVC(segue: UIStoryboardSegue) {}
 }
 
 extension SearchVC: UISearchBarDelegate {
@@ -125,6 +128,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
       
       pageDetailVC.receivedPage = pageToPass
       pageDetailVC.receivedImagesPath = imagesToPass
+      pageDetailVC.receivedViewControllerName = "SearchVC"
     }
   }
 }

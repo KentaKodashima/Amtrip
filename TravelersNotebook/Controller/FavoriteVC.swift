@@ -41,6 +41,9 @@ class FavoriteVC: UIViewController {
     tableView.reloadData()
     tableView.tableFooterView = UIView(frame: .zero)
   }
+  
+  // Unwind segue from PageDetailVC
+  @IBAction func unwindToFavoriteVC(segue: UIStoryboardSegue) {}
 }
 
 extension FavoriteVC: UISearchBarDelegate {
@@ -116,6 +119,7 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
       
       pageDetailVC.receivedPage = pageToPass
       pageDetailVC.receivedImagesPath = imagesToPass
+      pageDetailVC.receivedViewControllerName = "FavoriteVC"
     }
   }
 }

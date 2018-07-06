@@ -29,6 +29,9 @@ class AlbumDetailVC: UIViewController {
     navigationItem.title = "Album Detail"
     navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura", size: 22)]
   }
+  
+  // Unwind segue from PageDetailVC
+  @IBAction func unwindToAlbumDetailVC(segue: UIStoryboardSegue) {}
 }
 
 extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
@@ -90,6 +93,7 @@ extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
 
       pageDetailVC.receivedPage = pageToPass
       pageDetailVC.receivedImagesPath = imagesToPass
+      pageDetailVC.receivedViewControllerName = "AlbumDetailVC"
     }
   }
   
