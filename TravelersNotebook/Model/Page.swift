@@ -16,12 +16,13 @@ import RealmSwift
     case key, albumTitle, pageTitle, date, location, bodyText, images
   }
 
-  @objc dynamic private var key = UUID().uuidString
+  @objc dynamic private(set) var key = UUID().uuidString
   @objc dynamic private(set) var albumTitle: String = ""
   @objc dynamic private(set) var pageTitle: String = ""
   @objc dynamic private(set) var date: String = ""
   @objc dynamic private(set) var location: String = ""
   @objc dynamic private(set) var bodyText: String = ""
+  @objc dynamic public var whatAlbumToBelong: String = ""
   @objc dynamic public var isFavorite: Bool = false
   var images = List<String>()
 

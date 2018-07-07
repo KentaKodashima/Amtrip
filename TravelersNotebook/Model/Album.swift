@@ -15,7 +15,7 @@ import RealmSwift
     case key, albumTitle, pages
   }
 
-  @objc dynamic private var key = UUID().uuidString
+  @objc dynamic private(set) var key = UUID().uuidString
   @objc dynamic private(set) var albumTitle: String = ""
   @objc dynamic private(set) var creationDate: String = ""
   var pages = List<Page>()
@@ -34,5 +34,9 @@ import RealmSwift
   
   static func all(in realm: Realm = try! Realm()) -> Results<Album> {
     return realm.objects(Album.self)
+  }
+  
+  static func albumWithTheKey(albumKey: String, in realm: Realm = try! Realm()) -> Album {
+    return realm.object(ofType: Album.self, forPrimaryKey: albumKey)!
   }
 }

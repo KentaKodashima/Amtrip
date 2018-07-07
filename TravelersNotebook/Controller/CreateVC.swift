@@ -167,6 +167,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         try! realm.write {
           realm.add(page)
           realm.add(album)
+          page.whatAlbumToBelong = album.key
         }
       } else {
         try! realm.write {

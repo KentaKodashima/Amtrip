@@ -17,6 +17,7 @@ class HomeVC: UIViewController {
   private var image: UIImage?
   private var images = [UIImage]()
   var albumTitleToPass: String?
+  var albumToPass: Album?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -41,6 +42,10 @@ class HomeVC: UIViewController {
     layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     layout.scrollDirection = .vertical
     albumCollection.collectionViewLayout = layout
+  }
+  
+  @IBAction func unwindToHomeVC(segue: UIStoryboardSegue) {
+    albumCollection.reloadData()
   }
 }
 
@@ -113,6 +118,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     let album = albums?[indexPath.row]
 
     albumTitleToPass = album?.albumTitle
+    albumToPass = album
     
     self.performSegue(withIdentifier: "toAlbumDetail", sender: Any.self)
   }
@@ -121,6 +127,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     if segue.identifier == "toAlbumDetail" {
       let albumDetailVC = segue.destination as! AlbumDetailVC
       albumDetailVC.recievedAlbumTitle = albumTitleToPass
+      albumDetailVC.recievedAlbum = albumToPass
     }
   }
 }

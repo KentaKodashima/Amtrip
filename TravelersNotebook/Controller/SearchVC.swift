@@ -19,6 +19,7 @@ class SearchVC: UIViewController {
   // Temporary properties for passing data to PageDetailVC
   var imagesToPass = List<String>()
   var pageToPass: Page?
+  var albumToPass: Album?
   
   // Data for the tableView
   var cellCount = 0
@@ -48,7 +49,9 @@ class SearchVC: UIViewController {
   }
   
   // Unwind segue from PageDetailVC
-  @IBAction func unwindToSearchVC(segue: UIStoryboardSegue) {}
+  @IBAction func unwindToSearchVC(segue: UIStoryboardSegue) {
+    tableView.reloadData()
+  }
 }
 
 extension SearchVC: UISearchBarDelegate {
@@ -113,11 +116,13 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     let page = pages?[indexPath.row]
-    
     pageToPass = page
     if page?.images != nil {
       imagesToPass = page!.images
     }
+    
+    albumToPass = Album.albumWithTheKey(albumKey: page!.whatAlbumToBelong)
+    
     
     self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
   }
@@ -129,6 +134,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
       pageDetailVC.receivedPage = pageToPass
       pageDetailVC.receivedImagesPath = imagesToPass
       pageDetailVC.receivedViewControllerName = "SearchVC"
+      pageDetailVC.receivedAlbum = albumToPass
     }
   }
 }

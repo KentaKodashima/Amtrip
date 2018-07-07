@@ -36,6 +36,7 @@ class AlbumCreateVC: UIViewController, UITextFieldDelegate {
   @IBAction func createButtonTapped(_ sender: UIButton) {
     if let albumTitleFieldText = albumTitleField.text {
       albumTitles.append(albumTitleFieldText)
+      print(albumTitles.count)
     }
   }
   

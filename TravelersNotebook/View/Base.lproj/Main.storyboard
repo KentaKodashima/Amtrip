@@ -319,6 +319,7 @@
                         <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToAlbumDetailVC" unwindAction="unwindToAlbumDetailVCWithSegue:" id="hWd-VC-3AL"/>
                         <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToAccountVC" unwindAction="unwindToAccountVCWithSegue:" id="jLh-LG-Elv"/>
                         <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToSearchVC" unwindAction="unwindToSearchVCWithSegue:" id="7La-6v-Guc"/>
+                        <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeVCWithSegue:" id="iZT-Am-bd0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwO-sz-gHp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -17,7 +17,9 @@ class AlbumDetailVC: UIViewController {
   
   // Temporary properties for passing data to PageDetailVC
   var recievedAlbumTitle: String?
+  var recievedAlbum: Album?
   var pageToPass: Page?
+  
   var imagesToPass = List<String>()
   
   override func viewDidLoad() {
@@ -31,7 +33,9 @@ class AlbumDetailVC: UIViewController {
   }
   
   // Unwind segue from PageDetailVC
-  @IBAction func unwindToAlbumDetailVC(segue: UIStoryboardSegue) {}
+  @IBAction func unwindToAlbumDetailVC(segue: UIStoryboardSegue) {
+    tableView.reloadData()
+  }
 }
 
 extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
@@ -94,6 +98,7 @@ extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
       pageDetailVC.receivedPage = pageToPass
       pageDetailVC.receivedImagesPath = imagesToPass
       pageDetailVC.receivedViewControllerName = "AlbumDetailVC"
+      pageDetailVC.receivedAlbum = self.recievedAlbum
     }
   }
   

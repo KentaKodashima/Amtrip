@@ -18,6 +18,7 @@ class FavoriteVC: UIViewController {
   
   var imagesToPass = List<String>()
   var pageToPass: Page?
+  var albumToPass: Album?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,7 +44,9 @@ class FavoriteVC: UIViewController {
   }
   
   // Unwind segue from PageDetailVC
-  @IBAction func unwindToFavoriteVC(segue: UIStoryboardSegue) {}
+  @IBAction func unwindToFavoriteVC(segue: UIStoryboardSegue) {
+    tableView.reloadData()
+  }
 }
 
 extension FavoriteVC: UISearchBarDelegate {
@@ -104,11 +107,12 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     let page = pages?[indexPath.row]
-    
     pageToPass = page
     if page?.images != nil {
       imagesToPass = page!.images
     }
+    
+    albumToPass = Album.albumWithTheKey(albumKey: page!.whatAlbumToBelong)
     
     self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
   }
@@ -120,6 +124,7 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
       pageDetailVC.receivedPage = pageToPass
       pageDetailVC.receivedImagesPath = imagesToPass
       pageDetailVC.receivedViewControllerName = "FavoriteVC"
+      pageDetailVC.receivedAlbum = albumToPass
     }
   }
 }

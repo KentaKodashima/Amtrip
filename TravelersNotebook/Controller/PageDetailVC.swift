@@ -24,6 +24,7 @@ class PageDetailVC: UIViewController {
   public var receivedImagesPath = List<String>()
   public var receivedPage: Page?
   public var receivedViewControllerName: String?
+  public var receivedAlbum: Album?
   
   private var images = [UIImage]()
   private var image: UIImage?
@@ -106,6 +107,8 @@ class PageDetailVC: UIViewController {
     let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     let deleteButton = UIAlertAction(title: "Delete", style: .destructive) { (action: UIAlertAction) in
       
+      self.deletePageFromRealm()
+      
       if self.receivedViewControllerName == "SearchVC" {
         self.performSegue(withIdentifier: "unwindToSearchVC", sender: self)
       } else if self.receivedViewControllerName == "FavoriteVC" {
@@ -136,6 +139,37 @@ class PageDetailVC: UIViewController {
       try! realm.write {
         receivedPage?.isFavorite = false
         favoriteButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+      }
+    }
+  }
+  
+  private func deletePageFromRealm() {
+    
+    let realm = try! Realm()
+    let primaryKeyForPage = receivedPage?.key
+    let primaryKeyForAlbum = receivedAlbum?.key
+    let page = realm.object(ofType: Page.self, forPrimaryKey: primaryKeyForPage)
+    let album = realm.object(ofType: Album.self, forPrimaryKey: primaryKeyForAlbum)
+    
+    // Delete file from the document directory
+    let filemanager = FileManager.default
+    let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let documentPath = documentsURL.path
+    if page?.images != nil {
+      for image in (page?.images)! {
+        let filePath = documentPath + "/" + image
+        if filemanager.fileExists(atPath: filePath) {
+          try! filemanager.removeItem(atPath: filePath)
+        }
+      }
+    }
+    
+    try! realm.write {
+      realm.delete(page!)
+      
+      if album?.pages.count == 0 {
+        realm.delete(album!)
+        self.performSegue(withIdentifier: "unwindToHome", sender: self)
       }
     }
   }

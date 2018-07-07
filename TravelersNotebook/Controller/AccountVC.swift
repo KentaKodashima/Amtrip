@@ -22,6 +22,7 @@ class AccountVC: UIViewController {
   // Temporary properties for passing data to PageDetailVC
   var albumTitleToPass: String?
   var pageToPass: Page?
+  var albumToPass: Album?
   var imagesToPass = List<String>()
   
   override func viewDidLoad() {
@@ -44,7 +45,9 @@ class AccountVC: UIViewController {
   }
   
   // Unwind segue from PageDetailVC
-  @IBAction func unwindToAccountVC(segue: UIStoryboardSegue) {}
+  @IBAction func unwindToAccountVC(segue: UIStoryboardSegue) {
+    tableView.reloadData()
+  }
 }
 
 extension AccountVC: UITableViewDelegate, UITableViewDataSource {
@@ -142,6 +145,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       let album = albums?[indexPath.row]
       
       albumTitleToPass = album?.albumTitle
+      albumToPass = album
       
       self.performSegue(withIdentifier: "toAlbumDetail", sender: Any.self)
     } else {
@@ -152,6 +156,8 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       if page?.images != nil {
         imagesToPass = page!.images
       }
+      
+      albumToPass = Album.albumWithTheKey(albumKey: page!.whatAlbumToBelong)
       
       self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
     }
@@ -165,9 +171,11 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       pageDetailVC.receivedPage = pageToPass
       pageDetailVC.receivedImagesPath = imagesToPass
       pageDetailVC.receivedViewControllerName = "AccountVC"
+      pageDetailVC.receivedAlbum = albumToPass
     } else {
       let albumDetailVC = segue.destination as! AlbumDetailVC
       albumDetailVC.recievedAlbumTitle = albumTitleToPass
+      albumDetailVC.recievedAlbum = albumToPass
     }
   }
 }
