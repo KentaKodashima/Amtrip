@@ -107,7 +107,7 @@ class PageDetailVC: UIViewController {
     
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     let editButton = UIAlertAction(title: "Edit", style: .default) { (action: UIAlertAction) in
-      self.performSegue(withIdentifier: "toEditVC", sender: self)
+      self.performSegue(withIdentifier: "toCreateVCtoEdit", sender: self)
     }
     let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     let deleteButton = UIAlertAction(title: "Delete", style: .destructive) { (action: UIAlertAction) in
