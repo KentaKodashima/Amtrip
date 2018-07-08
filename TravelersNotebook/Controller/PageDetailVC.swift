@@ -86,6 +86,11 @@ class PageDetailVC: UIViewController {
     imageCollection.collectionViewLayout = layout
   }
   
+  // Unwind segue from PageDetailVC
+  @IBAction func unwindToPageDetailVC(segue: UIStoryboardSegue) {
+    
+  }
+  
   private func fetchImage() {
     
     let filemanager = FileManager.default

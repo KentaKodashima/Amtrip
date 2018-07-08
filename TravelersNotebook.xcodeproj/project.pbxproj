@@ -20,6 +20,7 @@
 		ED3F83E0207C761600250AA2 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F83D9207C761600250AA2 /* AccountVC.swift */; };
 		ED3F83E3207C763700250AA2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F83E2207C763700250AA2 /* Album.swift */; };
 		ED454F9220DC7E93009E1AC2 /* AlbumThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED454F9120DC7E93009E1AC2 /* AlbumThumbnailCell.swift */; };
+		ED5BB77220F1F62F007B061E /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BB77120F1F62F007B061E /* EditVC.swift */; };
 		ED6B930520844EF1003222A2 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B930420844EF1003222A2 /* ImageStore.swift */; };
 		ED7A95812082EF8600801583 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7A95802082EF8600801583 /* Page.swift */; };
 		ED7A95872082F94B00801583 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7A95862082F94B00801583 /* ImageCell.swift */; };
@@ -50,6 +51,7 @@
 		ED3F83D9207C761600250AA2 /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		ED3F83E2207C763700250AA2 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		ED454F9120DC7E93009E1AC2 /* AlbumThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumThumbnailCell.swift; sourceTree = "<group>"; };
+		ED5BB77120F1F62F007B061E /* EditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		ED5CF8B9207E5E790017E8E0 /* TravelersNotebook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TravelersNotebook.entitlements; sourceTree = "<group>"; };
 		ED6B930420844EF1003222A2 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		ED7A95802082EF8600801583 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				ED2B5C4720C835760070E025 /* PageDetailVC.swift */,
 				EDDD823920D1E437004773D0 /* AlbumDetailVC.swift */,
 				ED00C47920B64AB2006B780E /* LoginVC.swift */,
+				ED5BB77120F1F62F007B061E /* EditVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				EDFE574E20BA99E700B82FE2 /* AlbumCreateVC.swift in Sources */,
 				EDB9F27F20B1024500D656FB /* PageCell.swift in Sources */,
 				EDDD823A20D1E437004773D0 /* AlbumDetailVC.swift in Sources */,
+				ED5BB77220F1F62F007B061E /* EditVC.swift in Sources */,
 				ED3F83DE207C761600250AA2 /* FavoriteVC.swift in Sources */,
 				ED00C47A20B64AB2006B780E /* LoginVC.swift in Sources */,
 				ED3F83E0207C761600250AA2 /* AccountVC.swift in Sources */,
