@@ -107,7 +107,7 @@ class PageDetailVC: UIViewController {
     
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     let editButton = UIAlertAction(title: "Edit", style: .default) { (action: UIAlertAction) in
-      
+      self.performSegue(withIdentifier: "toEditVC", sender: self)
     }
     let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     let deleteButton = UIAlertAction(title: "Delete", style: .destructive) { (action: UIAlertAction) in
@@ -129,6 +129,13 @@ class PageDetailVC: UIViewController {
     alert.addAction(cancelButton)
     alert.addAction(deleteButton)
     present(alert, animated: true, completion: nil)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toEditVC" {
+      let editVC = segue.destination as! EditVC
+      editVC.receivedPage = self.receivedPage
+    }
   }
   
   @objc private func favoriteButtonTapped() {

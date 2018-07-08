@@ -320,7 +320,7 @@
                         <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToAccountVC" unwindAction="unwindToAccountVCWithSegue:" id="jLh-LG-Elv"/>
                         <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToSearchVC" unwindAction="unwindToSearchVCWithSegue:" id="7La-6v-Guc"/>
                         <segue destination="6tw-7H-d6O" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeVCWithSegue:" id="iZT-Am-bd0"/>
-                        <segue destination="iE3-Az-ngQ" kind="presentation" id="piE-yK-lcO"/>
+                        <segue destination="iE3-Az-ngQ" kind="presentation" identifier="toEditVC" id="piE-yK-lcO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwO-sz-gHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -331,7 +331,6 @@
         <!--EditVC-->
         <scene sceneID="glx-2T-1Uq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bsg-31-Sm9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="9A2-NC-bSj" customClass="EditVC" customModule="TravelersNotebook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2LV-oh-5rq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
@@ -611,6 +610,7 @@
                     <navigationItem key="navigationItem" id="0IN-St-LnP"/>
                     <size key="freeformSize" width="320" height="1000"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bsg-31-Sm9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-198.75" y="4681.6901408450703"/>
         </scene>
