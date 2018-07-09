@@ -20,7 +20,7 @@ class PageDetailVC: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pageControl: UIPageControl!
   @IBOutlet weak var imageCollectionHeight: NSLayoutConstraint!
-  
+
   public var receivedImagesPath = List<String>()
   public var receivedPage: Page?
   public var receivedViewControllerName: String?
@@ -44,29 +44,10 @@ class PageDetailVC: UIViewController {
     let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
     scrollView.contentInset = edgeInsets
     
-    favoriteButton = UIBarButtonItem(
-      image: #imageLiteral(resourceName: "Heart"),
-      style: .plain,
-      target: self,
-      action: #selector(favoriteButtonTapped)
-    )
-    if receivedPage?.isFavorite == true {
-      favoriteButton.tintColor = #colorLiteral(red: 1, green: 0.5409764051, blue: 0.8473142982, alpha: 1)
-    }
-    
-    multiFuncButton = UIButton(type: .custom)
-    multiFuncButton.setImage(UIImage(named: "Meatball Menu"), for: .normal)
-    multiFuncButton.addTarget(self, action: #selector(multiFuncButtonTapped), for: .touchUpInside)
-    multiFuncButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-    let multiFuncBarButton = UIBarButtonItem(customView: multiFuncButton)
-    self.navigationItem.setRightBarButtonItems([multiFuncBarButton, favoriteButton], animated: true)
-    
     imageCollection.isHidden = true
     pageControl.hidesForSinglePage = true
     
-    navigationItem.title = receivedPage?.pageTitle
-    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura", size: 22)]
-    
+    setNavbar()
     fetchImage()
   }
   
@@ -91,6 +72,28 @@ class PageDetailVC: UIViewController {
     
   }
   
+  private func setNavbar() {
+    favoriteButton = UIBarButtonItem(
+      image: #imageLiteral(resourceName: "Heart"),
+      style: .plain,
+      target: self,
+      action: #selector(favoriteButtonTapped)
+    )
+    if receivedPage?.isFavorite == true {
+      favoriteButton.tintColor = #colorLiteral(red: 1, green: 0.5409764051, blue: 0.8473142982, alpha: 1)
+    }
+    
+    multiFuncButton = UIButton(type: .custom)
+    multiFuncButton.setImage(UIImage(named: "Meatball Menu"), for: .normal)
+    multiFuncButton.addTarget(self, action: #selector(multiFuncButtonTapped), for: .touchUpInside)
+    multiFuncButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+    let multiFuncBarButton = UIBarButtonItem(customView: multiFuncButton)
+    self.navigationItem.setRightBarButtonItems([multiFuncBarButton, favoriteButton], animated: true)
+    
+    navigationItem.title = receivedPage?.pageTitle
+    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura", size: 22)]
+  }
+  
   private func fetchImage() {
     
     let filemanager = FileManager.default
@@ -107,7 +110,7 @@ class PageDetailVC: UIViewController {
     
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     let editButton = UIAlertAction(title: "Edit", style: .default) { (action: UIAlertAction) in
-      self.performSegue(withIdentifier: "toCreateVCtoEdit", sender: self)
+      self.performSegue(withIdentifier: "toCreateVCToEdit", sender: self)
     }
     let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     let deleteButton = UIAlertAction(title: "Delete", style: .destructive) { (action: UIAlertAction) in
@@ -132,9 +135,11 @@ class PageDetailVC: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "toEditVC" {
-      let editVC = segue.destination as! EditVC
-      editVC.receivedPage = self.receivedPage
+    if segue.identifier == "toCreateVCToEdit" {
+      let navigationController = segue.destination as! UINavigationController
+      let createVC = navigationController.topViewController as! CreateVC
+      createVC.receivedPage = self.receivedPage
+      createVC.isSegueFromPageDetailVC = true
     }
   }
   

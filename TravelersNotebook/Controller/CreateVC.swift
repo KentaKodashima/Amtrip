@@ -20,11 +20,16 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   @IBOutlet weak var imageCollection: UICollectionView!
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var frameStack: UIStackView!
+  @IBOutlet weak var saveButton: UIButton!
   
+  public var isSegueFromPageDetailVC = false
   public var imageStore: ImageStore!
+  public var receivedPage: Page?
+  
+  private var doneButton = UIBarButtonItem()
+  
   private var images = [UIImage]()
   private var selectedImage: UIImage?
-  
   private var imageData: Data?
   private var imagesData = [Data]()
   private var imageNames = [String]()
@@ -48,6 +53,23 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     // Make a little space at top and bottom of the UIScrollView
     let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
     scrollView.contentInset = edgeInsets
+    
+    if isSegueFromPageDetailVC == true {
+      doneButton = UIBarButtonItem(
+        barButtonSystemItem: .done,
+        target: self,
+        action: #selector(doneButtonTapped(_:))
+      )
+      self.navigationItem.setRightBarButton(doneButton, animated: true)
+      
+      albumTitle.text = receivedPage?.albumTitle
+      pageTitle.text = receivedPage?.pageTitle
+      dateField.text = receivedPage?.date
+      locationField.text = receivedPage?.location
+      bodyText.text = receivedPage?.bodyText
+      
+      fetchImage()
+    }
   }
   
   override func viewDidLayoutSubviews() {
@@ -142,10 +164,24 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     dateField.text = dateFormatter.string(from: sender.date)
   }
   
+  @objc func doneButtonTapped(_ sender: UIBarButtonItem) {
+    let realm = try! Realm()
+    let page = realm.object(ofType: Page.self, forPrimaryKey: receivedPage?.key)
+  }
+  
+  private func fetchImage() {
+    let filemanager = FileManager.default
+    let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    
+    for imagePath in (receivedPage?.images)! {
+      let filePath = documentsURL.appendingPathComponent(imagePath).path
+      self.selectedImage = UIImage(contentsOfFile: filePath)
+      images.append(self.selectedImage!)
+    }
+  }
+  
   @IBAction func saveButtonTapped(_ sender: UIButton) {
-
     if isPropertyEmpty() {
-      
       let page = Page(
         albumTitle: self.albumTitle.text!,
         pageTitle: self.pageTitle.text!,
