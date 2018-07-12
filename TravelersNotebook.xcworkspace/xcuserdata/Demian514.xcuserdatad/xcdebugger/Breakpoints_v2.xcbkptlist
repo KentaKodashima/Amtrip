@@ -13,5 +13,69 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelersNotebook/Controller/HomeVC.swift"
+            timestampString = "552862641.4707561"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelersNotebook/Controller/CreateVC.swift"
+            timestampString = "552862641.471212"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
+            landmarkName = "deleteCell(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TravelersNotebook.CreateVC.deleteCell(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "TravelersNotebook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Controller/CreateVC.swift"
+                  timestampString = "552862641.509035"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "393"
+                  endingLineNumber = "393"
+                  offsetFromSymbolStart = "2215">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TravelersNotebook.CreateVC.deleteCell(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "TravelersNotebook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Controller/CreateVC.swift"
+                  timestampString = "552862641.512404"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "393"
+                  endingLineNumber = "393"
+                  offsetFromSymbolStart = "4675">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -17,11 +17,11 @@ import RealmSwift
   }
 
   @objc dynamic private(set) var key = UUID().uuidString
-  @objc dynamic private(set) var albumTitle: String = ""
-  @objc dynamic private(set) var pageTitle: String = ""
-  @objc dynamic private(set) var date: String = ""
-  @objc dynamic private(set) var location: String = ""
-  @objc dynamic private(set) var bodyText: String = ""
+  @objc dynamic public var albumTitle: String = ""
+  @objc dynamic public var pageTitle: String = ""
+  @objc dynamic public var date: String = ""
+  @objc dynamic public var location: String = ""
+  @objc dynamic public var bodyText: String = ""
   @objc dynamic public var whatAlbumToBelong: String = ""
   @objc dynamic public var isFavorite: Bool = false
   var images = List<String>()

@@ -167,6 +167,21 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   @objc func doneButtonTapped(_ sender: UIBarButtonItem) {
     let realm = try! Realm()
     let page = realm.object(ofType: Page.self, forPrimaryKey: receivedPage?.key)
+    let existingAlbum = realm.objects(Album.self).filter("albumTitle == '\(page?.albumTitle)'")
+    
+    try! realm.write {
+      page?.albumTitle = albumTitle.text!
+      page?.pageTitle = pageTitle.text!
+      page?.date = dateField.text!
+      page?.location = locationField.text!
+      page?.bodyText = bodyText.text
+      print(imageNames)
+      page?.images.removeAll()
+      page?.images.append(objectsIn: self.imageNames)
+      existingAlbum.first?.images.removeAll()
+      existingAlbum.first?.images.append(objectsIn: self.imageNames)
+    }
+    dismiss(animated: true, completion: nil)
   }
   
   private func fetchImage() {
@@ -174,6 +189,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     for imagePath in (receivedPage?.images)! {
+      imageNames.append(imagePath)
       let filePath = documentsURL.appendingPathComponent(imagePath).path
       self.selectedImage = UIImage(contentsOfFile: filePath)
       images.append(self.selectedImage!)
@@ -294,7 +310,8 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
   @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     
     // Get picked image from info directory
-    let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+    //let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+    let image = info[UIImagePickerControllerEditedImage] as! UIImage
     
     // Put that image on the screen in the image view
     selectedImage = image
@@ -368,6 +385,7 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     let documentPath = documentsURL.path
     let filePath = documentPath + "/" + imageNames[(index?.item)!]
+    
     if filemanager.fileExists(atPath: filePath) {
       try! filemanager.removeItem(atPath: filePath)
     }
