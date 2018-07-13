@@ -67,9 +67,13 @@ class PageDetailVC: UIViewController {
     imageCollection.collectionViewLayout = layout
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    imageCollection.reloadData()
+  }
+  
   // Unwind segue from PageDetailVC
   @IBAction func unwindToPageDetailVC(segue: UIStoryboardSegue) {
-    
+    imageCollection.reloadData()
   }
   
   private func setNavbar() {
@@ -139,6 +143,7 @@ class PageDetailVC: UIViewController {
       let navigationController = segue.destination as! UINavigationController
       let createVC = navigationController.topViewController as! CreateVC
       createVC.receivedPage = self.receivedPage
+      createVC.receivedAlbum = self.receivedAlbum
       createVC.isSegueFromPageDetailVC = true
     }
   }

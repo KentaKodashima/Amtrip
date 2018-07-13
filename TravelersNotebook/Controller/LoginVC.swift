@@ -14,10 +14,10 @@ class LoginVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    touchIdAuthentication()
+    biometricsIdAuthentication()
   }
   
-  func touchIdAuthentication() {
+  func biometricsIdAuthentication() {
     let context = LAContext()
     let reason = "Unlock"
     var authError: NSError?

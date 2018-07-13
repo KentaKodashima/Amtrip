@@ -25,6 +25,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   public var isSegueFromPageDetailVC = false
   public var imageStore: ImageStore!
   public var receivedPage: Page?
+  public var receivedAlbum: Album?
   
   private var doneButton = UIBarButtonItem()
   
@@ -393,6 +394,15 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     images.remove(at: (index?.item)!)
     imageNames.remove(at: (index?.item)!)
     imageCollection.deleteItems(at: [index!])
+    
+    if isSegueFromPageDetailVC == true {
+      let realm = try! Realm()
+      try! realm.write {
+        receivedAlbum?.images.remove(at: (index?.item)!)
+      }
+    }
+    
+    // if segue from PageDeatilVC, delete the picture from the Album
     
     // Hide collectionview when the cell count is 0
     guard images.count > 0 else {

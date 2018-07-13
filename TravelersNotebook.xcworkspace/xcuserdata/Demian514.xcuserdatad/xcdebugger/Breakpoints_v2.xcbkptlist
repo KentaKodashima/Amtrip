@@ -19,28 +19,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TravelersNotebook/Controller/HomeVC.swift"
-            timestampString = "552862641.4707561"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TravelersNotebook/Controller/CreateVC.swift"
-            timestampString = "552862641.471212"
+            timestampString = "553130796.546348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "deleteCell(_:)"
             landmarkType = "7">
             <Locations>
@@ -52,12 +36,12 @@
                   moduleName = "TravelersNotebook"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Controller/CreateVC.swift"
-                  timestampString = "552862641.509035"
+                  timestampString = "553209469.767403"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "393"
-                  endingLineNumber = "393"
-                  offsetFromSymbolStart = "2215">
+                  startingLineNumber = "394"
+                  endingLineNumber = "394"
+                  offsetFromSymbolStart = "1712">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,14 +51,30 @@
                   moduleName = "TravelersNotebook"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Controller/CreateVC.swift"
-                  timestampString = "552862641.512404"
+                  timestampString = "553209469.7704279"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "393"
-                  endingLineNumber = "393"
-                  offsetFromSymbolStart = "4675">
+                  startingLineNumber = "394"
+                  endingLineNumber = "394"
+                  offsetFromSymbolStart = "3760">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelersNotebook/Controller/HomeVC.swift"
+            timestampString = "553199913.190118"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
