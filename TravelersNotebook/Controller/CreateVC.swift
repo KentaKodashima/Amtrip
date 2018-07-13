@@ -422,8 +422,19 @@ extension CreateVC: GMSAutocompleteViewControllerDelegate {
   }
   
   func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-    // TODO: handle the error.
-    print("Error: ", error.localizedDescription)
+    // Handle the error.
+    let alert = UIAlertController(
+      title: "Something went wrong!",
+      message: "Please make sure the internet connection.",
+      preferredStyle: .alert
+    )
+    let defaultAction = UIAlertAction(
+      title: "OK",
+      style: UIAlertActionStyle.default,
+      handler: nil
+    )
+    alert.addAction(defaultAction)
+    present(alert, animated: true, completion: nil)
   }
   
   // User canceled the operation.

@@ -16,54 +16,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TravelersNotebook/Controller/CreateVC.swift"
-            timestampString = "553130796.546348"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
-            landmarkName = "deleteCell(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TravelersNotebook.CreateVC.deleteCell(__ObjC.UIButton) -&gt; ()"
-                  moduleName = "TravelersNotebook"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Controller/CreateVC.swift"
-                  timestampString = "553209469.767403"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "394"
-                  endingLineNumber = "394"
-                  offsetFromSymbolStart = "1712">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TravelersNotebook.CreateVC.deleteCell(__ObjC.UIButton) -&gt; ()"
-                  moduleName = "TravelersNotebook"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Demian514/Documents/dev/app/ios/TravelersNotebook/project/TravelersNotebook/TravelersNotebook/Controller/CreateVC.swift"
-                  timestampString = "553209469.7704279"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "394"
-                  endingLineNumber = "394"
-                  offsetFromSymbolStart = "3760">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
