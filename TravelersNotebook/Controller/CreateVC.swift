@@ -286,6 +286,8 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
   // Open up device's camera
   @IBAction func takePicture(_ sender: UIButton) {
     let imagePicker = UIImagePickerController()
+    imagePicker.navigationBar.isTranslucent = false
+    imagePicker.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura-Medium", size: 22)]
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
       imagePicker.sourceType = .camera
     } else {
@@ -301,6 +303,8 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
   // Open up device's camera
   @IBAction func pickPicture(_ sender: UIButton) {
     let imagePicker = UIImagePickerController()
+    imagePicker.navigationBar.isTranslucent = false
+    imagePicker.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura-Medium", size: 22)]
     imagePicker.sourceType = .photoLibrary
     imagePicker.delegate = self
     imagePicker.allowsEditing = true

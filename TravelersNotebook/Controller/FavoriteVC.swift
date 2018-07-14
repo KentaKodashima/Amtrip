@@ -14,25 +14,33 @@ class FavoriteVC: UIViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var tableView: UITableView!
   
-  var pages: Results<Page>?
+  private(set) var pages: Results<Page>?
   
-  var imagesToPass = List<String>()
-  var pageToPass: Page?
-  var albumToPass: Album?
+  private(set) var imagesToPass = List<String>()
+  private(set) var pageToPass: Page?
+  private(set) var albumToPass: Album?
+  
+  private var barBrown = AppColors.barBrown.value
+  private var backgroundBrown = AppColors.backgroundBrown.value
+  private var textBrown = AppColors.textBrown.value
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // Search bar style
     searchBar.delegate = self
+    searchBar.isTranslucent = false
     let searchTextField = searchBar.value(forKey: "_searchField") as? UITextField
-    searchBar.layer.borderColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
+    let searchImageView = searchBar.value(forKey: "_background") as? UIImageView
+    searchImageView?.removeFromSuperview()
+    searchBar.backgroundColor = barBrown
+    searchBar.layer.borderColor = barBrown as! CGColor
     searchBar.layer.borderWidth = 1
     
     // Change icon color of UISearchBar
     let glassIcon = searchTextField?.leftView as? UIImageView
     glassIcon?.image = glassIcon?.image?.withRenderingMode(.alwaysTemplate)
-    glassIcon?.tintColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
+    glassIcon?.tintColor = backgroundBrown
     
     pages = Page.favoritePages()
   }
@@ -90,11 +98,11 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
         frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
       )
       noDataLabel.text = "There are no pages yet."
-      noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
+      noDataLabel.textColor = textBrown
       noDataLabel.font = UIFont(name: "Futura", size: 22)
       noDataLabel.textAlignment = .center
       tableView.separatorStyle = .none
-      tableView.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
+      tableView.backgroundColor = backgroundBrown
       tableView.backgroundView = noDataLabel
     } else {
       numberOfSections = 1
@@ -105,6 +113,7 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
     
     let page = pages?[indexPath.row]
     pageToPass = page

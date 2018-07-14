@@ -29,7 +29,11 @@ class SearchVC: UIViewController {
     
     // Search bar style
     searchBar.delegate = self
+    searchBar.isTranslucent = false
     let searchTextField = searchBar.value(forKey: "_searchField") as? UITextField
+    let searchImageView = searchBar.value(forKey: "_background") as? UIImageView
+    searchImageView?.removeFromSuperview()
+    searchBar.backgroundColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
     searchBar.layer.borderColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
     searchBar.layer.borderWidth = 1
     
@@ -114,7 +118,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+    tableView.deselectRow(at: indexPath, animated: true)
     let page = pages?[indexPath.row]
     pageToPass = page
     if page?.images != nil {
@@ -122,7 +126,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     albumToPass = Album.albumWithTheKey(albumKey: page!.whatAlbumToBelong)
-    
     
     self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
   }

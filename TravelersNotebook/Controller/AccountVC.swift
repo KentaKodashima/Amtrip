@@ -138,6 +138,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
     let tappedCell = tableView.cellForRow(at: indexPath)
     
     if tappedCell?.reuseIdentifier == "AlbumTitleCell" {
