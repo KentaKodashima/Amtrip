@@ -55,6 +55,19 @@ class PageDetailVC: UIViewController {
     
     scrollView.flashScrollIndicators()
     
+    setCollectionViewFlowLayout()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    imageCollection.reloadData()
+  }
+  
+  // Unwind segue from PageDetailVC
+  @IBAction func unwindToPageDetailVC(segue: UIStoryboardSegue) {
+    imageCollection.reloadData()
+  }
+  
+  fileprivate func setCollectionViewFlowLayout() {
     let layout = UICollectionViewFlowLayout()
     imageCollectionHeight.constant = imageCollection.bounds.width
     let cellWidth = imageCollection.bounds.width
@@ -65,15 +78,6 @@ class PageDetailVC: UIViewController {
     layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     layout.scrollDirection = .horizontal
     imageCollection.collectionViewLayout = layout
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    imageCollection.reloadData()
-  }
-  
-  // Unwind segue from PageDetailVC
-  @IBAction func unwindToPageDetailVC(segue: UIStoryboardSegue) {
-    imageCollection.reloadData()
   }
   
   private func setNavbar() {
@@ -166,7 +170,6 @@ class PageDetailVC: UIViewController {
   }
   
   private func deletePageFromRealm() {
-    
     let realm = try! Realm()
     let primaryKeyForPage = receivedPage?.key
     let primaryKeyForAlbum = receivedAlbum?.key
@@ -195,7 +198,6 @@ class PageDetailVC: UIViewController {
       }
     }
   }
-  
 }
 
 extension PageDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

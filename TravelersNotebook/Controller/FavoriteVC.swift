@@ -29,18 +29,7 @@ class FavoriteVC: UIViewController {
     
     // Search bar style
     searchBar.delegate = self
-    searchBar.isTranslucent = false
-    let searchTextField = searchBar.value(forKey: "_searchField") as? UITextField
-    let searchImageView = searchBar.value(forKey: "_background") as? UIImageView
-    searchImageView?.removeFromSuperview()
-    searchBar.backgroundColor = barBrown
-    searchBar.layer.borderColor = barBrown as! CGColor
-    searchBar.layer.borderWidth = 1
-    
-    // Change icon color of UISearchBar
-    let glassIcon = searchTextField?.leftView as? UIImageView
-    glassIcon?.image = glassIcon?.image?.withRenderingMode(.alwaysTemplate)
-    glassIcon?.tintColor = backgroundBrown
+    searchBar.setSearchBar()
     
     pages = Page.favoritePages()
   }
@@ -92,18 +81,7 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
     
     var numberOfSections = 0
     if pages!.count == 0 {
-      let labelWidth = tableView.bounds.size.width
-      let labelHeight = tableView.bounds.size.height
-      let noDataLabel = UILabel(
-        frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
-      )
-      noDataLabel.text = "There are no pages yet."
-      noDataLabel.textColor = textBrown
-      noDataLabel.font = UIFont(name: "Futura", size: 22)
-      noDataLabel.textAlignment = .center
-      tableView.separatorStyle = .none
-      tableView.backgroundColor = backgroundBrown
-      tableView.backgroundView = noDataLabel
+      tableView.setNoDataLabelForTableView()
     } else {
       numberOfSections = 1
       tableView.backgroundView = nil

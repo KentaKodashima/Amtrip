@@ -136,13 +136,11 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     locationField.resignFirstResponder()
     let acController = GMSAutocompleteViewController()
     acController.delegate = self
-    let lightBrown: UIColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
-    let barBrown: UIColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
-    let darkBrown: UIColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
-    acController.tableCellBackgroundColor = lightBrown
-    acController.primaryTextColor = darkBrown
-    acController.secondaryTextColor = darkBrown
-    acController.primaryTextHighlightColor = barBrown
+    
+    acController.tableCellBackgroundColor = AppColors.backgroundBrown.value
+    acController.primaryTextColor = AppColors.textBrown.value
+    acController.secondaryTextColor = AppColors.textBrown.value
+    acController.primaryTextHighlightColor = AppColors.barBrown.value
     
     present(acController, animated: true, completion: nil)
   }
@@ -286,15 +284,13 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
   // Open up device's camera
   @IBAction func takePicture(_ sender: UIButton) {
     let imagePicker = UIImagePickerController()
-    imagePicker.navigationBar.isTranslucent = false
-    imagePicker.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura-Medium", size: 22)]
+    
+    setImagePicker(imagePicker: imagePicker)
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
       imagePicker.sourceType = .camera
     } else {
       imagePicker.sourceType = .photoLibrary
     }
-    imagePicker.delegate = self
-    imagePicker.allowsEditing = true
     
     // Place image picker on the screen
     present(imagePicker, animated: true, completion: nil)
@@ -303,13 +299,19 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
   // Open up device's camera
   @IBAction func pickPicture(_ sender: UIButton) {
     let imagePicker = UIImagePickerController()
-    imagePicker.navigationBar.isTranslucent = false
-    imagePicker.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura-Medium", size: 22)]
+    
+    setImagePicker(imagePicker: imagePicker)
     imagePicker.sourceType = .photoLibrary
-    imagePicker.delegate = self
-    imagePicker.allowsEditing = true
+    
     // Place image picker on the screen
     present(imagePicker, animated: true, completion: nil)
+  }
+  
+  private func setImagePicker(imagePicker: UIImagePickerController) {
+    imagePicker.delegate = self
+    imagePicker.navigationBar.isTranslucent = false
+    imagePicker.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura-Medium", size: 22)]
+    imagePicker.allowsEditing = true
   }
   
   @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -399,14 +401,13 @@ extension CreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     imageNames.remove(at: (index?.item)!)
     imageCollection.deleteItems(at: [index!])
     
+    // if segue from PageDeatilVC, delete the picture from the Album
     if isSegueFromPageDetailVC == true {
       let realm = try! Realm()
       try! realm.write {
         receivedAlbum?.images.remove(at: (index?.item)!)
       }
     }
-    
-    // if segue from PageDeatilVC, delete the picture from the Album
     
     // Hide collectionview when the cell count is 0
     guard images.count > 0 else {

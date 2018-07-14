@@ -29,18 +29,7 @@ class SearchVC: UIViewController {
     
     // Search bar style
     searchBar.delegate = self
-    searchBar.isTranslucent = false
-    let searchTextField = searchBar.value(forKey: "_searchField") as? UITextField
-    let searchImageView = searchBar.value(forKey: "_background") as? UIImageView
-    searchImageView?.removeFromSuperview()
-    searchBar.backgroundColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
-    searchBar.layer.borderColor = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
-    searchBar.layer.borderWidth = 1
-    
-    // Change icon color of UISearchBar
-    let glassIcon = searchTextField?.leftView as? UIImageView
-    glassIcon?.image = glassIcon?.image?.withRenderingMode(.alwaysTemplate)
-    glassIcon?.tintColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
+    searchBar.setSearchBar()
     
     pages = Page.all()
     
@@ -97,18 +86,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     var numberOfSections = 0
     if pages!.count == 0 {
-      let labelWidth = tableView.bounds.size.width
-      let labelHeight = tableView.bounds.size.height
-      let noDataLabel = UILabel(
-        frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
-      )
-      noDataLabel.text = "There are no pages yet."
-      noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
-      noDataLabel.font = UIFont(name: "Futura", size: 22)
-      noDataLabel.textAlignment = .center
-      tableView.separatorStyle = .none
-      tableView.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
-      tableView.backgroundView = noDataLabel
+      // Create NoDataLabel
+      tableView.setNoDataLabelForTableView()
     } else {
       numberOfSections = 1
       tableView.backgroundView = nil

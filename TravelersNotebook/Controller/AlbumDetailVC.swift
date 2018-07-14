@@ -71,18 +71,7 @@ extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
     
     var numberOfSections = 0
     if pages!.count == 0 {
-      let labelWidth = tableView.bounds.size.width
-      let labelHeight = tableView.bounds.size.height
-      let noDataLabel = UILabel(
-        frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
-      )
-      noDataLabel.text = "There are no pages yet."
-      noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
-      noDataLabel.font = UIFont(name: "Futura", size: 22)
-      noDataLabel.textAlignment = .center
-      tableView.separatorStyle = .none
-      tableView.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
-      tableView.backgroundView = noDataLabel
+      tableView.setNoDataLabelForTableView()
     } else {
       numberOfSections = 1
     }

@@ -51,7 +51,6 @@ class AccountVC: UIViewController {
 }
 
 extension AccountVC: UITableViewDelegate, UITableViewDataSource {
-  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     var returnCount = 0
     
@@ -68,7 +67,6 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
     let albumCell = tableView.dequeueReusableCell(withIdentifier: "AlbumTitleCell", for: indexPath) as! AlbumTitleCell
     let pageCell = tableView.dequeueReusableCell(withIdentifier: "PageCell", for: indexPath) as! PageCell
     
@@ -90,47 +88,23 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    
     var numberOfSections = 0
     switch selectedIndex {
     case 0:
-      
       if albums!.count == 0 {
-        let labelWidth = tableView.bounds.size.width
-        let labelHeight = tableView.bounds.size.height
-        let noDataLabel = UILabel(
-          frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
-        )
-        noDataLabel.text = "There are no pages yet."
-        noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
-        noDataLabel.font = UIFont(name: "Futura", size: 22)
-        noDataLabel.textAlignment = .center
-        tableView.separatorStyle = .none
-        tableView.backgroundView = noDataLabel
+        tableView.setNoDataLabelForTableView()
       } else {
         numberOfSections = 1
         tableView.backgroundView = nil
       }
     case 1:
-      
       if pages!.count == 0 {
-        let labelWidth = tableView.bounds.size.width
-        let labelHeight = tableView.bounds.size.height
-        let noDataLabel = UILabel(
-          frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
-        )
-        noDataLabel.text = "There are no pages yet."
-        noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
-        noDataLabel.font = UIFont(name: "Futura", size: 22)
-        noDataLabel.textAlignment = .center
-        tableView.separatorStyle = .none
-        tableView.backgroundView = noDataLabel
+        tableView.setNoDataLabelForTableView()
       } else {
         numberOfSections = 1
         tableView.backgroundView = nil
       }
     default:
-      
       return numberOfSections
     }
     
@@ -150,7 +124,6 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       
       self.performSegue(withIdentifier: "toAlbumDetail", sender: Any.self)
     } else {
-      
       let page = pages?[indexPath.row]
       
       pageToPass = page
@@ -165,7 +138,6 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
     if segue.identifier == "toPageDetail" {
       
       let pageDetailVC = segue.destination as! PageDetailVC

@@ -21,7 +21,8 @@
 		ED454F9220DC7E93009E1AC2 /* AlbumThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED454F9120DC7E93009E1AC2 /* AlbumThumbnailCell.swift */; };
 		ED6B930520844EF1003222A2 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B930420844EF1003222A2 /* ImageStore.swift */; };
 		ED7618B120F9D0C70033BB6F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7618B020F9D0C70033BB6F /* Colors.swift */; };
-		ED7618B320F9E8AA0033BB6F /* NoDataLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7618B220F9E8AA0033BB6F /* NoDataLabel.swift */; };
+		ED7618B320F9E8AA0033BB6F /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7618B220F9E8AA0033BB6F /* UIHelper.swift */; };
+		ED7618B520F9F0DC0033BB6F /* FileManagementHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7618B420F9F0DC0033BB6F /* FileManagementHelper.swift */; };
 		ED7A95812082EF8600801583 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7A95802082EF8600801583 /* Page.swift */; };
 		ED7A95872082F94B00801583 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7A95862082F94B00801583 /* ImageCell.swift */; };
 		ED9703ED207D32CA00734581 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9703EC207D32CA00734581 /* GoogleService-Info.plist */; };
@@ -53,7 +54,8 @@
 		ED5CF8B9207E5E790017E8E0 /* TravelersNotebook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TravelersNotebook.entitlements; sourceTree = "<group>"; };
 		ED6B930420844EF1003222A2 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		ED7618B020F9D0C70033BB6F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		ED7618B220F9E8AA0033BB6F /* NoDataLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataLabel.swift; sourceTree = "<group>"; };
+		ED7618B220F9E8AA0033BB6F /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		ED7618B420F9F0DC0033BB6F /* FileManagementHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagementHelper.swift; sourceTree = "<group>"; };
 		ED7A95802082EF8600801583 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		ED7A95862082F94B00801583 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		ED9703EC207D32CA00734581 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -165,7 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				ED7618B020F9D0C70033BB6F /* Colors.swift */,
-				ED7618B220F9E8AA0033BB6F /* NoDataLabel.swift */,
+				ED7618B220F9E8AA0033BB6F /* UIHelper.swift */,
+				ED7618B420F9F0DC0033BB6F /* FileManagementHelper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				EDFE575020BAA00300B82FE2 /* AlbumTitleCell.swift in Sources */,
 				ED2B5C4820C835760070E025 /* PageDetailVC.swift in Sources */,
 				ED3F83C1207C75EB00250AA2 /* AppDelegate.swift in Sources */,
+				ED7618B520F9F0DC0033BB6F /* FileManagementHelper.swift in Sources */,
 				ED3F83DB207C761600250AA2 /* CreateVC.swift in Sources */,
 				ED7A95872082F94B00801583 /* ImageCell.swift in Sources */,
 				ED7A95812082EF8600801583 /* Page.swift in Sources */,
@@ -344,7 +348,7 @@
 				EDDD823A20D1E437004773D0 /* AlbumDetailVC.swift in Sources */,
 				ED3F83DE207C761600250AA2 /* FavoriteVC.swift in Sources */,
 				ED3F83E0207C761600250AA2 /* AccountVC.swift in Sources */,
-				ED7618B320F9E8AA0033BB6F /* NoDataLabel.swift in Sources */,
+				ED7618B320F9E8AA0033BB6F /* UIHelper.swift in Sources */,
 				ED3F83E3207C763700250AA2 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

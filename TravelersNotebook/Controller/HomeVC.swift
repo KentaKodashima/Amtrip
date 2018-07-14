@@ -16,8 +16,8 @@ class HomeVC: UIViewController {
   private var albums: Results<Album>?
   private var image: UIImage?
   private var images = [UIImage]()
-  var albumTitleToPass: String?
-  var albumToPass: Album?
+  private(set) var albumTitleToPass: String?
+  private(set) var albumToPass: Album?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,7 +32,10 @@ class HomeVC: UIViewController {
   }
   
   override func viewDidLayoutSubviews() {
-    
+    setCollectionViewFlowLayout()
+  }
+  
+  fileprivate func setCollectionViewFlowLayout() {
     let layout = UICollectionViewFlowLayout()
     let cellWidth = albumCollection.bounds.width
     let cellHeight = albumCollection.bounds.height / 2
@@ -96,17 +99,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     var numberOfSections = 0
     if albums!.count == 0 {
-      let labelWidth = collectionView.bounds.size.width
-      let labelHeight = collectionView.bounds.size.height
-      let noDataLabel = UILabel(
-        frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
-      )
-      noDataLabel.text = "There are no pages yet."
-      noDataLabel.textColor = #colorLiteral(red: 0.4, green: 0.3568627451, blue: 0.3019607843, alpha: 1)
-      noDataLabel.font = UIFont(name: "Futura", size: 22)
-      noDataLabel.textAlignment = .center
-      collectionView.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
-      collectionView.backgroundView = noDataLabel
+      collectionView.setNoDataLabelForCollectionView()
     } else {
       numberOfSections = 1
     }
