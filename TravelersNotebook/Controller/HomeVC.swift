@@ -16,7 +16,6 @@ class HomeVC: UIViewController {
   private var albums: Results<Album>?
   private var image: UIImage?
   private var images = [UIImage]()
-  private(set) var albumTitleToPass: String?
   private(set) var albumToPass: Album?
   
   override func viewDidLoad() {
@@ -59,13 +58,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     return albums!.count
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumThumbnailCell", for: indexPath) as! AlbumThumbnailCell
-    
-    let album = albums?[indexPath.row]
-    self.images = [UIImage]()
-    
+  fileprivate func fetchImage(_ album: Album?) {
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     
@@ -74,6 +67,16 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
       self.image = UIImage(contentsOfFile: filePath)
       self.images.append(self.image!)
     }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumThumbnailCell", for: indexPath) as! AlbumThumbnailCell
+    
+    let album = albums?[indexPath.row]
+    self.images = [UIImage]()
+    
+    fetchImage(album)
     
     cell.albumTitle.text = album?.albumTitle
     cell.dateLabel.text = album?.creationDate
@@ -111,7 +114,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     let album = albums?[indexPath.row]
 
-    albumTitleToPass = album?.albumTitle
     albumToPass = album
     
     self.performSegue(withIdentifier: "toAlbumDetail", sender: Any.self)
@@ -120,7 +122,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "toAlbumDetail" {
       let albumDetailVC = segue.destination as! AlbumDetailVC
-      albumDetailVC.recievedAlbumTitle = albumTitleToPass
       albumDetailVC.recievedAlbum = albumToPass
     }
   }

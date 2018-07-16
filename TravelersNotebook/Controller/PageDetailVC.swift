@@ -51,19 +51,25 @@ class PageDetailVC: UIViewController {
     setNavbar()
     fetchImage()
     
-    notificationToken = receivedPage?.images.observe { [weak self] (changes: RealmCollectionChange) in
-      guard let collectionView = self?.imageCollection else { return }
-      switch changes {
-      case .initial:
-        collectionView.reloadData()
-      case .update(_, let deletions, let insertions, let modifications):
-        collectionView.performBatchUpdates({
-          collectionView.insertItems(at: insertions.map({ IndexPath(row: $0, section: 0) }))
-          collectionView.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0) }))
-          collectionView.reloadItems(at: modifications.map({ IndexPath(row: $0, section: 0) }))
-        }, completion: nil)
+    // Observe receivedPage's "images" property
+    notificationToken = receivedPage?.observe{ change in
+      guard let collectionView = self.imageCollection else { return }
+      switch change {
+      case .change(let properties):
+        for property in properties {
+          switch property.name {
+          case "images":
+            self.images = [UIImage]()
+            self.fetchImage()
+            collectionView.reloadData()
+          default: break
+          }
+        }
+        break
       case .error(let error):
-        fatalError("\(error)")
+        print("Error occurred: \(error)")
+      case .deleted:
+        print("The page was deleted")
       }
     }
   }

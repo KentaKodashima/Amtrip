@@ -23,7 +23,7 @@ class AlbumDetailVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    pages = Page.pagesInAlbum(albumTitle: recievedAlbumTitle!)
+    pages = Page.pagesInAlbum(albumTitle: recievedAlbum!.albumTitle)
     tableView.tableFooterView = UIView(frame: .zero)
     
     navigationItem.title = "Album Detail"
