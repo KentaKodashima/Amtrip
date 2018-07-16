@@ -105,6 +105,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
       collectionView.setNoDataLabelForCollectionView()
     } else {
       numberOfSections = 1
+      collectionView.backgroundView = nil
     }
     
     return numberOfSections

@@ -168,6 +168,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     let realm = try! Realm()
     let page = realm.object(ofType: Page.self, forPrimaryKey: receivedPage?.key)
     let existingAlbum = realm.objects(Album.self).filter("albumTitle == '\(page?.albumTitle)'")
+    let existingAlbumImages = existingAlbum.first!.images
     
     try! realm.write {
       page?.albumTitle = albumTitle.text!
@@ -175,15 +176,21 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       page?.date = dateField.text!
       page?.location = locationField.text!
       page?.bodyText = bodyText.text
-      print(imageNames)
       page?.images.removeAll()
       page?.images.append(objectsIn: self.imageNames)
-      existingAlbum.first?.images.removeAll()
+//      existingAlbum.first?.images.removeAll()
+      for image in existingAlbumImages {
+        for imageName in imageNames {
+          if image == imageName {
+            if let index = existingAlbumImages.index(of: image) {
+              existingAlbumImages.remove(at: index)
+            }
+          }
+        }
+      }
       existingAlbum.first?.images.append(objectsIn: self.imageNames)
     }
-    dismiss(animated: true, completion: {
-      
-    })
+    dismiss(animated: true, completion: nil)
   }
   
   private func fetchImage() {
@@ -224,8 +231,9 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         }
       } else {
         try! realm.write {
-         existingAlbum.first?.pages.append(page)
-         existingAlbum.first?.images.append(objectsIn: page.images)
+          existingAlbum.first?.pages.append(page)
+          existingAlbum.first?.images.append(objectsIn: page.images)
+          page.whatAlbumToBelong = existingAlbum.first!.key
         }
       }
       

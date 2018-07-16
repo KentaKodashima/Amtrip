@@ -30,6 +30,8 @@ class AlbumCreateVC: UIViewController, UITextFieldDelegate {
     for album in albums! {
       albumTitles.append(album.albumTitle)
     }
+    
+    albumTitleTable.tableFooterView = UIView(frame: .zero)
   }
   
   //

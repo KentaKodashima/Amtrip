@@ -43,6 +43,10 @@ class AccountVC: UIViewController {
     self.tableView.reloadData()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    self.tableView.reloadData()
+  }
+  
   // Unwind segue from PageDetailVC
   @IBAction func unwindToAccountVC(segue: UIStoryboardSegue) {
     tableView.reloadData()
