@@ -640,6 +640,7 @@
                         <outlet property="imageCollection" destination="QKk-kD-XiC" id="Ine-mm-eYw"/>
                         <outlet property="locationField" destination="mpT-QM-ogf" id="YaD-8v-XqQ"/>
                         <outlet property="pageTitle" destination="Ey4-uL-jp4" id="zE6-fI-PGu"/>
+                        <outlet property="saveButton" destination="ayo-VA-ZGN" id="3QG-3W-Laq"/>
                         <outlet property="scrollView" destination="tcZ-sQ-zr1" id="MgX-cN-vC1"/>
                         <segue destination="nAG-0e-pHc" kind="show" identifier="toAlbumCreateVC" id="Z3c-Wh-3Ad"/>
                         <segue destination="QU7-OD-Hd4" kind="show" identifier="finishEditing" id="cC8-AN-dyr"/>
@@ -870,11 +871,11 @@
             <objects>
                 <viewController id="QU7-OD-Hd4" customClass="AccountVC" customModule="TravelersNotebook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EI2-Lj-Vfb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Hx-hV-obQ">
-                                <rect key="frame" x="20" y="30" width="280" height="405"/>
+                                <rect key="frame" x="20" y="30" width="280" height="454"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="255" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="S9U-fc-tkb">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="29"/>
@@ -889,7 +890,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EzV-PE-Jc6">
-                                        <rect key="frame" x="0.0" y="43" width="280" height="362"/>
+                                        <rect key="frame" x="0.0" y="43" width="280" height="411"/>
                                         <color key="backgroundColor" red="0.94509803921568625" green="0.85490196078431369" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumTitleCell" id="kLr-10-MQr" customClass="AlbumTitleCell" customModule="TravelersNotebook" customModuleProvider="target">
@@ -1339,7 +1340,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="PBy-HR-Zgp"/>
         <segue reference="c24-ZJ-Ynk"/>
-        <segue reference="Cy8-CP-Yh6"/>
+        <segue reference="cC8-AN-dyr"/>
         <segue reference="ZrH-jO-nuP"/>
     </inferredMetricsTieBreakers>
 </document>

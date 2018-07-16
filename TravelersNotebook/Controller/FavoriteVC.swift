@@ -16,7 +16,6 @@ class FavoriteVC: UIViewController {
   
   private(set) var pages: Results<Page>?
   
-  private(set) var imagesToPass = List<String>()
   private(set) var pageToPass: Page?
   private(set) var albumToPass: Album?
   
@@ -35,7 +34,6 @@ class FavoriteVC: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    
     tableView.reloadData()
     tableView.tableFooterView = UIView(frame: .zero)
   }
@@ -95,9 +93,6 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
     
     let page = pages?[indexPath.row]
     pageToPass = page
-    if page?.images != nil {
-      imagesToPass = page!.images
-    }
     
     albumToPass = Album.albumWithTheKey(albumKey: page!.whatAlbumToBelong)
     
@@ -109,7 +104,6 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
       let pageDetailVC = segue.destination as! PageDetailVC
       
       pageDetailVC.receivedPage = pageToPass
-      pageDetailVC.receivedImagesPath = imagesToPass
       pageDetailVC.receivedViewControllerName = "FavoriteVC"
       pageDetailVC.receivedAlbum = albumToPass
     }

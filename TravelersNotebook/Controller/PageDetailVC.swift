@@ -21,10 +21,11 @@ class PageDetailVC: UIViewController {
   @IBOutlet weak var pageControl: UIPageControl!
   @IBOutlet weak var imageCollectionHeight: NSLayoutConstraint!
 
-  public var receivedImagesPath = List<String>()
   public var receivedPage: Page?
   public var receivedViewControllerName: String?
   public var receivedAlbum: Album?
+  
+  private var notificationToken: NotificationToken? = nil
   
   private var images = [UIImage]()
   private var image: UIImage?
@@ -49,6 +50,22 @@ class PageDetailVC: UIViewController {
     
     setNavbar()
     fetchImage()
+    
+    notificationToken = receivedPage?.images.observe { [weak self] (changes: RealmCollectionChange) in
+      guard let collectionView = self?.imageCollection else { return }
+      switch changes {
+      case .initial:
+        collectionView.reloadData()
+      case .update(_, let deletions, let insertions, let modifications):
+        collectionView.performBatchUpdates({
+          collectionView.insertItems(at: insertions.map({ IndexPath(row: $0, section: 0) }))
+          collectionView.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0) }))
+          collectionView.reloadItems(at: modifications.map({ IndexPath(row: $0, section: 0) }))
+        }, completion: nil)
+      case .error(let error):
+        fatalError("\(error)")
+      }
+    }
   }
   
   override func viewDidLayoutSubviews() {
@@ -103,11 +120,10 @@ class PageDetailVC: UIViewController {
   }
   
   private func fetchImage() {
-    
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     
-    for imagePath in receivedImagesPath {
+    for imagePath in receivedPage!.images {
       let filePath = documentsURL.appendingPathComponent(imagePath).path
       self.image = UIImage(contentsOfFile: filePath)
       images.append(self.image!)
@@ -140,16 +156,6 @@ class PageDetailVC: UIViewController {
     alert.addAction(cancelButton)
     alert.addAction(deleteButton)
     present(alert, animated: true, completion: nil)
-  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "toCreateVCToEdit" {
-      let navigationController = segue.destination as! UINavigationController
-      let createVC = navigationController.topViewController as! CreateVC
-      createVC.receivedPage = self.receivedPage
-      createVC.receivedAlbum = self.receivedAlbum
-      createVC.isSegueFromPageDetailVC = true
-    }
   }
   
   @objc private func favoriteButtonTapped() {
@@ -196,6 +202,16 @@ class PageDetailVC: UIViewController {
         realm.delete(album!)
         self.performSegue(withIdentifier: "unwindToHome", sender: self)
       }
+    }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toCreateVCToEdit" {
+      let navigationController = segue.destination as! UINavigationController
+      let createVC = navigationController.topViewController as! CreateVC
+      createVC.receivedPage = self.receivedPage
+      createVC.receivedAlbum = self.receivedAlbum
+      createVC.isSegueFromPageDetailVC = true
     }
   }
 }

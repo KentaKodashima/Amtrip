@@ -68,6 +68,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       dateField.text = receivedPage?.date
       locationField.text = receivedPage?.location
       bodyText.text = receivedPage?.bodyText
+      saveButton.setTitle("Save this change", for: .normal)
       
       fetchImage()
     }
@@ -180,12 +181,13 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       existingAlbum.first?.images.removeAll()
       existingAlbum.first?.images.append(objectsIn: self.imageNames)
     }
-    dismiss(animated: true, completion: nil)
+    dismiss(animated: true, completion: {
+      
+    })
   }
   
   private func fetchImage() {
-    let filemanager = FileManager.default
-    let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let documentsURL = FileManager.documentDirectory
     
     for imagePath in (receivedPage?.images)! {
       imageNames.append(imagePath)
@@ -230,15 +232,16 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       // Reset data
       resetFields()
     } else {
-      
-      let alert = UIAlertController(title: "Required field is empty.", message: "Please try to fill out all the fields.", preferredStyle: .alert)
-      
+      let alert = UIAlertController(
+        title: "Required field is empty.",
+        message: "Please try to fill out all the fields.",
+        preferredStyle: .alert
+      )
       let defaultAction = UIAlertAction(
         title: "OK",
         style: UIAlertActionStyle.default,
         handler: nil
       )
-      
       alert.addAction(defaultAction)
       
       present(alert, animated: true, completion: nil)
@@ -277,7 +280,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       imageNames.removeAll()
     }
   }
-  
 }
 
 extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {

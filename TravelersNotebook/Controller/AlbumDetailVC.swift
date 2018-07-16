@@ -20,8 +20,6 @@ class AlbumDetailVC: UIViewController {
   var recievedAlbum: Album?
   var pageToPass: Page?
   
-  var imagesToPass = List<String>()
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -30,6 +28,10 @@ class AlbumDetailVC: UIViewController {
     
     navigationItem.title = "Album Detail"
     navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura", size: 22)]
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+     tableView.reloadData()
   }
   
   // Unwind segue from PageDetailVC
@@ -60,9 +62,6 @@ extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
     let page = pages?[indexPath.row]
     
     pageToPass = page
-    if page?.images != nil {
-      imagesToPass = page!.images
-    }
     
     self.performSegue(withIdentifier: "toPageDetail", sender: Any.self)
   }
@@ -86,7 +85,6 @@ extension AlbumDetailVC: UITableViewDelegate, UITableViewDataSource {
       let pageDetailVC = segue.destination as! PageDetailVC
 
       pageDetailVC.receivedPage = pageToPass
-      pageDetailVC.receivedImagesPath = imagesToPass
       pageDetailVC.receivedViewControllerName = "AlbumDetailVC"
       pageDetailVC.receivedAlbum = self.recievedAlbum
     }

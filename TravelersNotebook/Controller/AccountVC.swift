@@ -23,7 +23,6 @@ class AccountVC: UIViewController {
   var albumTitleToPass: String?
   var pageToPass: Page?
   var albumToPass: Album?
-  var imagesToPass = List<String>()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -127,9 +126,6 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       let page = pages?[indexPath.row]
       
       pageToPass = page
-      if page?.images != nil {
-        imagesToPass = page!.images
-      }
       
       albumToPass = Album.albumWithTheKey(albumKey: page!.whatAlbumToBelong)
       
@@ -142,7 +138,6 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
       
       let pageDetailVC = segue.destination as! PageDetailVC
       pageDetailVC.receivedPage = pageToPass
-      pageDetailVC.receivedImagesPath = imagesToPass
       pageDetailVC.receivedViewControllerName = "AccountVC"
       pageDetailVC.receivedAlbum = albumToPass
     } else {

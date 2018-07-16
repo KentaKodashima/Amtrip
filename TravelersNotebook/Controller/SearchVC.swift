@@ -17,7 +17,6 @@ class SearchVC: UIViewController {
   var pages: Results<Page>?
   
   // Temporary properties for passing data to PageDetailVC
-  var imagesToPass = List<String>()
   var pageToPass: Page?
   var albumToPass: Album?
   
@@ -100,9 +99,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     tableView.deselectRow(at: indexPath, animated: true)
     let page = pages?[indexPath.row]
     pageToPass = page
-    if page?.images != nil {
-      imagesToPass = page!.images
-    }
     
     albumToPass = Album.albumWithTheKey(albumKey: page!.whatAlbumToBelong)
     
@@ -114,7 +110,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
       let pageDetailVC = segue.destination as! PageDetailVC
       
       pageDetailVC.receivedPage = pageToPass
-      pageDetailVC.receivedImagesPath = imagesToPass
       pageDetailVC.receivedViewControllerName = "SearchVC"
       pageDetailVC.receivedAlbum = albumToPass
     }
