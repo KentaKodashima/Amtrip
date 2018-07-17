@@ -56,6 +56,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     scrollView.contentInset = edgeInsets
     
     if isSegueFromPageDetailVC == true {
+      saveButton.isHidden = true
+      
       doneButton = UIBarButtonItem(
         barButtonSystemItem: .done,
         target: self,
@@ -167,8 +169,9 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   @objc func doneButtonTapped(_ sender: UIBarButtonItem) {
     let realm = try! Realm()
     let page = realm.object(ofType: Page.self, forPrimaryKey: receivedPage?.key)
-    let existingAlbum = realm.objects(Album.self).filter("albumTitle == '\(page?.albumTitle)'")
-    let existingAlbumImages = existingAlbum.first!.images
+    // This line cannot get the Album?
+    let existingAlbum = realm.object(ofType: Album.self, forPrimaryKey: receivedPage?.whatAlbumToBelong)
+    let existingAlbumImages = existingAlbum?.images
     
     try! realm.write {
       page?.albumTitle = albumTitle.text!
@@ -178,17 +181,20 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       page?.bodyText = bodyText.text
       page?.images.removeAll()
       page?.images.append(objectsIn: self.imageNames)
-//      existingAlbum.first?.images.removeAll()
-      for image in existingAlbumImages {
+      
+      // If there are any images which have the same name as imageName, remove the image from the Album images
+      guard let album = existingAlbum else { return }
+      guard let albumImages = existingAlbumImages else { return }
+      for image in albumImages {
         for imageName in imageNames {
           if image == imageName {
-            if let index = existingAlbumImages.index(of: image) {
-              existingAlbumImages.remove(at: index)
+            if let index = albumImages.index(of: image) {
+              albumImages.remove(at: index)
             }
           }
         }
       }
-      existingAlbum.first?.images.append(objectsIn: self.imageNames)
+      existingAlbum?.images.append(objectsIn: self.imageNames)
     }
     dismiss(animated: true, completion: nil)
   }
@@ -236,7 +242,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
           page.whatAlbumToBelong = existingAlbum.first!.key
         }
       }
-      
       // Reset data
       resetFields()
     } else {
@@ -255,6 +260,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       present(alert, animated: true, completion: nil)
     }
   }
+  
   // Check all required fields are filled up
   private func isPropertyEmpty() -> Bool {
     var isEmpty = false
@@ -272,6 +278,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     }
     return isEmpty
   }
+  
   // Reset everything
   private func resetFields() {
     albumTitle.text = ""
@@ -355,12 +362,10 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
     let filePath = documentsURL.appendingPathComponent(fileName)
     
     do {
-      
       imageData = UIImagePNGRepresentation(image)
       try imageData?.write(to: filePath, options: .atomic)
       try! imageNames.append(fileName)
     } catch {
-      
       let alert = UIAlertController(title: "Something went wrong", message: "Couldn't write image", preferredStyle: .alert)
       
       let defaultAction = UIAlertAction(

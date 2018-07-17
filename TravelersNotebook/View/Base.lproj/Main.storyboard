@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -210,11 +209,8 @@
                                                     <constraint firstItem="fAm-DO-wj6" firstAttribute="leading" secondItem="wAc-kh-LXv" secondAttribute="leading" id="zLC-6B-1Tq"/>
                                                 </constraints>
                                             </stackView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tie" translatesAutoresizingMaskIntoConstraints="NO" id="MqP-s3-TRP">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tie" translatesAutoresizingMaskIntoConstraints="NO" id="MqP-s3-TRP">
                                                 <rect key="frame" x="17.5" y="137" width="245" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="MqP-s3-TRP" secondAttribute="height" multiplier="49:4" id="tfW-Fs-ir1"/>
-                                                </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="interactive" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gU4-u0-7o9">
                                                 <rect key="frame" x="0.0" y="172" width="280" height="150"/>
@@ -339,8 +335,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="tcZ-sQ-zr1">
                                 <rect key="frame" x="20" y="0.0" width="280" height="736"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dUA-X4-ofW">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="564"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dUA-X4-ofW">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="584"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="0qw-r1-w66">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="159"/>
@@ -483,11 +479,11 @@
                                                     <constraint firstItem="LfU-et-jvz" firstAttribute="leading" secondItem="0qw-r1-w66" secondAttribute="leading" id="xph-ph-gWp"/>
                                                 </constraints>
                                             </stackView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tie" translatesAutoresizingMaskIntoConstraints="NO" id="4ir-9l-xUg">
-                                                <rect key="frame" x="17.5" y="169" width="245" height="20"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tie" translatesAutoresizingMaskIntoConstraints="NO" id="4ir-9l-xUg">
+                                                <rect key="frame" x="17.5" y="174" width="245" height="20"/>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="F0X-y7-JBp">
-                                                <rect key="frame" x="0.0" y="199" width="280" height="150"/>
+                                                <rect key="frame" x="0.0" y="209" width="280" height="150"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.40000000000000002" green="0.35686274509999999" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -498,7 +494,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="120" placeholderIntrinsicHeight="120" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QKk-kD-XiC">
-                                                <rect key="frame" x="0.0" y="359" width="280" height="120"/>
+                                                <rect key="frame" x="0.0" y="374" width="280" height="120"/>
                                                 <color key="backgroundColor" red="0.94509803921568625" green="0.85490196078431369" blue="0.72156862745098038" alpha="0.21931185787671234" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="ngp-Ts-7en"/>
@@ -548,7 +544,7 @@
                                                 </connections>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0yu-pu-IhE">
-                                                <rect key="frame" x="0.0" y="489" width="280" height="75"/>
+                                                <rect key="frame" x="0.0" y="509" width="280" height="75"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4Rk-qj-GH9">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
@@ -573,6 +569,7 @@
                                                         <constraints>
                                                             <constraint firstItem="Xmw-Gy-HLu" firstAttribute="baseline" secondItem="0Id-uv-Lvt" secondAttribute="baseline" id="2Tc-Dz-dGx"/>
                                                             <constraint firstItem="Xmw-Gy-HLu" firstAttribute="firstBaseline" secondItem="0Id-uv-Lvt" secondAttribute="firstBaseline" id="jGP-pb-hBA"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="mkK-mH-NRa"/>
                                                         </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayo-VA-ZGN">
