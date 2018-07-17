@@ -244,6 +244,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       }
       // Reset data
       resetFields()
+      
+      performSegue(withIdentifier: "toHomeVC", sender: Any.self)
     } else {
       let alert = UIAlertController(
         title: "Required field is empty.",

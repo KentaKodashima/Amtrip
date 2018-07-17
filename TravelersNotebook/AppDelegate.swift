@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let darkBrown: UIColor = AppColors.textBrown.value
     UINavigationBar.appearance().barTintColor = barBrown
     UINavigationBar.appearance().tintColor = UIColor.white
+    // Remove the border at the bottom
+    UINavigationBar.appearance().shadowImage = UIImage()
     
     let searchBarTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: lightBrown, NSAttributedStringKey.font.rawValue: UIFont(name: "Helvetica Neue", size: 16)]
     UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
