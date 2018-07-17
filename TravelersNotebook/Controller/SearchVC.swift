@@ -33,6 +33,8 @@ class SearchVC: UIViewController {
     pages = Page.all()
     
     tableView.tableFooterView = UIView(frame: .zero)
+    navigationItem.hidesBackButton = true
+    navigationItem.hideBackButtonText()
   }
   
   override func viewWillAppear(_ animated: Bool) {

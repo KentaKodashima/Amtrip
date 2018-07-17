@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+extension UINavigationItem {
+  
+  public func hideBackButtonText() {
+    let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    self.backBarButtonItem = backButton
+  }
+  
+}
+
 extension UITableView {
   
   public func setNoDataLabelForTableView() {

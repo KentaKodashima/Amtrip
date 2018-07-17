@@ -30,6 +30,8 @@ class AccountVC: UIViewController {
     pages = Page.all()
     albums = Album.all()
     tableView.tableFooterView = UIView(frame: .zero)
+    navigationItem.hidesBackButton = true
+    navigationItem.hideBackButtonText()
   }
   
   @IBAction func segmentValueChanged(_ sender: Any) {

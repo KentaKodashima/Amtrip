@@ -23,6 +23,8 @@ class HomeVC: UIViewController {
 
     albums = Album.all()
     albumCollection.showsVerticalScrollIndicator = false
+    navigationItem.hidesBackButton = true
+    navigationItem.hideBackButtonText()
   }
   
   override func viewWillAppear(_ animated: Bool) {

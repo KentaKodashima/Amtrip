@@ -26,8 +26,7 @@ class AlbumDetailVC: UIViewController {
     pages = Page.pagesInAlbum(albumTitle: recievedAlbum!.albumTitle)
     tableView.tableFooterView = UIView(frame: .zero)
     
-    navigationItem.title = "Album Detail"
-    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura", size: 22)]
+    setNavbar()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +36,12 @@ class AlbumDetailVC: UIViewController {
   // Unwind segue from PageDetailVC
   @IBAction func unwindToAlbumDetailVC(segue: UIStoryboardSegue) {
     tableView.reloadData()
+  }
+  
+  private func setNavbar() {
+    navigationItem.title = "Album Detail"
+    navigationItem.hideBackButtonText()
+    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Futura", size: 22)]
   }
 }
 

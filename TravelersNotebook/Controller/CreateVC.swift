@@ -48,8 +48,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     // Create Toolbar with 'Close' button above the system keyboard
     createToolbarForKeyboard()
     
-    // Hide the collectionview at first
     imageCollection.isHidden = true
+    navigationItem.hidesBackButton = true
     
     // Make a little space at top and bottom of the UIScrollView
     let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)

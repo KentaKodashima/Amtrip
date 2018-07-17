@@ -47,6 +47,7 @@ class PageDetailVC: UIViewController {
     
     imageCollection.isHidden = true
     pageControl.hidesForSinglePage = true
+    navigationItem.hideBackButtonText()
     
     setNavbar()
     fetchImage()

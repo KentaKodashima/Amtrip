@@ -31,6 +31,9 @@ class FavoriteVC: UIViewController {
     searchBar.setSearchBar()
     
     pages = Page.favoritePages()
+    // Hide back button
+    navigationItem.hidesBackButton = true
+    navigationItem.hideBackButtonText()
   }
   
   override func viewWillAppear(_ animated: Bool) {
