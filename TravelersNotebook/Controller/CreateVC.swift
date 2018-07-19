@@ -23,7 +23,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   @IBOutlet weak var saveButton: UIButton!
   
   public var isSegueFromPageDetailVC = false
-  public var imageStore: ImageStore!
   public var receivedPage: Page?
   public var receivedAlbum: Album?
   

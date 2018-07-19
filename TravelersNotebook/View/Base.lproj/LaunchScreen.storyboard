@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tie" translatesAutoresizingMaskIntoConstraints="NO" id="ZNE-zB-quQ">
-                                <rect key="frame" x="0.0" y="323" width="375" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Tie" translatesAutoresizingMaskIntoConstraints="NO" id="ZNE-zB-quQ">
+                                <rect key="frame" x="0.0" y="310" width="375" height="50"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.67843137249999996" green="0.42352941179999998" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>

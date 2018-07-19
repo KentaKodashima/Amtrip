@@ -44,11 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UITableView.appearance().separatorColor = UIColor.lightGray
     UITableView.appearance().separatorInset = .zero
     
-    // Create an ImageStore
-    let imageStore = ImageStore()
-    let createController = CreateVC()
-    createController.imageStore = imageStore
-    
     // Migration config for realm
     let config = Realm.Configuration(
       schemaVersion: 1,
