@@ -247,8 +247,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       performSegue(withIdentifier: "toHomeVC", sender: Any.self)
     } else {
       let alert = UIAlertController(
-        title: "Required field is empty.",
-        message: "Please try to fill out all the fields.",
+        title: NSLocalizedString("Required field is empty.", comment: ""),
+        message: NSLocalizedString("Please try to fill out all the fields.", comment: ""),
         preferredStyle: .alert
       )
       let defaultAction = UIAlertAction(
@@ -367,7 +367,11 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
       try imageData?.write(to: filePath, options: .atomic)
       try! imageNames.append(fileName)
     } catch {
-      let alert = UIAlertController(title: "Something went wrong", message: "Couldn't write image", preferredStyle: .alert)
+      let alert = UIAlertController(
+        title: NSLocalizedString("Something went wrong", comment: ""),
+        message: NSLocalizedString("Couldn't write image", comment: ""),
+        preferredStyle: .alert
+      )
       
       let defaultAction = UIAlertAction(
         title: "OK", style: UIAlertActionStyle.default, handler:{
@@ -445,8 +449,8 @@ extension CreateVC: GMSAutocompleteViewControllerDelegate {
   func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
     // Handle the error.
     let alert = UIAlertController(
-      title: "Something went wrong!",
-      message: "Please make sure the internet connection.",
+      title: NSLocalizedString("Something went wrong", comment: ""),
+      message: NSLocalizedString("Please make sure the internet connection.", comment: ""),
       preferredStyle: .alert
     )
     let defaultAction = UIAlertAction(

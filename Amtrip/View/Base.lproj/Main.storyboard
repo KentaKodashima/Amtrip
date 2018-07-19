@@ -998,11 +998,11 @@
             <objects>
                 <viewController id="S3D-IR-Nmb" customClass="AlbumDetailVC" customModule="Amtrip" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jaz-dg-2rh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mns-cg-LHz">
-                                <rect key="frame" x="20" y="30" width="280" height="444"/>
+                                <rect key="frame" x="20" y="30" width="280" height="395"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.85490196080000003" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PageCell" id="aue-2V-kNJ" customClass="PageCell" customModule="Amtrip" customModuleProvider="target">
@@ -1064,16 +1064,16 @@
             </objects>
             <point key="canvasLocation" x="1841" y="3219"/>
         </scene>
-        <!--Traveler's Notebook-->
+        <!--Amtrip-->
         <scene sceneID="g6g-CK-pSn">
             <objects>
                 <viewController id="4RX-is-FPW" customClass="HomeVC" customModule="Amtrip" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mbG-yk-JjN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="a1v-wC-9u8">
-                                <rect key="frame" x="20" y="0.0" width="280" height="504"/>
+                                <rect key="frame" x="20" y="0.0" width="280" height="455"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.85490196078431369" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aDb-XJ-KQS">
                                     <size key="itemSize" width="280" height="200"/>
@@ -1149,7 +1149,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dEX-y3-6tN"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Traveler's Notebook" id="BcF-as-85v"/>
+                    <navigationItem key="navigationItem" title="Amtrip" id="BcF-as-85v"/>
                     <connections>
                         <outlet property="albumCollection" destination="a1v-wC-9u8" id="KY2-fQ-eKr"/>
                         <segue destination="S3D-IR-Nmb" kind="show" identifier="toAlbumDetail" id="c24-ZJ-Ynk"/>
@@ -1337,7 +1337,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PBy-HR-Zgp"/>
-        <segue reference="DjQ-M6-dBh"/>
+        <segue reference="6I4-LO-03y"/>
         <segue reference="c24-ZJ-Ynk"/>
         <segue reference="cC8-AN-dyr"/>
         <segue reference="Zqy-YG-zc2"/>

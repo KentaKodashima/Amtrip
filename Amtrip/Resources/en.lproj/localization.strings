@@ -1,0 +1,13 @@
+/* 
+  localization.strings
+  Amtrip
+
+  Created by Kenta Kodashima on 2018-07-19.
+  Copyright © 2018 Kenta Kodashima. All rights reserved.
+*/
+
+"Required field is empty." = "Required field is empty.";
+"Please try to fill out all the fields." = "Please try to fill out all the fields.";
+"Something went wrong" = "Something went wrong";
+"Couldn't write image" = "Couldn't write image";
+"Please make sure the internet connection." = "Please make sure the internet connection.";

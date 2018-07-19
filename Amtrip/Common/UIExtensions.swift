@@ -26,7 +26,7 @@ extension UITableView {
     let noDataLabel = UILabel(
       frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
     )
-    noDataLabel.text = "There are no pages yet."
+    noDataLabel.text = NSLocalizedString("There are no pages yet.", comment: "")
     noDataLabel.textColor = AppColors.textBrown.value
     noDataLabel.font = UIFont(name: "Futura", size: 22)
     noDataLabel.textAlignment = .center
@@ -44,7 +44,7 @@ extension UICollectionView {
     let noDataLabel = UILabel(
       frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
     )
-    noDataLabel.text = "There are no pages yet."
+    noDataLabel.text = NSLocalizedString("There are no pages yet.", comment: "")
     noDataLabel.textColor = AppColors.textBrown.value
     noDataLabel.font = UIFont(name: "Futura", size: 22)
     noDataLabel.textAlignment = .center

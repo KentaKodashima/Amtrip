@@ -1,0 +1,78 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1ha-l8-CR5"; */
+"1ha-l8-CR5.text" = "Label";
+
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "4JG-SJ-fUt"; */
+"4JG-SJ-fUt.text" = "Album Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5zl-tM-Ppt"; */
+"5zl-tM-Ppt.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Your Pages"; ObjectID = "7F4-wC-dtz"; */
+"7F4-wC-dtz.title" = "Your Pages";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "AZq-Qq-A0B"; */
+"AZq-Qq-A0B.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Traveler's Notebook"; ObjectID = "BcF-as-85v"; */
+"BcF-as-85v.title" = "Traveler's Notebook";
+
+/* Class = "UINavigationItem"; title = "Search"; ObjectID = "HjW-6e-IJg"; */
+"HjW-6e-IJg.title" = "Search";
+
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "Iza-LL-PlM"; */
+"Iza-LL-PlM.text" = "Album Title";
+
+/* Class = "UINavigationItem"; title = "Favorite"; ObjectID = "JsY-Rp-N6P"; */
+"JsY-Rp-N6P.title" = "Favorite";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QBA-PJ-OPC"; */
+"QBA-PJ-OPC.text" = "Label";
+
+/* Class = "UISegmentedControl"; S9U-fc-tkb.segmentTitles[0] = "Album"; ObjectID = "S9U-fc-tkb"; */
+"S9U-fc-tkb.segmentTitles[0]" = "Album";
+
+/* Class = "UISegmentedControl"; S9U-fc-tkb.segmentTitles[1] = "Page"; ObjectID = "S9U-fc-tkb"; */
+"S9U-fc-tkb.segmentTitles[1]" = "Page";
+
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "Sd3-UB-KRH"; */
+"Sd3-UB-KRH.text" = "Album Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "UMl-8T-H4W"; */
+"UMl-8T-H4W.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "V6M-HF-Ykd"; */
+"V6M-HF-Ykd.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "WD6-ww-3Eu"; */
+"WD6-ww-3Eu.text" = "Label";
+
+/* Class = "UILabel"; text = "Page Title"; ObjectID = "XPI-27-AwN"; */
+"XPI-27-AwN.text" = "Page Title";
+
+/* Class = "UIButton"; normalTitle = "Save this page"; ObjectID = "ayo-VA-ZGN"; */
+"ayo-VA-ZGN.normalTitle" = "Save this page";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "cWM-0I-7e1"; */
+"cWM-0I-7e1.text" = "Date";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fxj-Bn-kQe"; */
+"fxj-Bn-kQe.text" = "Label";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "gAM-1N-0GG"; */
+"gAM-1N-0GG.text" = "Date";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jyb-gb-u3f"; */
+"jyb-gb-u3f.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lyT-oe-ByF"; */
+"lyT-oe-ByF.text" = "Label";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "oV6-px-SR0"; */
+"oV6-px-SR0.text" = "Location";
+
+/* Class = "UINavigationItem"; title = "Create A New Page"; ObjectID = "q6G-BC-uia"; */
+"q6G-BC-uia.title" = "Create A New Page";
+
+/* Class = "UIButton"; normalTitle = "Create"; ObjectID = "sTL-ft-WKC"; */
+"sTL-ft-WKC.normalTitle" = "Create";
