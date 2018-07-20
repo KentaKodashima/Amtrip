@@ -28,25 +28,49 @@ class HomeVC: UIViewController {
     navigationItem.hidesBackButton = true
     navigationItem.hideBackButtonText()
     
+//    if let albums = self.albums {
+//      for album in albums {
+//        // Observe receivedPage's "images" property
+//        notificationToken = album.observe { change in
+//          guard let collectionView = self.albumCollection else { return }
+//          switch change {
+//          case .change(let properties):
+//            for property in properties {
+//              switch property.name {
+//              case "images":
+//                self.images = [UIImage]()
+//                collectionView.reloadData()
+//              default: break
+//              }
+//            }
+//            break
+//          case .error(let error):
+//            print("Error occurred: \(error)")
+//          case .deleted:
+//            print("The page was deleted")
+//          }
+//        }
+//      }
+//    }
     // Observe receivedPage's "images" property
-    notificationToken = albums?.observe{ change in
-      guard let collectionView = self.albumCollection else { return }
-      switch change {
-      case .initial(let albums):
-        collectionView.reloadData()
-        break
-      case .update(let albums, let deletions, let insertions, let modifications):
-        collectionView.performBatchUpdates({
-          collectionView.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0) }))
-          collectionView.insertItems(at: insertions.map({ IndexPath(row: $0, section: 0) }))
-          collectionView.reloadItems(at: modifications.map({ IndexPath(row: $0, section: 0) }))
-          collectionView.reloadData()
-        }, completion: nil)
-        print("The page was deleted")
-      case .error(let error):
-        print("Error occurred: \(error)")
-      }
-    }
+//    notificationToken = albums?.observe{ change in
+//      guard let collectionView = self.albumCollection else { return }
+//      switch change {
+//      case .initial(let albums):
+//        collectionView.reloadData()
+//        break
+//      case .update(let albums, let deletions, let insertions, let modifications):
+//        collectionView.performBatchUpdates({
+//          collectionView.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0) }))
+//          collectionView.insertItems(at: insertions.map({ IndexPath(row: $0, section: 0) }))
+//          collectionView.reloadItems(at: modifications.map({ IndexPath(row: $0, section: 0) }))
+//          collectionView.reloadData()
+//        }, completion: nil)
+//        print("The page was deleted")
+//      case .error(let error):
+//        print("Error occurred: \(error)")
+//      }
+//    }
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -83,12 +107,12 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
   }
   
   fileprivate func fetchImage(_ album: Album?) {
-    let filemanager = FileManager.default
-    let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let documentsURL = FileManager.documentDirectory
     
     for imagePath in album!.images {
       let filePath = documentsURL.appendingPathComponent(imagePath).path
       self.image = UIImage(contentsOfFile: filePath)
+      self.images = [UIImage]()
       self.images.append(self.image!)
     }
   }

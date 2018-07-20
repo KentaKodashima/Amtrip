@@ -189,15 +189,27 @@ class PageDetailVC: UIViewController {
     let page = realm.object(ofType: Page.self, forPrimaryKey: primaryKeyForPage)
     let album = realm.object(ofType: Album.self, forPrimaryKey: primaryKeyForAlbum)
     
-    // Delete file from the document directory
+    // Delete file from the document directory and Album
     let filemanager = FileManager.default
     let documentsURL = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first!
     let documentPath = documentsURL.path
     if page?.images != nil {
       for image in (page?.images)! {
+        // Delete file from the document directory
         let filePath = documentPath + "/" + image
         if filemanager.fileExists(atPath: filePath) {
           try! filemanager.removeItem(atPath: filePath)
+        }
+        // Delete image from Album's images property also
+        for albumImage in album!.images {
+          if image == albumImage {
+            if let index = album!.images.index(of: image) {
+              let realm = try! Realm()
+              try! realm.write {
+                album!.images.remove(at: index)
+              }
+            }
+          }
         }
       }
     }

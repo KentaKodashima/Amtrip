@@ -244,7 +244,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       // Reset data
       resetFields()
       
-      performSegue(withIdentifier: "toHomeVC", sender: Any.self)
+      self.tabBarController?.selectedIndex = 0
     } else {
       let alert = UIAlertController(
         title: NSLocalizedString("Required field is empty.", comment: ""),
