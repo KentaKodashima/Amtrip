@@ -18,6 +18,8 @@ class HomeVC: UIViewController {
   private var images = [UIImage]()
   private(set) var albumToPass: Album?
   
+  private var notificationToken: NotificationToken? = nil
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -25,6 +27,26 @@ class HomeVC: UIViewController {
     albumCollection.showsVerticalScrollIndicator = false
     navigationItem.hidesBackButton = true
     navigationItem.hideBackButtonText()
+    
+    // Observe receivedPage's "images" property
+    notificationToken = albums?.observe{ change in
+      guard let collectionView = self.albumCollection else { return }
+      switch change {
+      case .initial(let albums):
+        collectionView.reloadData()
+        break
+      case .update(let albums, let deletions, let insertions, let modifications):
+        collectionView.performBatchUpdates({
+          collectionView.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0) }))
+          collectionView.insertItems(at: insertions.map({ IndexPath(row: $0, section: 0) }))
+          collectionView.reloadItems(at: modifications.map({ IndexPath(row: $0, section: 0) }))
+          collectionView.reloadData()
+        }, completion: nil)
+        print("The page was deleted")
+      case .error(let error):
+        print("Error occurred: \(error)")
+      }
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {

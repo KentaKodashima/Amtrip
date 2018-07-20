@@ -28,6 +28,7 @@
 		ED9703ED207D32CA00734581 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9703EC207D32CA00734581 /* GoogleService-Info.plist */; };
 		EDB9F27F20B1024500D656FB /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB9F27E20B1024500D656FB /* PageCell.swift */; };
 		EDDD823A20D1E437004773D0 /* AlbumDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDD823920D1E437004773D0 /* AlbumDetailVC.swift */; };
+		EDE58073210160CB00CF5D2B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE58072210160CB00CF5D2B /* FileManagerHelper.swift */; };
 		EDFE574E20BA99E700B82FE2 /* AlbumCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE574D20BA99E700B82FE2 /* AlbumCreateVC.swift */; };
 		EDFE575020BAA00300B82FE2 /* AlbumTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE574F20BAA00300B82FE2 /* AlbumTitleCell.swift */; };
 /* End PBXBuildFile section */
@@ -53,7 +54,7 @@
 		ED3F83D9207C761600250AA2 /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		ED3F83E2207C763700250AA2 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		ED454F9120DC7E93009E1AC2 /* AlbumThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumThumbnailCell.swift; sourceTree = "<group>"; };
-		ED5CF8B9207E5E790017E8E0 /* TravelersNotebook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TravelersNotebook.entitlements; sourceTree = "<group>"; };
+		ED5CF8B9207E5E790017E8E0 /* Amtrip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Amtrip.entitlements; sourceTree = "<group>"; };
 		ED7618B020F9D0C70033BB6F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		ED7618B220F9E8AA0033BB6F /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		ED7A95802082EF8600801583 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
@@ -65,6 +66,7 @@
 		ED9703EC207D32CA00734581 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EDB9F27E20B1024500D656FB /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		EDDD823920D1E437004773D0 /* AlbumDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailVC.swift; sourceTree = "<group>"; };
+		EDE58072210160CB00CF5D2B /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		EDFE574D20BA99E700B82FE2 /* AlbumCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCreateVC.swift; sourceTree = "<group>"; };
 		EDFE574F20BAA00300B82FE2 /* AlbumTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTitleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,7 +126,7 @@
 			children = (
 				ED7618AF20F9D0B90033BB6F /* Common */,
 				ED7A95822082F88300801583 /* Resources */,
-				ED5CF8B9207E5E790017E8E0 /* TravelersNotebook.entitlements */,
+				ED5CF8B9207E5E790017E8E0 /* Amtrip.entitlements */,
 				ED3F83E4207C770600250AA2 /* View */,
 				ED7A95852082F93A00801583 /* Cells */,
 				ED3F83E1207C762800250AA2 /* Model */,
@@ -175,6 +177,7 @@
 			children = (
 				ED7618B020F9D0C70033BB6F /* Colors.swift */,
 				ED7618B220F9E8AA0033BB6F /* UIExtensions.swift */,
+				EDE58072210160CB00CF5D2B /* FileManagerHelper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				ED3F83E0207C761600250AA2 /* AccountVC.swift in Sources */,
 				ED7618B320F9E8AA0033BB6F /* UIExtensions.swift in Sources */,
 				ED3F83E3207C763700250AA2 /* Album.swift in Sources */,
+				EDE58073210160CB00CF5D2B /* FileManagerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,7 +517,7 @@
 			baseConfigurationReference = 737B95FCD1DDB1B8E2482CEB /* Pods-Amtrip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Amtrip/TravelersNotebook.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Amtrip/Amtrip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4XVL227B6;
 				INFOPLIST_FILE = Amtrip/Info.plist;
@@ -533,7 +537,7 @@
 			baseConfigurationReference = 1E5685A6EFDAF23D97889397 /* Pods-Amtrip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Amtrip/TravelersNotebook.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Amtrip/Amtrip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4XVL227B6;
 				INFOPLIST_FILE = Amtrip/Info.plist;

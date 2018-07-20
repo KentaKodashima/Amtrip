@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     // Set the Google Place API's autocomplete UI control
-    GMSPlacesClient.provideAPIKey("AIzaSyANS_Bmalx3Gk-XG2afagd6nDjfB4gabeE")
+    GMSPlacesClient.provideAPIKey("AIzaSyBaOrei17EeZ_Ldrp6b3UyC5VWry4JDzII")
     let barBrown: UIColor = AppColors.barBrown.value
     let lightBrown: UIColor = AppColors.backgroundBrown.value
     let darkBrown: UIColor = AppColors.textBrown.value
