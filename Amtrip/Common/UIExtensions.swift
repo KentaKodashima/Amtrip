@@ -15,7 +15,6 @@ extension UINavigationItem {
     let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     self.backBarButtonItem = backButton
   }
-  
 }
 
 extension UITableView {
@@ -26,9 +25,15 @@ extension UITableView {
     let noDataLabel = UILabel(
       frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
     )
+    let isJapanese: Bool = {
+      if let languageCode = (Locale.current as NSLocale).object(forKey: .languageCode) as? String {
+        return languageCode == "ja"
+      }
+      return false
+    }()
     noDataLabel.text = NSLocalizedString("There are no pages yet.", comment: "")
     noDataLabel.textColor = AppColors.textBrown.value
-    noDataLabel.font = UIFont(name: "Futura", size: 22)
+    noDataLabel.font = isJapanese ? UIFont(name: "HiraKakuProN-W6", size: 18) : UIFont(name: "Futura", size: 18)
     noDataLabel.textAlignment = .center
     self.separatorStyle = .none
     self.backgroundColor = AppColors.backgroundBrown.value
@@ -44,9 +49,15 @@ extension UICollectionView {
     let noDataLabel = UILabel(
       frame: CGRect(x: 0, y: 0, width: labelWidth, height: labelHeight)
     )
+    let isJapanese: Bool = {
+      if let languageCode = (Locale.current as NSLocale).object(forKey: .languageCode) as? String {
+        return languageCode == "ja"
+      }
+      return false
+    }()
     noDataLabel.text = NSLocalizedString("There are no pages yet.", comment: "")
     noDataLabel.textColor = AppColors.textBrown.value
-    noDataLabel.font = UIFont(name: "Futura", size: 22)
+    noDataLabel.font = isJapanese ? UIFont(name: "HiraKakuProN-W6", size: 18) : UIFont(name: "Futura", size: 18)
     noDataLabel.textAlignment = .center
     self.backgroundColor = AppColors.backgroundBrown.value
     self.backgroundView = noDataLabel
