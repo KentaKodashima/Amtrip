@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		446449BACDCFD9764FA12141 /* Pods_Amtrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E320A49D3E6533D917C2533 /* Pods_Amtrip.framework */; };
+		ED0662372104DA5C00580976 /* AmtripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0662362104DA5C00580976 /* AmtripTests.swift */; };
 		ED2B5C4820C835760070E025 /* PageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2B5C4720C835760070E025 /* PageDetailVC.swift */; };
 		ED3F83C1207C75EB00250AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F83C0207C75EB00250AA2 /* AppDelegate.swift */; };
 		ED3F83C6207C75EB00250AA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3F83C4207C75EB00250AA2 /* Main.storyboard */; };
@@ -33,6 +34,16 @@
 		EDFE575020BAA00300B82FE2 /* AlbumTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE574F20BAA00300B82FE2 /* AlbumTitleCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		ED0662392104DA5C00580976 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED3F83B5207C75EB00250AA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED3F83BC207C75EB00250AA2;
+			remoteInfo = Amtrip;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0883F4C37C2B60D294F03773 /* Pods-TravelersNotebook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelersNotebook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook.debug.xcconfig"; sourceTree = "<group>"; };
 		1E5685A6EFDAF23D97889397 /* Pods-Amtrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amtrip.release.xcconfig"; path = "Pods/Target Support Files/Pods-Amtrip/Pods-Amtrip.release.xcconfig"; sourceTree = "<group>"; };
@@ -40,6 +51,9 @@
 		2E320A49D3E6533D917C2533 /* Pods_Amtrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Amtrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		737B95FCD1DDB1B8E2482CEB /* Pods-Amtrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amtrip.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Amtrip/Pods-Amtrip.debug.xcconfig"; sourceTree = "<group>"; };
 		DAC759B12583B2769CC34915 /* Pods-TravelersNotebook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelersNotebook.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelersNotebook/Pods-TravelersNotebook.release.xcconfig"; sourceTree = "<group>"; };
+		ED0662342104DA5C00580976 /* AmtripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmtripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED0662362104DA5C00580976 /* AmtripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmtripTests.swift; sourceTree = "<group>"; };
+		ED0662382104DA5C00580976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED2B5C4720C835760070E025 /* PageDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDetailVC.swift; sourceTree = "<group>"; };
 		ED3F83BD207C75EB00250AA2 /* Amtrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Amtrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3F83C0207C75EB00250AA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +86,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ED0662312104DA5C00580976 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED3F83BA207C75EB00250AA2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,10 +124,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ED0662352104DA5C00580976 /* AmtripTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED0662362104DA5C00580976 /* AmtripTests.swift */,
+				ED0662382104DA5C00580976 /* Info.plist */,
+			);
+			path = AmtripTests;
+			sourceTree = "<group>";
+		};
 		ED3F83B4207C75EB00250AA2 = {
 			isa = PBXGroup;
 			children = (
 				ED3F83BF207C75EB00250AA2 /* Amtrip */,
+				ED0662352104DA5C00580976 /* AmtripTests */,
 				ED3F83BE207C75EB00250AA2 /* Products */,
 				4133B770FF6E1285F64FE0C3 /* Pods */,
 				AB257CFE8353C7F5C5CEAA02 /* Frameworks */,
@@ -117,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				ED3F83BD207C75EB00250AA2 /* Amtrip.app */,
+				ED0662342104DA5C00580976 /* AmtripTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,6 +236,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		ED0662332104DA5C00580976 /* AmtripTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED06623D2104DA5C00580976 /* Build configuration list for PBXNativeTarget "AmtripTests" */;
+			buildPhases = (
+				ED0662302104DA5C00580976 /* Sources */,
+				ED0662312104DA5C00580976 /* Frameworks */,
+				ED0662322104DA5C00580976 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED06623A2104DA5C00580976 /* PBXTargetDependency */,
+			);
+			name = AmtripTests;
+			productName = AmtripTests;
+			productReference = ED0662342104DA5C00580976 /* AmtripTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ED3F83BC207C75EB00250AA2 /* Amtrip */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED3F83CF207C75EB00250AA2 /* Build configuration list for PBXNativeTarget "Amtrip" */;
@@ -230,10 +280,14 @@
 		ED3F83B5207C75EB00250AA2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Kenta Kodashima";
 				TargetAttributes = {
+					ED0662332104DA5C00580976 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = ED3F83BC207C75EB00250AA2;
+					};
 					ED3F83BC207C75EB00250AA2 = {
 						CreatedOnToolsVersion = 9.3;
 						SystemCapabilities = {
@@ -259,11 +313,19 @@
 			projectRoot = "";
 			targets = (
 				ED3F83BC207C75EB00250AA2 /* Amtrip */,
+				ED0662332104DA5C00580976 /* AmtripTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		ED0662322104DA5C00580976 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED3F83BB207C75EB00250AA2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,6 +400,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		ED0662302104DA5C00580976 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0662372104DA5C00580976 /* AmtripTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED3F83B9207C75EB00250AA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -364,6 +434,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ED06623A2104DA5C00580976 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED3F83BC207C75EB00250AA2 /* Amtrip */;
+			targetProxy = ED0662392104DA5C00580976 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ED3F83C4207C75EB00250AA2 /* Main.storyboard */ = {
@@ -396,6 +474,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		ED06623B2104DA5C00580976 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4XVL227B6;
+				INFOPLIST_FILE = AmtripTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kentakodashima.AmtripTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Amtrip.app/Amtrip";
+			};
+			name = Debug;
+		};
+		ED06623C2104DA5C00580976 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4XVL227B6;
+				INFOPLIST_FILE = AmtripTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kentakodashima.AmtripTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Amtrip.app/Amtrip";
+			};
+			name = Release;
+		};
 		ED3F83CD207C75EB00250AA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -555,6 +675,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		ED06623D2104DA5C00580976 /* Build configuration list for PBXNativeTarget "AmtripTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED06623B2104DA5C00580976 /* Debug */,
+				ED06623C2104DA5C00580976 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ED3F83B8207C75EB00250AA2 /* Build configuration list for PBXProject "Amtrip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -183,6 +183,9 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         newPage.images.removeAll()
         newPage.images.append(objectsIn: self.imageNames)
         
+        guard let oldAlbum = receivedAlbum else { return }
+        guard let oldAlbumImages = receivedAlbumImages else { return }
+        
         if receivedAlbum?.albumTitle != newPage.albumTitle {
           let existingAlbum = realm.objects(Album.self).filter("albumTitle == '\(newPage.albumTitle)'")
           
@@ -202,30 +205,26 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
           let index = receivedAlbum?.pages.index(of: page!)
           receivedAlbum?.pages.remove(at: index!)
           
-          guard let album = receivedAlbum else { return }
-          guard let albumImages = receivedAlbumImages else { return }
-          for image in albumImages {
+          for image in oldAlbumImages {
             for imageName in imageNames {
               if image == imageName {
-                if let index = albumImages.index(of: image) {
-                  albumImages.remove(at: index)
+                if let index = oldAlbumImages.index(of: image) {
+                  oldAlbumImages.remove(at: index)
                 }
               }
             }
           }
           imageNames.removeAll()
-          if album.pages.count == 0 {
-            realm.delete(album)
+          if oldAlbum.pages.count == 0 {
+            realm.delete(oldAlbum)
           }
         } else {
           // If there are any images which have the same name as imageName, remove the image from the Album images
-          guard let album = receivedAlbum else { return }
-          guard let albumImages = receivedAlbumImages else { return }
-          for image in albumImages {
+          for image in oldAlbumImages {
             for imageName in imageNames {
               if image == imageName {
-                if let index = albumImages.index(of: image) {
-                  albumImages.remove(at: index)
+                if let index = oldAlbumImages.index(of: image) {
+                  oldAlbumImages.remove(at: index)
                 }
               }
             }
