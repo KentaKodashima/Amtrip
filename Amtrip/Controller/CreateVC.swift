@@ -166,36 +166,77 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   }
   
   @objc func doneButtonTapped(_ sender: UIBarButtonItem) {
-    let realm = try! Realm()
-    let page = realm.object(ofType: Page.self, forPrimaryKey: receivedPage?.key)
-    // This line cannot get the Album?
-    let existingAlbum = realm.object(ofType: Album.self, forPrimaryKey: receivedPage?.whatAlbumToBelong)
-    let existingAlbumImages = existingAlbum?.images
-    
-    try! realm.write {
-      page?.albumTitle = albumTitle.text!
-      page?.pageTitle = pageTitle.text!
-      page?.date = dateField.text!
-      page?.location = locationField.text!
-      page?.bodyText = bodyText.text
-      page?.images.removeAll()
-      page?.images.append(objectsIn: self.imageNames)
+    if isPropertyEmpty() {
+      let realm = try! Realm()
+      let page = realm.object(ofType: Page.self, forPrimaryKey: receivedPage?.key)
+      let receivedAlbum = realm.object(ofType: Album.self, forPrimaryKey: receivedPage?.whatAlbumToBelong)
+      let receivedAlbumImages = receivedAlbum?.images
       
-      // If there are any images which have the same name as imageName, remove the image from the Album images
-      guard let album = existingAlbum else { return }
-      guard let albumImages = existingAlbumImages else { return }
-      for image in albumImages {
-        for imageName in imageNames {
-          if image == imageName {
-            if let index = albumImages.index(of: image) {
-              albumImages.remove(at: index)
+      try! realm.write {
+        guard let newPage = page else { return }
+        print(imageNames)
+        newPage.albumTitle = albumTitle.text!
+        newPage.pageTitle = pageTitle.text!
+        newPage.date = dateField.text!
+        newPage.location = locationField.text!
+        newPage.bodyText = bodyText.text
+        newPage.images.removeAll()
+        newPage.images.append(objectsIn: self.imageNames)
+        
+        if receivedAlbum?.albumTitle != newPage.albumTitle {
+          let existingAlbum = realm.objects(Album.self).filter("albumTitle == '\(newPage.albumTitle)'")
+          
+          if existingAlbum.count == 0 {
+            let album = Album(albumTitle: newPage.albumTitle, creationDate: newPage.date)
+            album.pages.append(newPage)
+            album.images.append(objectsIn: newPage.images)
+            realm.add(newPage)
+            realm.add(album)
+            newPage.whatAlbumToBelong = album.key
+          } else {
+            existingAlbum.first?.pages.append(newPage)
+            existingAlbum.first?.images.append(objectsIn: newPage.images)
+            newPage.whatAlbumToBelong = existingAlbum.first!.key
+          }
+          
+          let index = receivedAlbum?.pages.index(of: page!)
+          receivedAlbum?.pages.remove(at: index!)
+          
+          guard let album = receivedAlbum else { return }
+          guard let albumImages = receivedAlbumImages else { return }
+          for image in albumImages {
+            for imageName in imageNames {
+              if image == imageName {
+                if let index = albumImages.index(of: image) {
+                  albumImages.remove(at: index)
+                }
+              }
             }
           }
+          imageNames.removeAll()
+          if album.pages.count == 0 {
+            realm.delete(album)
+          }
+        } else {
+          // If there are any images which have the same name as imageName, remove the image from the Album images
+          guard let album = receivedAlbum else { return }
+          guard let albumImages = receivedAlbumImages else { return }
+          for image in albumImages {
+            for imageName in imageNames {
+              if image == imageName {
+                if let index = albumImages.index(of: image) {
+                  albumImages.remove(at: index)
+                }
+              }
+            }
+          }
+          receivedAlbum?.images.append(objectsIn: self.imageNames)
         }
       }
-      existingAlbum?.images.append(objectsIn: self.imageNames)
+      dismiss(animated: true, completion: nil)
+    } else {
+      displayEmptyFieldAlert()
     }
-    dismiss(animated: true, completion: nil)
   }
   
   private func fetchImage() {
@@ -220,9 +261,8 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       )
       page.images.append(objectsIn: imageNames)
       
-      let realm = try! Realm()
-      
       // Check to see if there is an Album which has the same name
+      let realm = try! Realm()
       let existingAlbum = realm.objects(Album.self).filter("albumTitle == '\(page.albumTitle)'")
       
       if existingAlbum.count == 0 {
@@ -241,25 +281,30 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
           page.whatAlbumToBelong = existingAlbum.first!.key
         }
       }
+      
       // Reset data
       resetFields()
       
       self.tabBarController?.selectedIndex = 0
     } else {
-      let alert = UIAlertController(
-        title: NSLocalizedString("Required field is empty.", comment: ""),
-        message: NSLocalizedString("Please try to fill out all the fields.", comment: ""),
-        preferredStyle: .alert
-      )
-      let defaultAction = UIAlertAction(
-        title: "OK",
-        style: UIAlertActionStyle.default,
-        handler: nil
-      )
-      alert.addAction(defaultAction)
-      
-      present(alert, animated: true, completion: nil)
+      displayEmptyFieldAlert()
     }
+  }
+  
+  fileprivate func displayEmptyFieldAlert() {
+    let alert = UIAlertController(
+      title: NSLocalizedString("Required field is empty.", comment: ""),
+      message: NSLocalizedString("Please try to fill out all the fields.", comment: ""),
+      preferredStyle: .alert
+    )
+    let defaultAction = UIAlertAction(
+      title: "OK",
+      style: UIAlertActionStyle.default,
+      handler: nil
+    )
+    alert.addAction(defaultAction)
+    
+    present(alert, animated: true, completion: nil)
   }
   
   // Check all required fields are filled up

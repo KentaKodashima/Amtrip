@@ -68,7 +68,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     for imagePath in album!.images {
       let filePath = documentsURL.appendingPathComponent(imagePath).path
       self.image = UIImage(contentsOfFile: filePath)
-//      self.images = [UIImage]()
       self.images.append(self.image!)
     }
   }

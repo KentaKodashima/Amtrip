@@ -52,13 +52,23 @@ class PageDetailVC: UIViewController {
     setNavbar()
     fetchImage()
     
-    // Observe receivedPage's "images" property
+    // Observe receivedPage's properties
     notificationToken = receivedPage?.observe{ change in
       guard let collectionView = self.imageCollection else { return }
       switch change {
       case .change(let properties):
         for property in properties {
           switch property.name {
+          case "albumTitle":
+            self.albumTitle.text = self.receivedPage?.albumTitle
+          case "pageTitle":
+            self.pageTitle.text = self.receivedPage?.pageTitle
+          case "date":
+            self.date.text = self.receivedPage?.date
+          case "location":
+            self.location.text = self.receivedPage?.location
+          case "bodyText":
+            self.bodyText.text = self.receivedPage?.bodyText
           case "images":
             self.images = [UIImage]()
             self.fetchImage()
