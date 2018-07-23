@@ -38,7 +38,7 @@ class PageDetailVC: UIViewController {
     
     albumTitle.text = receivedPage?.albumTitle
     pageTitle.text = receivedPage?.pageTitle
-    date.text = receivedPage?.date
+    date.text = receivedPage?.date.dateToString()
     location.text = receivedPage?.location
     bodyText.text = receivedPage?.bodyText
     
@@ -64,7 +64,7 @@ class PageDetailVC: UIViewController {
           case "pageTitle":
             self.pageTitle.text = self.receivedPage?.pageTitle
           case "date":
-            self.date.text = self.receivedPage?.date
+            self.date.text = self.receivedPage?.date.dateToString()
           case "location":
             self.location.text = self.receivedPage?.location
           case "bodyText":

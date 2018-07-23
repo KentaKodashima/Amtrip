@@ -81,8 +81,10 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     fetchImage(album)
     
+    let oldestPage = album?.pages.sorted(byKeyPath: "date").first
+    
     cell.albumTitle.text = album?.albumTitle
-    cell.dateLabel.text = album?.creationDate
+    cell.dateLabel.text = oldestPage?.date.dateToString()
     
     let numberOfImages = UInt32(self.images.count)
     let randomNum = Int(arc4random_uniform(numberOfImages))

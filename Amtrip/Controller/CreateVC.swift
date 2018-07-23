@@ -33,6 +33,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   private var imageData: Data?
   private var imagesData = [Data]()
   private var imageNames = [String]()
+  private var selectedDate = Date()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -66,7 +67,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       
       albumTitle.text = receivedPage?.albumTitle
       pageTitle.text = receivedPage?.pageTitle
-      dateField.text = receivedPage?.date
+      dateField.text = receivedPage?.date.dateToString()
       locationField.text = receivedPage?.location
       bodyText.text = receivedPage?.bodyText
       saveButton.setTitle("Save this change", for: .normal)
@@ -159,9 +160,10 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     sender.inputView = datePicker
   }
   
-  // Show date in String on the dateField
+  // Get data from UIDatePicker
   @objc func datePickerInput(_ sender: UIDatePicker) {
     dateFormatter.dateFormat = "yyyy/MM/dd"
+    selectedDate = sender.date
     dateField.text = dateFormatter.string(from: sender.date)
   }
   
@@ -177,7 +179,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         print(imageNames)
         newPage.albumTitle = albumTitle.text!
         newPage.pageTitle = pageTitle.text!
-        newPage.date = dateField.text!
+        newPage.date = selectedDate
         newPage.location = locationField.text!
         newPage.bodyText = bodyText.text
         newPage.images.removeAll()
@@ -254,7 +256,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
       let page = Page(
         albumTitle: self.albumTitle.text!,
         pageTitle: self.pageTitle.text!,
-        date: self.dateField.text!,
+        date: self.selectedDate,
         location: self.locationField.text!,
         bodyText: self.bodyText.text!
       )
@@ -333,6 +335,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     bodyText.text = ""
     images.removeAll()
     selectedImage = nil
+    selectedDate = Date()
     imageCollection.isHidden = true
     imageCollection.reloadData()
     let realm = try! Realm()
@@ -379,7 +382,6 @@ extension CreateVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
   @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     
     // Get picked image from info directory
-    //let image = info[UIImagePickerControllerOriginalImage] as! UIImage
     let image = info[UIImagePickerControllerEditedImage] as! UIImage
     
     // Put that image on the screen in the image view

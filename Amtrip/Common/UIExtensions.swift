@@ -83,3 +83,14 @@ extension UISearchBar {
     glassIcon?.tintColor = AppColors.backgroundBrown.value
   }
 }
+
+extension Date {
+  
+  public func dateToString() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy/MM/dd"
+    let date = dateFormatter.string(from: self)
+    
+    return date
+  }
+}

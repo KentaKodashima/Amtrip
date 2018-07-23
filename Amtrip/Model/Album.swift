@@ -17,7 +17,7 @@ import RealmSwift
 
   @objc dynamic private(set) var key = UUID().uuidString
   @objc dynamic private(set) var albumTitle: String = ""
-  @objc dynamic private(set) var creationDate: String = ""
+  @objc dynamic private(set) var creationDate: Date = Date()
   var pages = List<Page>()
   var images = List<String>()
 
@@ -25,7 +25,7 @@ import RealmSwift
     return Album.Property.key.rawValue
   }
 
-  convenience init(albumTitle: String, creationDate: String) {
+  convenience init(albumTitle: String, creationDate: Date) {
     self.init()
 
     self.albumTitle = albumTitle

@@ -19,7 +19,7 @@ import RealmSwift
   @objc dynamic private(set) var key = UUID().uuidString
   @objc dynamic public var albumTitle: String = ""
   @objc dynamic public var pageTitle: String = ""
-  @objc dynamic public var date: String = ""
+  @objc dynamic public var date: Date = Date()
   @objc dynamic public var location: String = ""
   @objc dynamic public var bodyText: String = ""
   @objc dynamic public var whatAlbumToBelong: String = ""
@@ -33,7 +33,7 @@ import RealmSwift
   convenience init(
     albumTitle: String,
     pageTitle: String,
-    date: String,
+    date: Date,
     location: String,
     bodyText: String
     ) {
