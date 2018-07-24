@@ -8,7 +8,7 @@
 
 "There are no pages yet." = "There are no pages yet.";
 "Required field is empty." = "Required field is empty.";
-"Please try to fill out all the fields." = "Please try to fill out all the fields.";
-"Something went wrong" = "Something went wrong";
-"Couldn't write image" = "Couldn't write image";
+"Please fill out all the fields except for Location." = "Please fill out all the fields except for Location.";
+"Something went wrong." = "Something went wrong.";
+"Couldn't write image." = "Couldn't write image.";
 "Please make sure the internet connection." = "Please make sure the internet connection.";

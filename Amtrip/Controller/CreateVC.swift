@@ -282,7 +282,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   fileprivate func displayEmptyFieldAlert() {
     let alert = UIAlertController(
       title: NSLocalizedString("Required field is empty.", comment: ""),
-      message: NSLocalizedString("Please try to fill out all the fields.", comment: ""),
+      message: NSLocalizedString("Please fill out all the fields except for Location.", comment: ""),
       preferredStyle: .alert
     )
     let defaultAction = UIAlertAction(
@@ -482,7 +482,7 @@ extension CreateVC: GMSAutocompleteViewControllerDelegate {
   func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
     // Handle the error.
     let alert = UIAlertController(
-      title: NSLocalizedString("Something went wrong", comment: ""),
+      title: NSLocalizedString("Something went wrong.", comment: ""),
       message: NSLocalizedString("Please make sure the internet connection.", comment: ""),
       preferredStyle: .alert
     )
