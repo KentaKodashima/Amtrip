@@ -30,7 +30,6 @@ class HomeVC: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    
     albumCollection.reloadData()
   }
   

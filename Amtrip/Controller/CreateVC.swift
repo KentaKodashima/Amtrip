@@ -46,7 +46,9 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     self.locationField.delegate = self
     
     // Create Toolbar with 'Close' button above the system keyboard
-    createToolbarForKeyboard()
+    pageTitle.createToolbarForKeyboard()
+    dateField.createToolbarForKeyboard()
+    bodyText.createToolbarForKeyboard()
     
     imageCollection.isHidden = true
     navigationItem.hidesBackButton = true
@@ -79,6 +81,10 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
   override func viewDidLayoutSubviews() {
     scrollView.flashScrollIndicators()
     
+    setCollectionViewFlowLayout()
+  }
+  
+  fileprivate func setCollectionViewFlowLayout() {
     let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: 120, height: 120)
     layout.minimumInteritemSpacing = 0
@@ -86,25 +92,6 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     layout.scrollDirection = .horizontal
     imageCollection.collectionViewLayout = layout
-  }
-  
-  private func createToolbarForKeyboard() {
-    // Create close button above the textView keyboard
-    // Tool bar
-    let closeBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-    closeBar.barStyle = UIBarStyle.default  // Style
-    closeBar.sizeToFit()  // Size change depends on screen size
-    // Spacer
-    let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
-    // Close Botton
-    let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(closeButtonTapped))
-    closeBar.items = [spacer, closeButton]
-    bodyText.inputAccessoryView = closeBar
-    dateField.inputAccessoryView = closeBar
-  }
-  // Enable textView to close
-  @objc func closeButtonTapped() {
-    self.view.endEditing(true)
   }
   
   // Enable return key of UITextFields

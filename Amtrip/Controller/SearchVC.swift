@@ -29,6 +29,8 @@ class SearchVC: UIViewController {
     // Search bar style
     searchBar.delegate = self
     searchBar.setSearchBar()
+    let searchTextField = searchBar.value(forKey: "_searchField") as? UITextField
+    searchTextField?.createToolbarForKeyboard()
     
     pages = Page.all()
     

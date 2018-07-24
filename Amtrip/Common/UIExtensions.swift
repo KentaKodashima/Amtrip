@@ -9,8 +9,47 @@
 import Foundation
 import UIKit
 
+extension UITextField {
+  public func createToolbarForKeyboard() {
+    // Create close button above the textView keyboard
+    // Tool bar
+    let closeBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+    closeBar.barStyle = UIBarStyle.default  // Style
+    closeBar.sizeToFit()  // Size change depends on screen size
+    // Spacer
+    let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+    // Close Botton
+    let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(closeButtonTapped))
+    closeBar.items = [spacer, closeButton]
+    self.inputAccessoryView = closeBar
+  }
+  // Enable textView to close
+  @objc func closeButtonTapped() {
+    self.endEditing(true)
+  }
+}
+
+extension UITextView {
+  public func createToolbarForKeyboard() {
+    // Create close button above the textView keyboard
+    // Tool bar
+    let closeBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+    closeBar.barStyle = UIBarStyle.default  // Style
+    closeBar.sizeToFit()  // Size change depends on screen size
+    // Spacer
+    let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+    // Close Botton
+    let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(closeButtonTapped))
+    closeBar.items = [spacer, closeButton]
+    self.inputAccessoryView = closeBar
+  }
+  // Enable textView to close
+  @objc func closeButtonTapped() {
+    self.endEditing(true)
+  }
+}
+
 extension UINavigationItem {
-  
   public func hideBackButtonText() {
     let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     self.backBarButtonItem = backButton
@@ -18,7 +57,6 @@ extension UINavigationItem {
 }
 
 extension UITableView {
-  
   public func setNoDataLabelForTableView() {
     let labelWidth = self.bounds.size.width
     let labelHeight = self.bounds.size.height
@@ -42,7 +80,6 @@ extension UITableView {
 }
 
 extension UICollectionView {
-  
   public func setNoDataLabelForCollectionView() {
     let labelWidth = self.bounds.size.width
     let labelHeight = self.bounds.size.height
@@ -65,7 +102,6 @@ extension UICollectionView {
 }
 
 extension UISearchBar {
-  
   public func setSearchBar() {
     // Search bar style
     self.isTranslucent = false
@@ -85,7 +121,7 @@ extension UISearchBar {
 }
 
 extension Date {
-  
+  // Convert from Date() to String
   public func dateToString() -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy/MM/dd"
