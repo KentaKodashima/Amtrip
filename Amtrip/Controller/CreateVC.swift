@@ -53,6 +53,10 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     imageCollection.isHidden = true
     navigationItem.hidesBackButton = true
     
+    // Default texts for UITextView
+    bodyText.text = "Enter your text here."
+    bodyText.alpha = 0.5
+    
     // Make a little space at top and bottom of the UIScrollView
     let edgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
     scrollView.contentInset = edgeInsets
@@ -100,6 +104,20 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     pageTitle.resignFirstResponder()
     locationField.resignFirstResponder()
     return true
+  }
+  
+  // Placeholder for UITextView
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    if bodyText.alpha == 0.5 {
+      bodyText.text = nil
+      bodyText.alpha = 1
+    }
+  }
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if bodyText.text.isEmpty {
+      bodyText.text = "Enter your text here."
+      bodyText.alpha = 0.5
+    }
   }
   
   // Segue to AlbumCreateVC

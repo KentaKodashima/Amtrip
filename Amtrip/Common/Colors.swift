@@ -13,6 +13,7 @@ enum AppColors {
   case textBrown
   case backgroundBrown
   case barBrown
+  case placeHolder
 }
 
 extension AppColors {
@@ -25,6 +26,8 @@ extension AppColors {
       color = #colorLiteral(red: 0.9450980392, green: 0.8549019608, blue: 0.7215686275, alpha: 1)
     case .barBrown:
       color = #colorLiteral(red: 0.6784313725, green: 0.4235294118, blue: 0.2078431373, alpha: 1)
+    case .placeHolder:
+      color = #colorLiteral(red: 0.7803921569, green: 0.7803921569, blue: 0.8039215686, alpha: 1)
     }
     return color
   }
