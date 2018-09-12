@@ -78,6 +78,7 @@
 		ED858CAE21012B0A00814CCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = View/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ED858CB021012B0F00814CCE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = View/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ED9703EC207D32CA00734581 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDAE1B4D2148809200CC23CD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDB9F27E20B1024500D656FB /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		EDDD823920D1E437004773D0 /* AlbumDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailVC.swift; sourceTree = "<group>"; };
 		EDE58072210160CB00CF5D2B /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 		ED3F83B4207C75EB00250AA2 = {
 			isa = PBXGroup;
 			children = (
+				EDAE1B4D2148809200CC23CD /* README.md */,
 				ED3F83BF207C75EB00250AA2 /* Amtrip */,
 				ED0662352104DA5C00580976 /* AmtripTests */,
 				ED3F83BE207C75EB00250AA2 /* Products */,
