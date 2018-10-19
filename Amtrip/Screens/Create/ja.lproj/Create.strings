@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Page Title"; ObjectID = "Gc0-Cc-Sc0"; */
+"Gc0-Cc-Sc0.text" = "Page Title";
+
+/* Class = "UIButton"; normalTitle = "Save this page"; ObjectID = "X5C-O1-RET"; */
+"X5C-O1-RET.normalTitle" = "Save this page";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "c6M-Mc-PZt"; */
+"c6M-Mc-PZt.text" = "Location";
+
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "e2p-g9-U6i"; */
+"e2p-g9-U6i.text" = "Album Title";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "kF6-2G-Idd"; */
+"kF6-2G-Idd.text" = "Date";
+
+/* Class = "UINavigationItem"; title = "Create A New Page"; ObjectID = "vF0-bR-F1Z"; */
+"vF0-bR-F1Z.title" = "Create A New Page";

@@ -54,7 +54,7 @@ class CreateVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     navigationItem.hidesBackButton = true
     
     // Default texts for UITextView
-    bodyText.text = "Enter your text here."
+    bodyText.text = NSLocalizedString("Enter your text here.", comment: "")
     bodyText.alpha = 0.5
     
     // Make a little space at top and bottom of the UIScrollView

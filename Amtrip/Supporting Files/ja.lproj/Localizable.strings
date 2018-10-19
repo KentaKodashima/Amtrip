@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Amtrip
+
+  Created by Kenta Kodashima on 2018-10-18.
+  Copyright © 2018 Kenta Kodashima. All rights reserved.
+*/
+
+"There are no pages yet." = "表示するページがありません。";
+"Required field is empty." = "必須項目が空欄になっています。";
+"Please fill out all the fields except for Location." = "Locationを除く全ての必須項目を入力してください。";
+"Something went wrong." = "問題が発生しました。";
+"Couldn't write image." = "イメージを書き込むことができませんでした。";
+"Please make sure the internet connection." = "インターネットの接続を確認してください。";
+"Enter your text here." = "テキストを入力してください。";
