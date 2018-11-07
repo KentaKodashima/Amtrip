@@ -27,6 +27,7 @@
 		ED3F83E0207C761600250AA2 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F83D9207C761600250AA2 /* AccountVC.swift */; };
 		ED3F83E3207C763700250AA2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F83E2207C763700250AA2 /* Album.swift */; };
 		ED454F9220DC7E93009E1AC2 /* AlbumThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED454F9120DC7E93009E1AC2 /* AlbumThumbnailCell.swift */; };
+		ED4FA4922192E515005E9016 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4FA4912192E515005E9016 /* Constants.swift */; };
 		ED7618B120F9D0C70033BB6F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7618B020F9D0C70033BB6F /* Colors.swift */; };
 		ED7618B320F9E8AA0033BB6F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7618B220F9E8AA0033BB6F /* Date+Extensions.swift */; };
 		ED7A95812082EF8600801583 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7A95802082EF8600801583 /* Page.swift */; };
@@ -44,7 +45,6 @@
 		EDF345D821796DB900FD9703 /* AlbumCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF345DA21796DB900FD9703 /* AlbumCreate.storyboard */; };
 		EDF345DD21796DBF00FD9703 /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF345DF21796DBF00FD9703 /* Create.storyboard */; };
 		EDF345E421796FC200FD9703 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDF345E621796FC200FD9703 /* Localizable.strings */; };
-		EDF345E92179721500FD9703 /* gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EDF345E82179721500FD9703 /* gitignore */; };
 		EDFE574E20BA99E700B82FE2 /* AlbumCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE574D20BA99E700B82FE2 /* AlbumCreateVC.swift */; };
 		EDFE575020BAA00300B82FE2 /* AlbumTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE574F20BAA00300B82FE2 /* AlbumTitleCell.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +89,7 @@
 		ED3F83D9207C761600250AA2 /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		ED3F83E2207C763700250AA2 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		ED454F9120DC7E93009E1AC2 /* AlbumThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumThumbnailCell.swift; sourceTree = "<group>"; };
+		ED4FA4912192E515005E9016 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ED5CF8B9207E5E790017E8E0 /* Amtrip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Amtrip.entitlements; sourceTree = "<group>"; };
 		ED7618B020F9D0C70033BB6F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		ED7618B220F9E8AA0033BB6F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		EDF345E121796DC100FD9703 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Create.strings; sourceTree = "<group>"; };
 		EDF345E521796FC200FD9703 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EDF345E721796FC800FD9703 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		EDF345E82179721500FD9703 /* gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = gitignore; sourceTree = "<group>"; };
 		EDFE574D20BA99E700B82FE2 /* AlbumCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCreateVC.swift; sourceTree = "<group>"; };
 		EDFE574F20BAA00300B82FE2 /* AlbumTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTitleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,7 +175,6 @@
 		ED3F83B4207C75EB00250AA2 = {
 			isa = PBXGroup;
 			children = (
-				EDF345E82179721500FD9703 /* gitignore */,
 				EDAE1B4D2148809200CC23CD /* README.md */,
 				ED3F83BF207C75EB00250AA2 /* Amtrip */,
 				ED0662352104DA5C00580976 /* AmtripTests */,
@@ -239,14 +238,15 @@
 			isa = PBXGroup;
 			children = (
 				ED7618B020F9D0C70033BB6F /* Colors.swift */,
+				ED4FA4912192E515005E9016 /* Constants.swift */,
 				ED7618B220F9E8AA0033BB6F /* Date+Extensions.swift */,
 				EDE58072210160CB00CF5D2B /* FileManager+Extensions.swift */,
+				ED02821E21705B6800EAE099 /* UICollectionView+Extensions.swift */,
+				ED02821A21705AE900EAE099 /* UINavigationItem+Extensions.swift */,
+				ED02822021705B7E00EAE099 /* UISearchBar+Extensions.swift */,
+				ED02821C21705B3300EAE099 /* UItableView+Extensions.swift */,
 				ED02821621705A7500EAE099 /* UITextField+Extensions.swift */,
 				ED02821821705AA500EAE099 /* UITextView+Extensions.swift */,
-				ED02821A21705AE900EAE099 /* UINavigationItem+Extensions.swift */,
-				ED02821C21705B3300EAE099 /* UItableView+Extensions.swift */,
-				ED02821E21705B6800EAE099 /* UICollectionView+Extensions.swift */,
-				ED02822021705B7E00EAE099 /* UISearchBar+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -442,7 +442,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDF345D321796DB100FD9703 /* AlbumDetail.storyboard in Resources */,
-				EDF345E92179721500FD9703 /* gitignore in Resources */,
 				EDF345C921796DA400FD9703 /* Account.storyboard in Resources */,
 				ED3F83CB207C75EB00250AA2 /* LaunchScreen.storyboard in Resources */,
 				EDF345C421796D9B00FD9703 /* Favorite.storyboard in Resources */,
@@ -532,6 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4FA4922192E515005E9016 /* Constants.swift in Sources */,
 				ED02821B21705AE900EAE099 /* UINavigationItem+Extensions.swift in Sources */,
 				ED3F83DD207C761600250AA2 /* SearchVC.swift in Sources */,
 				ED3F83DF207C761600250AA2 /* HomeVC.swift in Sources */,
