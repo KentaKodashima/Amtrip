@@ -15,6 +15,7 @@
 		ED02821F21705B6800EAE099 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED02821E21705B6800EAE099 /* UICollectionView+Extensions.swift */; };
 		ED02822121705B7E00EAE099 /* UISearchBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED02822021705B7E00EAE099 /* UISearchBar+Extensions.swift */; };
 		ED0662372104DA5C00580976 /* AmtripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0662362104DA5C00580976 /* AmtripTests.swift */; };
+		ED0CC8B121D05F70000FEB1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0CC8B021D05F70000FEB1C /* Constants.swift */; };
 		ED2B5C4820C835760070E025 /* PageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2B5C4720C835760070E025 /* PageDetailVC.swift */; };
 		ED3F83C1207C75EB00250AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F83C0207C75EB00250AA2 /* AppDelegate.swift */; };
 		ED3F83C6207C75EB00250AA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3F83C4207C75EB00250AA2 /* Main.storyboard */; };
@@ -27,7 +28,6 @@
 		ED3F83E0207C761600250AA2 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F83D9207C761600250AA2 /* AccountVC.swift */; };
 		ED3F83E3207C763700250AA2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F83E2207C763700250AA2 /* Album.swift */; };
 		ED454F9220DC7E93009E1AC2 /* AlbumThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED454F9120DC7E93009E1AC2 /* AlbumThumbnailCell.swift */; };
-		ED4FA4922192E515005E9016 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4FA4912192E515005E9016 /* Constants.swift */; };
 		ED7618B120F9D0C70033BB6F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7618B020F9D0C70033BB6F /* Colors.swift */; };
 		ED7618B320F9E8AA0033BB6F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7618B220F9E8AA0033BB6F /* Date+Extensions.swift */; };
 		ED7A95812082EF8600801583 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7A95802082EF8600801583 /* Page.swift */; };
@@ -75,6 +75,7 @@
 		ED0662342104DA5C00580976 /* AmtripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmtripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0662362104DA5C00580976 /* AmtripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmtripTests.swift; sourceTree = "<group>"; };
 		ED0662382104DA5C00580976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED0CC8B021D05F70000FEB1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ED2B5C4720C835760070E025 /* PageDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDetailVC.swift; sourceTree = "<group>"; };
 		ED3F83BD207C75EB00250AA2 /* Amtrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Amtrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3F83C0207C75EB00250AA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		ED3F83D9207C761600250AA2 /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		ED3F83E2207C763700250AA2 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		ED454F9120DC7E93009E1AC2 /* AlbumThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumThumbnailCell.swift; sourceTree = "<group>"; };
-		ED4FA4912192E515005E9016 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ED5CF8B9207E5E790017E8E0 /* Amtrip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Amtrip.entitlements; sourceTree = "<group>"; };
 		ED7618B020F9D0C70033BB6F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		ED7618B220F9E8AA0033BB6F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -238,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				ED7618B020F9D0C70033BB6F /* Colors.swift */,
-				ED4FA4912192E515005E9016 /* Constants.swift */,
 				ED7618B220F9E8AA0033BB6F /* Date+Extensions.swift */,
 				EDE58072210160CB00CF5D2B /* FileManager+Extensions.swift */,
 				ED02821E21705B6800EAE099 /* UICollectionView+Extensions.swift */,
@@ -257,6 +256,7 @@
 				ED3F83C7207C75EB00250AA2 /* Assets.xcassets */,
 				ED3F83C9207C75EB00250AA2 /* LaunchScreen.storyboard */,
 				EDF345E621796FC200FD9703 /* Localizable.strings */,
+				ED0CC8B021D05F70000FEB1C /* Constants.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -531,13 +531,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED4FA4922192E515005E9016 /* Constants.swift in Sources */,
 				ED02821B21705AE900EAE099 /* UINavigationItem+Extensions.swift in Sources */,
 				ED3F83DD207C761600250AA2 /* SearchVC.swift in Sources */,
 				ED3F83DF207C761600250AA2 /* HomeVC.swift in Sources */,
 				ED454F9220DC7E93009E1AC2 /* AlbumThumbnailCell.swift in Sources */,
 				ED7618B120F9D0C70033BB6F /* Colors.swift in Sources */,
 				EDFE575020BAA00300B82FE2 /* AlbumTitleCell.swift in Sources */,
+				ED0CC8B121D05F70000FEB1C /* Constants.swift in Sources */,
 				ED2B5C4820C835760070E025 /* PageDetailVC.swift in Sources */,
 				ED3F83C1207C75EB00250AA2 /* AppDelegate.swift in Sources */,
 				ED3F83DB207C761600250AA2 /* CreateVC.swift in Sources */,
