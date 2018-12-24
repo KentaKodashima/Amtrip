@@ -80,3 +80,5 @@ fastlane/test_output
 iOSInjectionProject/
 
 .DS_Store
+Constants.swift
+GoogleService-Info.plist
